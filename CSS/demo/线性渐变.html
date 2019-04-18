@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>线性渐变</title>
+    <style>
+        #grad1{
+            height:200px;
+            background:-webkit-linear-gradient(red,blue);
+            background:-o-linear-gradient(red,blue);
+            background:-moz-linear-gradient(red,blue);
+            background:linear-gradient(red,blue);
+        }
+        #grad2{
+            height:200px;
+            background:-webkit-linear-gradient(left,red,blue);
+            background:-o-linear-gradient(right,red,blue);
+            background:-moz-linear-gradient(right,red,blue);
+            background:linear-gradient(to right,red,blue);
+        }
+        #grad3{
+            height:200px;
+            background:-webkit-linear-gradient(left top,red,blue);
+            background:-o-linear-gradient(bottom right,red,blue);
+            background:-moz-linear-gradient(bottom right,red,blue);
+            background:linear-gradient(to bottom right,red,blue);
+        }
+        #grad4{
+            height: 100px;
+            background: -webkit-linear-gradient(90deg, red, blue); /* Safari 5.1 - 6.0 */
+            background: -o-linear-gradient(90deg, red, blue); /* Opera 11.1 - 12.0 */
+            background: -moz-linear-gradient(90deg, red, blue); /* Firefox 3.6 - 15 */
+            background: linear-gradient(90deg, red, blue); /* 标准的语法（必须放在最后） */
+        }
+        /*也可以这样#grad5{*/
+            /*height: 200px;*/
+            /*background: -webkit-linear-gradient(red, orange, yellow, green, blue, indigo, violet); !* Safari 5.1 - 6.0 *!*/
+            /*background: -o-linear-gradient(red, orange, yellow, green, blue, indigo, violet); !* Opera 11.1 - 12.0 *!*/
+            /*background: -moz-linear-gradient(red, orange, yellow, green, blue, indigo, violet); !* Firefox 3.6 - 15 *!*/
+            /*background: linear-gradient(red, orange, yellow, green, blue, indigo, violet); !* 标准的语法（必须放在最后） *!*/
+        /*}*/
+        #grad5{
+            background: -webkit-linear-gradient(red 10%, green 85%, blue 90%); /* Safari 5.1 - 6.0 */
+            background: -o-linear-gradient(red 10%, green 85%, blue 90%); /* Opera 11.1 - 12.0 */
+            background: -moz-linear-gradient(red 10%, green 85%, blue 90%); /* Firefox 3.6 - 15 */
+            background: linear-gradient(red 10%, green 85%, blue 90%); /* 标准的语法（必须放在最后） */
+        }
+        #grad6{
+            height:200px;
+            background:-webkit-linear-gradient(left,rgba(255,0,0,0),rgba(255,0,0,1));
+            background:-o-linear-gradient(right,rgba(255,0,0,0),rgba(255,0,0,1));
+            background:-moz-linear-gradient(right,rgba(255,0,0,0),rgba(255,0,0,1));
+            background:linear-gradient(right,rgba(255,0,0,0),rgba(255,0,0,1));
+        }
+        #grad7{
+            height:200px;
+            background:-webkit-repeating-linear-gradient(red,yellow 10%,green 20%);
+            background:-o-repeating-linear-gradient(red,yellow 10%,green 20%);
+            background:-moz-repeating-linear-gradient(red,yellow 10%,green 20%);
+            background:repeating-linear-gradient(red,yellow 10%,green 20%);
+        }
+        #grad8{
+            height: 150px;
+            width: 200px;
+            background: -webkit-radial-gradient(red, green, blue); /* Safari 5.1 - 6.0 */
+            background: -o-radial-gradient(red, green, blue); /* Opera 11.6 - 12.0 */
+            background: -moz-radial-gradient(red, green, blue); /* Firefox 3.6 - 15 */
+            background: radial-gradient(red, green, blue); /* 标准的语法 */
+        }
+        #grad9{
+            height: 150px;
+            width: 200px;
+            background: -webkit-radial-gradient(red 5%, green 15%, blue 60%); /* Safari 5.1 - 6.0 */
+            background: -o-radial-gradient(red 5%, green 15%, blue 60%); /* Opera 11.6 - 12.0 */
+            background: -moz-radial-gradient(red 5%, green 15%, blue 60%); /* Firefox 3.6 - 15 */
+            background: radial-gradient(red 5%, green 15%, blue 60%); /* 标准的语法 */
+        }
+    </style>
+</head>
+<body>
+从上到下
+<div id="grad1"></div>
+从左到右
+<div id="grad2"></div>
+对角
+<div id="grad3"></div>
+使用角度
+<div id="grad4"></div>
+使用多个颜色结点
+<div id="grad5"></div>
+使用透明度
+<div id="grad6"></div>
+重复的线性渐变
+<div id="grad7"></div>
+径向渐变 颜色结点均匀分布
+<div id="grad8"></div>
+径向渐变 颜色结点不均匀分布
+<div id="grad9"></div>
+</body>
+</html>

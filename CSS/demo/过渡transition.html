@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>过渡</title>
+    <style>
+        div{
+            width:130px;
+            height:100px;
+            background:blue;
+            transition-delay:2s;/*规定过渡效果何时开始。默认是 0。*/
+            transition-timing-function:linear;/*规定过渡效果的时间曲线。默认是 "ease"。*/
+            transition-duration:1s;/*定义过渡效果花费的时间*/
+            transition-property: width;/*规定应用过渡的 CSS 属性的名称*/
+        }
+        div:hover{
+            width:200px;
+        }
+    </style>
+</head>
+<body>
+<p><b>注意：</b>该实例无法在 Internet Explorer 9 及更早 IE 版本上工作。</p>
+<div></div>
+<p>鼠标移动到 div 元素上，查看过渡效果。</p>
+<p><b>注意：</b> 过渡效果需要等待两秒后才开始。</p>
+</body>
+</html>

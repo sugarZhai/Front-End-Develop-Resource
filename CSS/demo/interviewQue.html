@@ -1,0 +1,78 @@
+<html>
+
+<head>
+  <title>css3的的一道题目</title>
+  <style id="style">
+    h2 {
+          font-size: 52px;
+          font-weight: bold;
+          color: #000;
+      }
+      p {
+          font-size: 12px;
+          color: #333;
+      }
+  </style>
+</head>
+
+<body>
+  <h3>已有CSS：</h3>
+  <pre id="pre">h2 {
+        font-size: 52px;
+        font-weight: bold;
+        color: #000;
+    }
+    p {
+        font-size: 12px;
+        color: #333;
+    }
+    </pre>
+  <h3>你的CSS</h3>
+  <style id="input" contenteditable="true" style="-webkit-user-select: auto">h2 {
+        
+    }
+    p {
+        
+    }
+    </style>
+  <h2>
+    IPHONE XR<br>
+    IS THE FUCKING<br>
+    BEST EVER MADE
+    <p>iPhone XR has not been authorized as required by the rules of the Federal Communications Commission. iPhone XR
+      is not, and may not be, offered for sale or lease, or sold or leased, until authorization is obtained.</p>
+  </h2>
+  <div>
+    <input type="range" name="points" min="20" max="60" value="52" size="50" align="absmiddle">
+  </div>
+  <script>
+    document.querySelector('input').addEventListener('input', function () {
+      pre.innerHTML = pre.innerHTML.replace(/h2\s*{([\W\w]*?)size:\s*\d+px/, 'h2{\n    font-size: ' + this.value +
+        'px');
+      style.innerHTML = pre.innerHTML;
+    });
+
+    // 自动写入答案
+    if (location.href.indexOf('type=1') != -1) {
+      input.innerHTML =
+        `h2 {
+        width: min-content;
+        white-space: nowrap;
+    }
+    p {
+        white-space: normal;
+    }`;
+    } else if (location.href.indexOf('type=2') != -1) {
+      input.innerHTML =
+        `h2 {
+        display: table;
+    }
+    p {
+        display: table-caption;
+        caption-side: bottom;
+    }`;
+    }
+  </script>
+</body>
+
+</html>

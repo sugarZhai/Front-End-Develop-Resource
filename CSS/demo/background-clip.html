@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #example1 {
+            border: 10px dotted black;
+            padding:35px;
+            background: yellow;
+        }
+
+        #example2 {
+            border: 10px dotted black;
+            padding:35px;
+            background: yellow;
+            background-clip: padding-box;
+        }
+
+        #example3 {
+            border: 10px dotted black;
+            padding:35px;
+            background: yellow;
+            background-clip: content-box;
+        }
+    </style>
+</head>
+<body>
+CSS3中background-clip背景剪裁属性是从指定位置开始绘制。
+background-clip	规定背景的绘制区域。	3
+background-origin	规定背景图片的定位区域。	3
+background-size	规定背景图片的尺寸。
+<div id="example1">
+    <h2>Lorem Ipsum Dolor</h2>
+    <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.</p>
+</div>
+
+<p>background-clip: padding-box:</p>
+<div id="example2">
+    <h2>Lorem Ipsum Dolor</h2>
+    <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.</p>
+</div>
+
+<p>background-clip: content-box:</p>
+<div id="example3">
+    <h2>Lorem Ipsum Dolor</h2>
+    <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.</p>
+</div>
+</body>
+</html>

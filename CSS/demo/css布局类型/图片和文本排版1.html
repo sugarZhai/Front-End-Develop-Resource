@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>图片和文本排版</title>
+  <style>
+    body {
+      display: flex;
+      padding: 20px;
+      justify-content: center;
+    }
+    p{
+      margin:0 0 1em 0;
+    }
+    .container{
+      width:500px;
+      border:5px solid red;
+      border-radius: .5em;
+      padding:10px;
+    }
+    .item{
+      width:100px;
+      height:100px;
+      float:left;
+      margin:0 20px 20px 0;
+      background:yellow;
+    }
+    .container::after{
+      content:'';
+      display: table;
+      clear:both;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <div class="item"></div>
+    <p>最常见的清除浮动的方案是：在容器内添加一个CSS伪元素，并将其clear的值设置为both。著作权归作者所有。
+        商业转载请联系作者获得授权,非商业转载请注明出处。
+        原文: https://www.w3cplus.com/css/guide-css-layout.html © w3cplus.com
+    </p>
+  </div>
+</body>
+
+</html>

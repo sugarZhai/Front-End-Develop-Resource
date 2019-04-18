@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <title>absolute第一节</title>
+  <meta charset=“utf-8”>
+  <style type="text/css">
+    input {
+      font-size: 20px;
+      padding: 6px;
+      position: fixed;
+      right: 0;
+    }
+    .hide {
+      visibility: hidden;
+    }
+  </style>
+</head>
+<body>
+  <div style="border: 1px solid;">
+    <img width="200px" src="4.jpeg">
+    <img id="img2" width="180px" src="2.jpeg">
+    <img width="220px" src="3.jpg">
+  </div>
+  <p style="border: 1px solid;background-color: #f1f2f3; line-height: 30px;">这里是一个块级元素，内部有一个 <span id="span" style="line-height: 30px;color:red;">span元素</span> span元素（用来对比）这里需要一些文字....</p>
+  <input style="bottom: 110px" type="button" id="button3" value="使span元素 position:absolute" />
+  <input style="bottom: 80px" type="button" id="button1" value="使第二个图片position:absolute" />
+  <input style="bottom: 50px" type="button" id="button2" value="使第二个图片display:block" />
+  <input style="bottom: 20px" type="button" id="button4" value="查看答案" />
+
+  <div style="width: 70%">
+    <div>问题：一个position:static的 <b>块级元素</b>，如果只给它设置一个position:absolute的属性，它的位置会有变化吗？</div>
+    答案：<div class="hide">它会紧贴着它的前一个元素，如果它前一个元素的位置有变化，则它的位置就有变化，如果前一个元素的位置没变化，它的位置也不回有变化。</div>
+    <br>
+    <div>一个position:static的 <b>元素</b>，如果只给它设置一个position:absolute的属性，它的位置会有变化吗？</div>
+    答案：<div class="hide">分情况讨论，块级元素如上；行内元素可能会（line-height小于包含块元素的line-height时），也可能不会； 行内块元素，可能会（该元素顶部没有紧贴父元素的上边缘时），也可能不会。</div>
+    <div class="hide">
+      PS. 这里所有的效果同样适用于fixed。
+    </div>
+    <br>
+    为什么？
+    <div class="hide">
+      一个行内元素或者行内块元素，其布局受到line-height和vertical-align属性的影响，在设置了position:absolute之后，行内元素变成了块级元素，导致一些原本生效的属性会不生效，一些不生效的属性生效了，在一些特殊情况下，它的位置会发生改变（都是上下移动，不会左右移动）。
+    </div>
+  </div>
+  <script type="text/javascript">
+    var img2 = document.getElementById('img2');
+    var span = document.getElementById('span');
+    document.getElementById('button1').onclick = function () {
+      if (this.absolute) {
+        img2.style.position = 'static';
+        this.value = '使第二个图片position:absolute';
+        this.absolute = false;
+      } else {
+        img2.style.position = 'absolute';
+        this.value = '撤销';
+        this.absolute = true;
+      }
+    }
+    document.getElementById('button2').onclick = function () {
+      if (this.block) {
+        img2.style.display = 'inline-block';
+        this.value = '使第二个图片display:block';
+        this.block = false;
+      } else {
+        img2.style.display = 'block';
+        this.value = '撤销';
+        this.block = true;
+      }
+    }
+    document.getElementById('button3').onclick = function () {
+      if (this.absolute) {
+        span.style.position = 'static';
+        this.value = '使span元素 position:absolute';
+        this.absolute = false;
+      } else {
+        span.style.position = 'absolute';
+        this.value = '撤销';
+        this.absolute = true;
+      }
+    }
+    document.getElementById('button4').onclick = function () {
+      var answers = document.getElementsByClassName('hide');
+      for (var i of answers) {
+        i.style.visibility = 'visible'
+      }
+    }
+  </script>
+</body>
+</html>

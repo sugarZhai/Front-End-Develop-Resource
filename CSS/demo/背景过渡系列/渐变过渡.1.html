@@ -1,0 +1,38 @@
+<!DOCTYPE>
+<html>
+<meta charset="utf-8" />
+
+<head>
+  <style>
+    .box {
+      max-width: 400px;
+      height: 200px;
+      background: linear-gradient(to right, olive, green);
+      position: relative;
+      z-index: 0;
+    }
+
+    .box::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(to right, green, purple);
+      opacity: 0;
+      transition: opacity .5s;
+      z-index: -1;
+    }
+
+    .box:hover::before {
+      opacity: 1;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="box"></div>
+</body>
+
+</html>

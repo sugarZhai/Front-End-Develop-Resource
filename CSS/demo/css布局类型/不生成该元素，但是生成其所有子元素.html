@@ -1,0 +1,53 @@
+<!DOCTYPE>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <style>
+    body{
+      padding:20px;
+      display: flex;
+      justify-content: center;
+    }
+    *{box-sizing: border-box}
+    p{
+      margin:0 0 1em 0;
+    }
+    .container{
+      width:500px;
+      border:5px solid red;
+      border-radius:.5em;
+      padding:10px;
+      display: flex;
+    }
+    .item{
+      flex:1 1 200px;
+      padding:10px;
+      background:lawngreen;
+      border:2px solid yellow;
+    }
+    .subitem{
+      padding:10px;
+      background:lavenderblush;
+      border:2px solid khaki;
+    }
+    .container .item:first-child{
+      display: contents;
+      background:black;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <div class="item">
+      <div class="subitem">A</div>
+      <div class="subitem">B</div>
+    </div>
+    <div class="item">2</div>
+    <div class="item">3</div>
+  </div>
+  display: content是display的一个新的属性值。为一个元素应用display: content属性会导致其自身的盒子不生成但所有的子元素都会照常生成。这有什么用呢？试想一下，如果你希望一个弹性布局或网格布局中的非直接子元素能应用这些布局，这就会非常有用。
+</body>
+
+</html>

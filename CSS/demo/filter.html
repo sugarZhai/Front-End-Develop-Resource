@@ -1,0 +1,82 @@
+<html>
+
+<head>
+  <title>title</title>
+  <style>
+    /* 灰度图像 */
+    .img1 {
+      -webkit-filter: grayscale(100%);
+      filter: grayscale(100%);
+    }
+
+    /* 高斯模糊 */
+    .img2 {
+      -webkit-filter: blur(2px);
+      filter: blur(2px);
+    }
+
+    /* 使图片变亮 */
+    .img3 {
+      -webkit-filter: brightness(300%);
+      filter: brightness(300%);
+    }
+
+    /* 调整图像的对比度 */
+    .img4 {
+      -webkit-filter: contrast(300%);
+      filter: contrast(300%);
+    }
+
+    /* 给图像设置一个阴影效果 */
+    .img5 {
+      -webkit-filter: drop-shadow(8px 8px 8px red);
+      filter: drop-shadow(8px 8px 8px red);
+    }
+
+    /* 给图像应用色相旋转 */
+    .img6 {
+      -webkit-filter: hue-rotate(90deg);
+      filter: hue-rotate(90deg);
+    }
+
+    /* 反转输入图像: */
+    .img7 {
+      -webkit-filter: invert(100%);
+      filter: invert(100%);
+    }
+
+    /* 转换图像饱和度: */
+    .img8 {
+      -webkit-filter: saturate(800%);
+      filter: saturate(800%);
+    }
+
+    /* 将图像转换为深褐色: */
+    .img9 {
+      -webkit-filter: sepia(100%);
+      filter: sepia(100%);
+    }
+
+    /* 使用多个滤镜，每个滤镜使用空格分隔 */
+    .img10 {
+      -webkit-filter: contrast(200%) brightness(150%);
+      filter: contrast(200%) brightness(150%);
+    }
+  </style>
+</head>
+
+<body>
+  <img class="img1" src="./test-banner.png" alt="Pineapple" width="300" height="300">
+  <img class="img2" src="./test-banner.png" alt="Pineapple" width="300" height="300">
+  <img class="img3" src="./test-banner.png" alt="Pineapple" width="300" height="300">
+  <img class="img4" src="./test-banner.png" alt="Pineapple" width="300" height="300">
+  <img class="img5" src="./test-banner.png" alt="Pineapple" width="300" height="300">
+  <img class="img6" src="./test-banner.png" alt="Pineapple" width="300" height="300">
+  <img class="img7" src="./test-banner.png" alt="Pineapple" width="300" height="300">
+  <img class="img8" src="./test-banner.png" alt="Pineapple" width="300" height="300">
+  <img class="img9" src="./test-banner.png" alt="Pineapple" width="300" height="300">
+  <img class="img10" src="./test-banner.png" alt="Pineapple" width="300" height="300">
+  <p><strong>注意：</strong> Internet Explorer 不支持 filter 属性。</p>
+</body>
+
+</html>

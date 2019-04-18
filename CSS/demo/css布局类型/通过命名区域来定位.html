@@ -1,0 +1,70 @@
+<!DOCTYPE>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <style>
+    body {
+      padding: 20px;
+      display: flex;
+      justify-content: center;
+    }
+
+    * {
+      box-sizing: border-box
+    }
+
+    p {
+      margin: 0 0 1em 0;
+    }
+    .container{
+      width:500px;
+      border:5px solid red;
+      padding:10px;
+      display:grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      grid-auto-flow: minmax(50px ,auto);
+      grid-template-areas: 
+      "a a a"
+      "b c c"
+      ". . d"
+      "e e d"
+    }
+    .container>div{
+      padding:10px;
+      background:indianred;
+      border:2px solid black;
+    }
+    .one{
+      grid-area:a;
+    }
+    .two{
+      grid-area:b;
+    }
+    .three{
+      grid-area:c;
+    }
+    .four{
+      grid-area:d;
+    }
+    .five{
+      grid-area:e;
+    }
+  </style>
+</head>
+
+<body>
+  <span>
+    你可以通过命名网格区域来定位网格中的元素。要是用这种方式，你需要给每个元素一个名字，然后通过grid-template-areas属性的值来描述布局方式使用这种方式有几个需要注意的点。如果你想要合并一些单元格作为你的网格项，你需要重复元素的名字。网格区域需要能形成一个完整的矩形
+    —— 每个单元格都需要被填入一个值。如果你想要空出某些单元格，那就需要使用.这个值。
+  </span>
+  <div class="container">
+    <div class="one">1</div>
+    <div class="two">2</div>
+    <div class="three">3</div>
+    <div class="four">4</div>
+    <div class="five">5</div>
+  </div>
+</body>
+
+</html>

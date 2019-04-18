@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>animation</title>
+    <style>
+     div{
+         width:100px;
+         height:100px;
+         background:red;
+         position:relative;
+         animation-name:myfirst;
+         animation-duration:5s;/*规定动画完成一个周期所花费的秒或毫秒。默认是 0。*/
+         animation-timing-function:linear;
+         animation-delay:2s;/*规定动画的速度曲线。默认是 "ease"。*/
+         animation-iteration-count:infinite;/*规定动画被播放的次数。默认是 1*/
+         animation-direction:alternate;/*规定动画是否在下一周期逆向地播放。默认是 "normal"。*/
+         animation-play-state:running;/*规定动画是否正在运行或暂停。默认是 "running"。*/
+     }
+        @keyframes myfirst
+     {
+     0%   {background:red; left:0px; top:0px;}
+     25%  {background:yellow; left:200px; top:0px;}
+     50%  {background:blue; left:200px; top:200px;}
+     75%  {background:green; left:0px; top:200px;}
+     100% {background:red; left:0px; top:0px;}
+     }
+    </style>
+</head>
+<body>
+<div></div>
+</body>
+</html>

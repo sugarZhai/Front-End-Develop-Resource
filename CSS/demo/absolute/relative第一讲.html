@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>relative第一讲</title>
+</head>
+<body style="padding-bottom: 50px;">
+<p>我们最常用到relative的地方就是配合absolute一起使用，比如父元素设置了position：relative之后，给子元素设置position：absolute，再给子元素设置top，left等偏移属性，就会相对于父元素来移动位置。</p>
+<p>
+  父级relative的元素，对子元素中设置了position：`absolute属性的元素，除了影响它的left、top等偏移属性，还有其他的影响吗？
+</p>
+<ul style="visibility: hidden;">
+  <li>1、限制它的left/top/right/bottom定位</li>
+  <li>2、限制它的z-index层级</li>
+  <li>3、限制它在overflow的控制下</li>
+  <p>PS.relative对于fixed，只有第二条z-index会生效。</p>
+</ul>
+<p>下图中：z-index为100的绝对定位元素为什么会被z-index为1的绝对定位元素覆盖住？</p>
+<div style="position: relative;z-index: 3; ">
+  <div style="position: absolute;z-index: 1;width: 200px;height: 200px;background-color: red;"></div>
+</div>
+<div style="position: relative;z-index: 2;height: 200px;">
+  <div style="position: absolute;z-index: 100;width: 200px;height: 200px;background-color: orange;top: 50px;"></div>
+</div>
+<p style="margin-top: 50px;visibility: hidden;">绝对定位元素不总是被父级overflow属性剪裁，尤其当overflow在绝对定位元素及其包含块之间的时候。如果父元素设置overflow：scroll或者auto时，子元素出现不跟着滚动的情况，那是因为子元素是绝对定位元素，此时需要给父元素设置position：relative来让绝对定位元素滚动。</p>
+  <div style="width: 200px;height: 200px;background-color: #f1f2f3;/*position: relative;*/overflow: hidden;">
+    <div style="">
+    <div style="width: 240px;height: 240px;background-color: silver;position: absolute;">abcdefg</div>
+    </div>
+  </div>
+</body>
+</html>

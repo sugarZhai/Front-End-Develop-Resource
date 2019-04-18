@@ -1,0 +1,52 @@
+<html>
+
+<head>
+  <title>animation</title>
+  <style>
+    @keyframes myFirst {
+      0% {
+        background: red;
+        left: 0px;
+        top: 0px;
+      }
+
+      25% {
+        background: yellow;
+        left: 200px;
+        top: 0px;
+      }
+
+      50% {
+        background: blue;
+        left: 200px;
+        top: 200px;
+      }
+
+      75% {
+        background: green;
+        left: 0px;
+        top: 200px;
+      }
+
+      100% {
+        background: red;
+        left: 0px;
+        top: 0px;
+      }
+    }
+    .testAnimation {
+      width: 100px;
+      height: 50px;
+      border-radius: 20px;
+      background: yellowgreen;
+      position: relative;
+      animation: myFirst 5s linear 2s infinite alternate;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="testAnimation"></div>
+</body>
+
+</html>

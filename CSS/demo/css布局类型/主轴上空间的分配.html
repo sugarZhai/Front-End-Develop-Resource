@@ -1,0 +1,54 @@
+<!DOCTYPE>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title>align-items和align-self用来解决交叉轴上的对齐问题，而justify-content则用于解决主轴上空间的分配</title>
+  <style>
+    body {
+      padding: 20px;
+      display: flex;
+      justify-content: center;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    p {
+      margin: 0 0 1em 0;
+    }
+
+    .container {
+      width: 500px;
+      height: 300px;
+      border: 5px solid rgb(111, 41, 97);
+      border-radius: .5em;
+      padding: 10px;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+    }
+
+    .special {
+      align-self: stretch;
+    }
+
+    .container>div {
+      padding: 10px;
+      background-color: rgba(111, 41, 97, .3);
+      border: 2px solid rgba(111, 41, 97, .5);
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <div>1</div>
+    <div>2</div>
+    <div class="special">3</div>
+    <div>4</div>
+  </div>
+</body>
+
+</html>

@@ -1,0 +1,87 @@
+/*body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  font-family: PingFangSC-Regular, sans-serif;
+  font-size: 16px;
+}*/
+
+.container {
+  display: column;
+  justify-content: center;
+}
+
+.sign {
+  position: relative;
+  margin-bottom: 45px;
+}
+
+.cycle {
+  height: 240px;
+  width: 240px;
+  border: 1px solid #d3d3d3;
+  border-radius: 50%;
+  overflow: hidden;
+  margin: 42px auto 0;
+}
+
+.sign .small {
+  font-family: PingFangSC-Ultralight, sans-serif;
+  color: #000;
+  font-size: 20px;
+  z-index: 100;
+  position: absolute;
+  top: 105px;
+  left: 53%;
+  transform: translateX(-30px);
+}
+
+.sign .big {
+  font-size: 15px;
+  color: #000;
+  z-index: 100;
+  position: absolute;
+  top: 130px;
+  left: 38%;
+  transform: translateX(30px);
+}
+
+.cycle .wave {
+  position: relative;
+  height: 240px;
+  width: 240px;
+  background-color: red;
+  border-radius: 50%;
+}
+
+.cycle .wave::before,
+.cycle .wave::after {
+  content: "";
+  position: absolute;
+  width: 480px;
+  height: 480px;
+  top: 0;
+  left: 50%;
+  background-color: rgba(255, 255, 255, .4);
+  border-radius: 45%;
+  transform: translate(-50%, -70%) rotate(0);
+  animation: rotate 6s linear infinite;
+  z-index: 10;
+}
+
+.cycle .wave::after {
+  border-radius: 47%;
+  background-color: rgba(255, 255, 255, .9);
+  transform: translate(-50%, -70%) rotate(0);
+  animation: rotate 10s linear -5s infinite;
+  z-index: 20;
+}
+
+
+@keyframes rotate {
+  50% {
+      transform: translate(-50%, -73%) rotate(180deg);
+} 100% {
+      transform: translate(-50%, -70%) rotate(360deg);
+}
+}

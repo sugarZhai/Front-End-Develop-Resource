@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>素数</title>
+</head>
+<body>
+<style>
+    li:first-child {
+        color: grey;
+    }
+    li:nth-child(2n + 4) {
+        color: grey;
+    }
+    li:nth-child(3n + 6) {
+        color: grey;
+    }
+    li:nth-child(4n + 8) {
+        color: grey;
+    }
+    li:nth-child(5n + 10) {
+        color: grey;
+    }
+</style>
+<ul>
+    <li>01</li>
+    <li>02</li>
+    <li>03</li>
+    <li>04</li>
+    <li>05</li>
+    <li>06</li>
+    <li>07</li>
+    <li>08</li>
+    <li>09</li>
+    <li>10</li>
+</ul>
+
+<style>
+    li:first-child,
+    li:nth-child(2n + 4),
+    li:nth-child(3n + 6),
+    li:nth-child(4n + 8),
+    li:nth-child(5n + 10) {
+        color: grey;
+    }
+</style>
+<ul>
+    <li>01</li>
+    <li>02</li>
+    <li>03</li>
+    <li>04</li>
+    <li>05</li>
+    <li>06</li>
+    <li>07</li>
+    <li>08</li>
+    <li>09</li>
+    <li>10</li>
+</ul>
+<style>
+    /*优先级为 0,0,0,1*/
+    li {
+        color: red;
+    }
+
+    /*优先级为 0,0,1,1*/
+    li:first-child,
+    li:nth-child(2n + 4),
+    li:nth-child(3n + 6),
+    li:nth-child(4n + 8),
+    li:nth-child(5n + 10) {
+        color: grey;
+    }
+</style>
+<ul>
+    <li>01</li>
+    <li>02</li>
+    <li>03</li>
+    <li>04</li>
+    <li>05</li>
+    <li>06</li>
+    <li>07</li>
+    <li>08</li>
+    <li>09</li>
+    <li>10</li>
+</ul>
+
+<style>
+    li {
+        color: red;
+    }
+    li:first-child,
+    li:nth-child(2n + 4),
+    li:nth-child(3n + 6),
+    li:nth-child(5n + 10),
+    li:nth-child(7n + 14),
+    li:nth-child(11n + 22),
+    li:nth-child(13n + 26),
+    li:nth-child(17n + 34),
+    li:nth-child(19n + 38),
+    li:nth-child(23n + 46),
+    li:nth-child(29n + 58),
+    li:nth-child(31n + 62) {
+        color: #ddd;
+    }
+</style>
+<ul>
+    <li>01</li>
+    <li>02</li>
+    <li>03</li>
+    <li>04</li>
+    <li>05</li>
+    ...
+    <li>996</li>
+    <li>997</li>
+    <li>998</li>
+    <li>999</li>
+    <li>1000</li>
+</ul>
+<style>
+    li {
+        /*遍历 DOM 的过程中，每遇到 li 就让 nature-count 计数器变量的值加一*/
+        counter-increment: nature-count;
+    }
+    li::before {
+        /*在 li 的 before 伪元素中插入计数器变量 nature-count 当前的值*/
+        content: counter(nature-count);
+    }
+</style>
+<ul>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+</ul>
+</body>
+</html>

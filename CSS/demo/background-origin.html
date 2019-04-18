@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>background-Origin</title>
+</head>
+<body>
+background-Origin属性指定了背景图像的位置区域。
+
+content-box, padding-box,和 border-box区域内可以放置背景图像。
+<p>背景图像边界框的相对位置：</p>
+<style>
+    div
+    {
+        border:1px solid black;
+        padding:35px;
+        background-image:url('./test-banner.png');
+        background-repeat:no-repeat;
+        background-position:left;
+        background-size:40px 20px;
+    }
+    #div1
+    {
+        background-origin:border-box;
+    }
+    #div2
+    {
+        background-origin:content-box;
+    }
+</style>
+<div id="div1">
+    Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.
+</div>
+
+<p>背景图像的相对位置的内容框：</p>
+<div id="div2">
+    Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.
+</div>
+</body>
+</html>

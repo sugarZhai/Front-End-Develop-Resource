@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>relative第二讲</title>
+</head>
+<body>
+<p>刚才讲了relative和absolute一起使用的场景，那relative自身的定位特性又是怎样的呢？</p>
+<p style="position: relative;">当<span style="position: relative;color:red;">一个元素</span>设置了position：relative之后，我们就可以使用top、left、right、bottom来控制元素的位置，那么，这些值的参考位置是哪里呢？它会相对于它的静态位置来进行移动。静态位置就是该元素在position：static时所处的位置。</p>
+<p>
+  相对定位元素在移动时，不会影响其他元素，并且它的静态位置依然被它占据。
+</p>
+<p>
+  PS.这个特性可以在自定义拖拽的时候派上用处，在拖拽时不影响其他元素，后面的元素也不会来填充自己的位置。只有自己会动，其他元素都不会动。
+</p>
+<p style="position: relative;left: 20px;right: 20px;top: 20px;bottom: 20px;">
+  相对定位元素在同时设置了top/bottom,left/right时的表现是怎样的呢？top生效bottom不生效，left生效right不生效。
+</p>
+</body>
+</html>

@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>选择器</title>
+</head>
+<body>
+1、类选择器(class)
+.demoDiv{
+  color:red;
+}
+<div class="demoDiv"></div>
+2、标签选择器
+p{
+ color:red;
+}
+<p>87979</p>
+3、ID选择器(#)
+#demoDiv{
+color:red;
+}
+<div id="demoDiv"></div>
+4、 后代选择器
+<style>
+    .father.child{
+        color:red;
+    }
+</style>
+<p class="father">
+    <label class="child">
+         我变红了
+        <p>我也变红了</p>
+    </label>
+</p>
+5、子选择器
+<style>
+    #lala a{color:red;}/*所有<a>子元素*/
+    #lala >a{color:blue;}/*lala下面第一个<a>子元素*/
+</style>
+<p id="lala">
+    <a href="#">我是蓝色</a>
+    <span><a href="#">我变红了</a></span>
+    <span><a href="#">我变红了</a></span>
+</p>
+6、伪类选择器
+<style>
+    a:link{
+        color:red;
+    }
+    a:visited{
+        color:red;
+    }
+    a:hover{
+        color:blue;
+    }
+    input:focus{
+        background:black;
+    }
+    Link表示链接在没有被点击时的样式。Visited表示链接已经被访问时的样式。Hover表示当鼠标悬停在链接上面时的样式。
+    伪类不仅可以应用在链接标签中，也可以应用在一些表单元素中，但表单元素的应用IE不支持，所以一般伪类都只会被应用在链接的样式上。
+</style>
+7、通用选择器
+<style>
+    *{
+        font-size:20px;
+    }
+    p*{
+        color:green;
+    }
+</style>
+8、群组选择器
+<style>
+    p ,td ,li{
+       color:red;
+        height:20px;
+    }
+    #main p,#sider span{
+        color:blue;
+        font-size:30px;
+    }
+    #main p span{
+       color:yellow;
+    }
+    .text1 h1,#sider h3,.art_title h2{
+        color:black;font-weight:100;
+    }
+    使用群组选择器，将会大大的简化CSS代码，将具有多个相同属性的元素，合并群组进行选择，定义同样的CSS属性，这大大的提高了编码效率，同时也减少了CSS文件的体积。
+</style>
+9、 相邻同胞选择器
+<style>
+    h1+p{
+        color:red;
+    }
+    +和~的区别：类似上面一个，两者都表示兄弟关系，但是+必须是“大哥+二哥”，~还能是“大哥~三弟”、“二哥~四妹”
+</style>
+<h1>我和<p></p>相邻</h1>
+<p>我和<h1></h1>相邻</p>
+<p>我和他们都不相邻，所以样式不影响我</p>
+10、属性选择器
+<style>
+    /*属性选择器，是根据元素的属性来匹配的，其属性可以是标准属性也可以是自定义属性；!ie6，0 0 1 0*/
+    [attr]
+    [title]{margn-left:10px}
+    /*选择具有title属性的所有元素*/
+    [attr=val]
+    [tittle='this']{margin-right:10px;}
+    /*选择属性title的值等于this的所有元素*/
+    [attr^=val]
+    [title^='this']{margin-right:200px;}
+    /*选择属性title的值以this开头的所有元素*/
+    [attr$=val]
+    [title$='this']{margin-right:10px;}
+    /*选择属性title的值以this结尾的所有元素*/
+    [attr*=val]
+    [title*='this']{margin:10px;}
+    /*选择属性title的值包含this的所有元素*/
+    [attr~=val]
+    [title~='this']{margin:20px;color:red;}
+    /*选择属性title的值包含一个以空格分隔的词为this的所有元素,
+    即title的值里必须要有this这个单词并且this要与其他单词之间有空格分隔*/
+    [attr|=val]
+    [title|='this']{color:red;}
+    /*选择属性title的值等于This,或值以this-开头的所有元素*/
+</style>
+11、伪元素选择器
+<style>
+    /*
+    :first-letter，设置块元素首字母样式，行内元素转换成块元素和行内块元素也支持；
+    div p:first-letter {font-size: 20px}
+    :first-line，设置第一个文本行样式；
+    .box .main:first-line {color: #f00}
+    :before，设置之前的样式，可以插入生成的内容，并设置其样式；
+　　body:before {content: 'The Start:'; display: block}
+　　//在body元素前插入文本内容'The Start:'，并设置其为块元素
+　　:after，设置之后的样式，可以插入生成的内容，并设置其样式；
+　　body:after {content: 'The End.'; display: block}
+　　//在body元素最后插入文本内容'The End.'，并设置其为块元素
+    */
+</style>
+12、结构性伪类选择器
+<style>
+ .box .ft:first-of-type{color:yellow;}
+ /*:first-of-type，选择相对父元素里同类型子元素中的第一个，!lte8*/
+ .box :last-of-type {color: deeppink}
+    /*:last-of-type，选择相对父元素里同类型子元素中的最后一个，!lte8*/
+ .box :only-of-type {color: blanchedalmond}
+    /*:only-of-type，选择相对父元素里同类型子元素中只有一个的元素，!lte8*/
+ .box .ft:only-of-type {color: blueviolet}
+    /*//只匹配4里的strong*/
+ .box :nth-child(3) {color: olivedrab}
+    /*:nth-child(n)，选择其父元素的第n个子元素或多个子元素，索引从1开始，当n用于表达式时索引从0开始!lte8
+    //匹配第三个子元素即这里的4
+    */
+ .box :nth-child(odd) {color: orange}
+    /*等价于 .box :nth-child(2n + 1) {color: #f00}
+    //匹配奇数即这里的2.4.6以及4里的strong和6里的第一个span
+    */
+ .box :nth-child(even) {color: orangered}
+    /*等价于 .box :nth-child(2n + 2) {color: #f00}和.box :nth-child(2n)
+    //匹配偶数即这里的3.5以及6里的第二个span
+    */
+ .box :nth-child(n + 1) {color: #f00}
+    /*
+    //匹配 n + 1开始的所有子元素即.box里所有的子元素以及子孙元素，因为这里n是从1开始的即：
+　　n = 0 ----> n + 1 = 0 + 1 = 1，即这里的2
+　　n = 1 ----> n + 1 = 1 + 1 = 2，即这里的3
+　　... ...
+　　n = 4 ----> n + 1 = 4 + 1 = 5，即这里的6
+    */
+ .box :nth-last-child(3) {color: #f00}
+    /*
+    :nth-last-child(n)，跟:nth-child(n)使用类似，只是索引是从最后开始往前数，!lte8
+    //匹配倒数第三个子元素即这里的4
+    */
+ .box :nth-of-type(2) {color: #f00}
+    /*
+    :nth-of-type(n)，选择父元素的第n个或多个同类型的子元素，!lte8
+    //匹配5和6以及6里面的第二个span
+    */
+ .box :nth-last-of-type(2) {color: #f00}
+    /*
+    :nth-last-of-type(n)，同上，只是从最后开始往前数，!lte8
+    //匹配3和4以及6里面的第一个span
+    */
+ .box :first-child {color: #f00}
+    /*:first-child，选择父元素里的第一个子元素，!ie6
+    //匹配2和4里的strong以及6里的第一个span
+    */
+ .box :last-child {color: #f00}
+    /*
+    :last-child，选择父元素里的最后一个子元素，!lte8
+    //匹配6和6里的最后一个span以及4里的strong
+    */
+ table td:empty {background-color: #ffc}
+    /*
+    :root，选择文档的根元素，在HTML中就是指<html>标签，!lte8
+　　:empty，选择没有任何内容的元素，那怕是有一个空格也不行，!lte8
+    //匹配表格里没有内容的td
+    :target，选择当前活动的元素，指锚点点击后跳转到的那一个元素，!lte8
+　　:not(selector)，选择排除selector以外的其他所有元素，!lte8
+    */
+ .box *:not(div) {background-color: #ffc}
+    /*
+    //选择box里除div以外的所有后代元素，如果div里有其他非div元素，也会选择上，如上的HTML CODE就会选择上div里面的span和strong
+    */
+</style>
+13、UI元素状态伪类选择器
+<style>
+    /*
+    :enabled，指定元素处于可用状态时的样式，一般用于input，select和textarea
+　　:disabled，指定元素处于不可用状态时的样式，一般用于input，select和textarea
+    :read-only，指定元素为只读状态时的样式，FF为-moz-read-only，一般用于input和textarea
+　　:read-write，指定元素为只可写状态时的样式，FF为-moz-read-write，一般用于input和textarea
+　　:checked，指定元素被选中状态时的样式，FF为-moz-checked一般用于checkbox和radio
+　　:default，指定元素默认选中的样式，一般用于checkbox和radio
+　　:indeterminate，指定默认一组单选或复选都没被选中的样式，只要有一个被选中则样式被取消，一般用于checkbox和radio
+　　::selection，指定元素处理选中状态时的样式，可用于所有元素，上面的几个基本上只用于表单元素；!lte8
+　　FF为::-moz-selection，不能用群组选择器来写；
+　　::selection {background-color: #ffc; color: #fff}
+　　::-moz-selection {background-color: #ffc; color: #fff}
+    */
+</style>
+<div class="box">
+    <span>First span</span>
+    <p>I am test only test</p>
+    <p class="ft">First p</p>
+    <div>Fist div<strong class="ft">strong text</strong></div>
+    <p class="ft">Second p</p>
+    <div class="ft">Second div<span>Second span</span><span>Third span</span></div>
+</div>
+注意事项：
+1、由于对CSS的解释是自上而下的，对于一个元素的相同属性描述，放在下面的会覆盖掉位于上面的属性描述
+2、css优先级：
+计算公式：
+value=a*1000+b*100+c*10+d
+a==行内样式(style=)
+b==ID选择器的数量(id='' #)
+c==类、伪类和属性选择器的数量(class,:before,[title]{margn-left:10px})
+d==标签选择器和伪元素选择器的数量(p,:first-letter)
+</body>
+</html>

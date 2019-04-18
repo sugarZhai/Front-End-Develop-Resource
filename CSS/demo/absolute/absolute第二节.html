@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>absolute第二节</title>
+  <style type="text/css">
+    body {
+     margin: 0;
+     font: 14px/1.4 "Microsoft YaHei";
+     background-color: #EDEFF0;
+    }
+  </style>
+</head>
+<body style="padding: 20px;">
+<p>
+  当一个元素的position设置为absolute时，就可以给它设置top、left、right、bottom这些属性，来控制它的位置，也可以控制它的宽高。
+</p>
+<p>top,left这些值的参考位置是哪里呢？</p>
+<p>
+  top,left,right,bottom这些属性描述了距离包含块最近边的偏移量，例如top描述了定位元素上外边距边界离其包含块的顶端多远。当它们设置为百分比时，top、bottom的百分比是相对于包含块的height来计算的，left、right的百分比是相对于包含块的width来计算的。
+</p>
+
+<hr>
+<div style="position: relative;width: 400px;height: 100px;border: 1px solid;">
+  <div style="background-color: #fff;position: absolute;left:0;right:0;top:0;bottom: 0;">
+  设置position: absolute;left:0;right:0;top:0;bottom: 0和设置了width:100%;height: 100%;有一样的效果
+  </div>
+</div>
+<div style="position: relative;width: 400px;height: 100px;border: 1px solid;">
+  <div style="background-color: #fff;position: absolute;left:0;right:50%;top:0;bottom: 0;">
+  设置position: absolute; left:0;right:50%; top:0;bottom:0和设置了width:50%;height: 100%;有一样的效果
+  </div>
+</div>
+<div style="position: relative;width: 100%;height: 200px;border: 1px solid;">
+  <div style="background-color: #fff;position: absolute;left:100px;right:120px;top:0;bottom: 0;">
+  可以用来实现一个距离左侧100像素，右侧120像素的自适应的容器，如果要通过设置宽度来实现的话，要用到css3的calc(100% - 220px)
+  </div>
+</div>
+<p>
+  通常情况下，元素百分比height想要起作用，需要父容器的height值不是auto；在绝对定位的“拉伸”下，即使父容器的height值是auto，百分比高度也是支持的。
+</p>
+<div style="position: relative;width: 400px;height: 100px;border: 1px solid;">
+  <div style="background-color: #fff;position: absolute;left:0;right:0;top:0;bottom: 0;height: auto;">
+  <div style="height: 50%;width: 100%;background-color: lightblue;">
+    
+  </div>
+  </div>
+</div>
+<p>既然top、left、right、bottom和width、height一样可以用来控制元素的宽高，当两边同时控制元素的时候，又会有怎么样的表现呢？</p>
+</body>
+</html>

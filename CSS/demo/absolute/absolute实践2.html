@@ -1,0 +1,80 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>absolute实践2</title>
+<style>
+body {
+ margin: 0;
+ font: 14px/1.4 "Microsoft YaHei";
+ background-color: #EDEFF0;
+}
+.main {
+ width: 1200px;
+ max-width: 80%;
+ margin-left: auto;
+ margin-right: auto;
+}
+.content {
+ width: 920px;
+ min-height: 1200px;
+ background: #fff;
+}
+/*这里是重点*/
+.fixed-container {
+ height: 0;
+ text-align: right;
+ overflow: hidden;
+}
+.fixed {
+ display: inline;
+ position: fixed;
+ margin-left: 20px;
+ bottom: 100px;
+}
+/*重点结束*/
+.goto_top_diaocha, .goto_top_app, .goto_top_feed {
+ display: block;
+ width: 48px;
+ height: 48px;
+ margin-top: 10px;
+ background: url('./demo.png') no-repeat;
+}
+.goto_top_diaocha {
+ background-position: -48px 0;
+}
+.goto_top_diaocha:hover {
+ background-position: -48px -50px;
+}
+.goto_top_app {
+ background-position: -96px 0;
+}
+.goto_top_app:hover {
+ background-position: -96px -50px;
+}
+.goto_top_feed {
+ background-position: -144px 0;
+}
+.goto_top_feed:hover {
+ background-position: -144px -50px;
+}
+</style>
+</head>
+
+<body>
+<div class="main">
+    <div class="content">
+        <p style="margin: 0;">正文主体....</p>
+        <!-- 下面是固定在右边的元素 -->
+        <div class="fixed-container">
+          &nbsp;<div class="fixed">
+                <!-- 小尾巴 -->
+                <a class="goto_top_diaocha"></a>
+                <a class="goto_top_app"></a>
+                <a class="goto_top_feed"></a>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

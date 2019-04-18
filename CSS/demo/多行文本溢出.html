@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>多行文本溢出的问题</title>
+    <style>
+        div.test
+        {
+            white-space:nowrap;
+            width:12em;
+            overflow:hidden;
+            border:1px solid #000000;
+        }
+    </style>
+</head>
+<body>
+<!--#文本溢出问题(版本升级) 多行文本 ... 通常情况下会采用如下方案：
+ .linesText{ font-size:17px; overflow: hidden; text-overflow: ellipsis; display: -webkit-box; -webkit-line-clamp:3; /* autoprefixer: off / -webkit-box-orient: vertical; / autoprefixer: on */ } 然后，webpack bundle 配置 : const autoprefixer = require('autoprefixer');
+
+module.exports = { plugins: // [autoprefixer({ browsers: ['last 2 versions'] })] [autoprefixer({ browsers: ['> 5%'] })] }; 其中， postcss-loader 使用了 autoprefixer 插件。 查看线上页面元素样式，发现元素下的样式只有： font-size:17px; overflow: hidden; text-overflow: ellipsis; display: -webkit-box; -webkit-line-clamp:3;
+
+如果你已经遇到了上述同样的问题，建议：
+
+把 css-loader 升级到 0.28 以上版本 ( autoprefixer 默认不开启 )；
+
+把 autoprefixer 升级到 8.0 以上版本，并指定 browsers，通常为: ['> 1%','last 2 version'] 重要的备注： 1.css-loader 在 0.27 后，cssnano 的参数移到了 option.minimize 中，即 { minimize:{ zindex:true } } 2.autoprefixer 8.0 依赖的 browserslist@3.0.0,
+ 在 browserslist 3.0 版本中，对默认值做了变更 //Default browsers query browserlist.defaultes=[ '>0.5%', 'last 2 versions', 'Firefox ESR', 'not dead' ]-->
+或者增减一个外层文件
+.browserslistrc.js
+defaults
+Safari 6
+<div class="test" style="text-overflow:ellipsis;">This is some long text that will not fit in the box</div>
+<div class="test" style="text-overflow:clip;">This is some long text that will not fit in the box</div>
+<div class="test" style="text-overflow:'>>';">This is some long text that will not fit in the box</div>
+</body>
+</body>
+</html>

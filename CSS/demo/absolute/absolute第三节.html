@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>absolute第二节</title>
+  <style type="text/css">
+    body {
+     margin: 0;
+     font: 14px/1.4 "Microsoft YaHei";
+     background-color: #EDEFF0;
+    }
+  </style>
+</head>
+<body style="padding: 20px;">
+
+<p>
+  'left' + 'margin-left' + 'border-left-width' + 'padding-left' + 'width' + 'padding-right' + 'border-right-width' + 'margin-right' + 'right' = width of containing block（包含块）
+</p>
+<p>
+  ps. 还记得正常文档流中的水平七属性的规则吗？
+</p>
+<p>
+  在计算绝对定位元素的水平位置时，left，margin-left，width，margin-right，right都会影响到它的排版，w3c给出了它们的<a target="_blank" href="https://www.w3.org/TR/CSS2/visudet.html#abs-replaced-width">计算规则</a>。
+</p>
+<p>
+  简单来说，文档把所有情况分为三大类：
+  <ul>
+    <li>1. width、left、right都是auto</li>
+    <li>2. width、left、right都不是auto</li>
+    <li>3. 其他情况</li>
+  </ul>
+</p>
+<p>这些规则比较复杂，全部记住的话应用场景也不多，只需记住以下几种情况就行：
+  <ul>
+    <li>不设置width但设置left和right时会“拉伸”元素</li>
+    <li>设置left、right、width为固定值，margin-left和margin-right为auto，并且没有发生过分受限的情况，margin-left和margin-right会设置为相同的值（和正常文档流中的块级元素很像）</li>
+    <li>发生过分受限情况时，会优先重置右边的属性（从右往左读的语言会优先重置左边的属性）。left和right同时设置会忽略right，margin-left和margin-right同时设置会忽略margin-right。其他的情况基本上遇不到。</li>
+  </ul>
+</p>
+<p>垂直方向的属性和水平方向的表现形式是相同的。</p>
+<div style="position: relative;width: 600px;height: 100px;border: 1px solid;">
+  <div style="background-color: #fff;position: absolute;top:0;left: 0;right: 0;bottom: 0;">
+    一个设置了position: absolute的元素，没有设置固定的width、height值，如果把它的top,left,right,bottom都设置为0，会有怎样的表现？
+  </div>
+</div>
+<hr>
+<div style="position: relative;width: 600px;height: 200px;border: 1px solid;">
+  <div style="background-color: #fff;width: 300px;height: 150px;position: absolute;top:0;left: 0;right: 0;bottom: 0;">
+  一个设置了position: absolute的元素，它的width、height都设置了固定值，如果把它的top,left,right,bottom都设置为0，会有怎样的表现？
+  </div>
+</div>
+<div style="position: relative;width: 600px;height: 200px;border: 1px solid;">
+  <div style="background-color: #fff;width: 300px;height: 150px;position: absolute;top:0;left: 0;right: 0;bottom: 0;margin: auto;">
+  如何不用transfrom属性让一个绝对定位元素自适应的水平居中？如何不用transfrom属性让一个绝对定位元素自适应的垂直居中？
+  </div>
+</div>
+</body>
+</html>

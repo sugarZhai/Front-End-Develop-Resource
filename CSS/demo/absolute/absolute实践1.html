@@ -1,0 +1,104 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>absolute实践1</title>
+<style>
+body { 
+ margin: 0;
+ font: 14px/1.4 "Microsoft YaHei";
+ background-color: #EDEFF0;
+}
+
+.course-sidebar-search { 
+  margin: 20px 0 0 20px;
+  overflow: hidden;
+}
+.course-search-input { 
+ width: 200px;
+ line-height: 18px;
+ padding: 10px;
+ margin: 0;
+ border: 0 none;
+ font-size: 12px;
+}
+.course-search-input:focus {
+  outline: none;
+}
+
+.course-sidebar-result { 
+ display: none;
+ position: absolute;
+ width: 220px;
+ margin: 39px 0 0 -1px;
+ padding-left: 0;
+ list-style-type: none;
+ border: 1px solid #e6e8e9;
+ background-color: #fff;
+ box-shadow: 0px 1px 2px #d5d7d8;
+ font-size: 12px;
+}
+
+.course-sidebar-result > li { 
+ line-height: 30px;
+ padding-left: 12px;
+}
+.course-sidebar-result > li:hover { 
+ background-color: #f9f9f9;
+}
+.course-sidebar-result a { 
+ display: block;
+ color: #5e5e5e;
+ text-decoration: none;
+}
+.course-sidebar-result a:hover { 
+ color: #000;
+}
+</style>
+</head>
+
+<body>
+<div class="course-sidebar-search">
+  <ul id="result" class="course-sidebar-result">
+    <li><a href="">技术分享：react</a></li>
+      <li><a href="">技术分享：redux</a></li>
+      <li><a href="">技术分享：CSS</a></li>
+      <li><a href="">技术分享：JavaScript</a></li>
+      <li><a href="">技术分享：NodeJs</a></li>
+  </ul>
+  <input class="course-search-input" placeholder="搜索">
+</div>
+<script>
+(function() {
+  var input = document.getElementsByTagName("input")[0],
+      result = document.getElementById("result");
+    
+  if (input && result) {
+    input.onfocus = function() {
+      this.parentNode.className = "course-sidebar-search focus";
+      if (this.value != "") {
+        result.style.display = "block";
+      }
+    };
+    input.onblur = function() {
+      if (this.value == "") {
+        this.parentNode.className = "course-sidebar-search";
+      }
+      result.style.display = "none";
+    };
+    
+    if ("oninput" in input) {
+      input.addEventListener("input", function() {
+        if (this.value.trim() != "") {
+          result.style.display = "block";
+        } else {
+          result.style.display = "none";
+        }
+      });
+    }
+  }
+
+})();
+</script>
+</body>
+</html>

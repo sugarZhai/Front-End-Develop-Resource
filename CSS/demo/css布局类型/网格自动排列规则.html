@@ -1,0 +1,61 @@
+<!doctype>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title>网格自动排列规则</title>
+  <style>
+    body {
+      padding: 20px;
+      font: 1em Helvetica Neue, Helvetica, Arial, sans-serif;
+      display: flex;
+      justify-content: center;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    p {
+      margin: 0 0 1em 0;
+    }
+
+    .container {
+      width: 500px;
+      border: 5px solid rgb(111, 41, 97);
+      border-radius: .5em;
+      padding: 10px;
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      grid-gap: 20px;
+    }
+
+    .container>div {
+      padding: 10px;
+      background-color: rgba(111, 41, 97, .3);
+      border: 2px solid rgba(111, 41, 97, .5);
+    }
+
+    .container>div:nth-child(3n+1) {
+      grid-row-end: span 2;
+      background-color: rgba(193, 225, 237, .3);
+      border: 2px solid rgba(193, 225, 237, .5);
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <div>1</div>
+    <div>2</div>
+    <div>3</div>
+    <div>4</div>
+    <div>5</div>
+    <div>6</div>
+    <div>7</div>
+    <div>8</div>
+    <div>9</div>
+  </div>
+</body>
+
+</html>

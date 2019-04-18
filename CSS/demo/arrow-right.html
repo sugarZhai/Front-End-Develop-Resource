@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .box {
+            background: #fff;
+            width: 200px;
+            height: 200px;
+        }
+
+        .arrow-right {
+            position: relative;
+        }
+
+        .arrow-right::after{
+            content: "";
+            position: absolute;
+            top: 50%;
+            width: 15px;
+            height: 15px;
+            margin-top: -4px;
+            right: 7px;
+            border: solid 1px #666;
+            border-left: none;
+            border-bottom: none;
+            transform: rotate(-45deg);
+            transition: transform .3s;
+            transform-origin: 66% 33%;
+            border-radius: 0;
+        }
+
+        .arrow-right::after {
+            transform: rotate(45deg);
+        }
+
+    </style>
+</head>
+<body>
+<div class="box arrow-right"></div>
+</body>
+</html>
