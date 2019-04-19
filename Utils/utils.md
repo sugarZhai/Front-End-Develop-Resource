@@ -1,6 +1,6 @@
 ## 常用工具
 
-* [时间戳在线转化](https://tool.lu/c/timestamp/)
+* [时间戳在线转化](https://tool.lu/timestamp/)
 * [在线ES6与ES5转换](https://babeljs.io/repl/)
 * [图片压缩工具](https://tinypng.com/)
 
