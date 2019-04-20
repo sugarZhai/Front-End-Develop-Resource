@@ -8,14 +8,14 @@
 如果文章中有出现纰漏、错误之处，还请看到的小伙伴多多指教，先行谢过
 
 ### 理论
-* [Css相关](CSS/theory/readme.md)
 * [Git相关](Git/theory/readme.md)
 * [Html相关](HTML/theory/readme.md)
-* [js相关](Javascript/theory/readme.md)
+* [Css相关](./CSS/theory/readme.md)
+* [js相关](JavaScript/theory/readme.md)
 * [nginx相关](Nginx/theory/readme.md)
 * [node相关](Node/theory/readme.md)
 * [react相关](React/theory/readme.md)
-* [vue相关](Vue/theory/readme.md)
+* [vue相关](VUE/theory/readme.md)
 * [webpack相关](Webpack/theory/readme.md)
 * [小程序](小程序/theory/readme.md)
 * [浏览器相关](Broswer/readme.md)
@@ -24,15 +24,15 @@
 ### 面试
 * [Http相关](Http/readme.md)
 * [性能优化](性能优化/README.md)
-* [小程序](小程序/interview/readme.md)
-* [Css相关](CSS/interview/readme.md)
+* [小程序](./小程序/interview/readme.md)
+* [Css相关](CSS/interview.md)
 * [Git相关](Git/interview/readme.md)
 * [Html相关](HTML/interview/readme.md)
-* [js相关](Javascript/interview/readme.md)
+* [js相关](JavaScript/interview/readme.md)
 * [nginx相关](Nginx/interview/readme.md)
 * [node相关](Node/interview/readme.md)
 * [react相关](React/interview/readme.md)
-* [vue相关](Vue/interview/readme.md)
+* [vue相关](VUE/interview/readme.md)
 * [webpack相关](Webpack/interview/readme.md)
 
 ### 全栈成长指南
