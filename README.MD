@@ -24,16 +24,16 @@
 ### 面试
 * [Http相关](Http/readme.md)
 * [性能优化](性能优化/README.md)
-* [小程序](./小程序/interview/readme.md)
+* [小程序](小程序/interview-wechat.md)
 * [Css相关](CSS/interview-css.md)
 * [Git相关](Git/interview-git.md)
 * [Html相关](HTML/interview/readme.md)
 * [js相关](JavaScript/interview/readme.md)
-* [nginx相关](Nginx/interview/readme.md)
-* [node相关](Node/interview/readme.md)
-* [react相关](React/interview/readme.md)
-* [vue相关](VUE/interview/readme.md)
-* [webpack相关](Webpack/interview/readme.md)
+* [nginx相关](Nginx/interview-nginx.md)
+* [node相关](Node/interview-node.md)
+* [react相关](React/interview-react.md)
+* [vue相关](VUE/interview-vue.md)
+* [webpack相关](Webpack/interview-webpack.md)
 
 ### 全栈成长指南
 * [全栈成长指南](https://github.com/phodal/growth-ebook)
