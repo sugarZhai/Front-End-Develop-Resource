@@ -9,6 +9,10 @@
 
 &emsp;[4. 页面重构怎么操作](#q4)
 
+[网页性能管理详解](http://www.ruanyifeng.com/blog/2015/09/web-page-performance-in-depth.html)
+- [localForage 使用indexDB websq](https://github.com/localForage/localForage)
+- [cross-storage扩展可以使用其他域下的storage](https://github.com/zendesk/cross-storage)
+
 ### 其他
 
 <h5 id='q1'>1. 谈谈你对SEO的理解</h5>
@@ -17,7 +21,10 @@
 
 > SEO主要有两种方法，站内优化和站外优化
 
-[前端SEO优化](https://imweb.io/topic/5682938b57d7a6c47914fc00)
+- [前端SEO优化](https://imweb.io/topic/5682938b57d7a6c47914fc00)
+- [网页性能管理详解](http://www.ruanyifeng.com/blog/2015/09/web-page-performance-in-depth.html)
+- [localForage 使用indexDB websq](https://github.com/localForage/localForage)
+- [cross-storage扩展可以使用其他域下的storage](https://github.com/zendesk/cross-storage)
 
 <h5 id='q2'>2. 前端怎么控制管理路由</h5>
 
