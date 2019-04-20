@@ -10,5 +10,14 @@
 ### 开发相关工具
 * [Utils](Utils/utils.md)
 
+### 全栈成长指南
+* [全栈成长指南](https://github.com/phodal/growth-ebook)
 
+### chrome常用插件
 
+- [收藏的chrome插件](./其他/chromePlugin.md)
+
+### 网络安全
+
+* [网络安全学习资源](https://github.com/euphrat1ca/fuzzdb-collect)
+* [webhack](https://wizardforcel.gitbooks.io/web-hacking-101/content/3.html)
