@@ -9,9 +9,10 @@
 
 &emsp;[4. 几个很实用的BOM属性对象方法](#l4)
 
-* [5. 浏览器渲染的过程和原理](https://zhuanlan.zhihu.com/p/29418126)
-* [6. 浏览器内核、JS 引擎、页面呈现原理及其优化](https://www.zybuluo.com/yangfch3/note/671516)
-- [7. 浏览器304缓存原理](https://my.oschina.net/ososchina/blog/494074)
+[5. 浏览器渲染的过程和原理](https://zhuanlan.zhihu.com/p/29418126)
+
+[6. 浏览器内核、JS 引擎、页面呈现原理及其优化](https://www.zybuluo.com/yangfch3/note/671516)
+[7. 浏览器304缓存原理](https://my.oschina.net/ososchina/blog/494074)
 
 ### 浏览器相关
 
@@ -32,6 +33,7 @@
 参考 [这里](https://juejin.im/entry/5ad86c16f265da505a77dca4)
 
 <h5 id='l3'>3. 浏览器渲染机制</h5>
+![image](./render.png)
 
 参考 [这里](https://juejin.im/entry/59e1d31f51882578c3411c77)
 * [浏览器的渲染机制](https://www.jianshu.com/p/05eb1b17b298)
