@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" id="viewport" content="width=device-width,initial-scale=1">
+    <title>滑动删除组件原理</title>
+    <style>
+       #div1{
+           width:100%;
+           height:60px;
+           background:#FF0000;
+           position: absolute;
+           -webkit-transform: translate3d(0px,0,0);
+           overflow: hidden;
+       }
+       #div2{
+           width:280px;
+           height:60px;
+           background:#FFFF00;
+           position:relative;
+           text-align:right;
+
+           /*位移x轴上的值＊*/
+        }
+    </style>
+</head>
+<body>
+<div id="div2" ontouchstart="Remove(this)">
+   <div id="div1" >请向左滑动</div>删除
+</div>
+
+<script>
+    //clientX:触摸点相对浏览器窗口的位置,pc端取值方式为event.clientX,但是移动端取值方式为event.touches[0].clientX
+    //pageX/clientX/screenX一个数值，动作在屏幕上发生的位置（page包含滚动距离，client不包含滚动距离）
+ //   window.onload=function(){
+    //       var oDiv=document.getElementById("div1");
+    //       var bDrag=false;
+    //       var distX=0;
+    //       oDiv.ontouchstart=function(event){
+    //           bDrag=true;
+    //           distX=event.clientX-oDiv.offsetLeft;
+    //           return false
+    //       };
+    //       document.ontouchmove =function(event){
+    //          if(!bDrag){
+    //              return;
+    //         }
+    //         var iL=event.clientX-distX;
+    //        oDiv.style.marginLeft=0;
+    //        oDiv.style.left=iL+"px";
+    //        return false
+    //   };
+    //   document.ontouchend=function(){
+    //       bDrag=false;
+    //   };
+    //};此为pc端的,下面是手机版本的
+    var distX=dist2X=0;
+    var lastX = -1;//相对坐标初始值
+    var T1=T2=0;
+
+           var oDiv=document.getElementById("div1");
+         oDiv.addEventListener('touchstart',function(event){
+
+             event.stopPropagation();
+             var S = parseInt(oDiv.style.transform.replace(/translate3d|\(|\)]/g,'')) || 0;//取到显示
+             console.log(S);
+             distX=event.touches[0].clientX-S;
+             T1=(new Date()).getTime();
+             oDiv.style.webkitTransition = 'none';
+             return false;
+         });
+        oDiv.addEventListener('touchmove',function(event){
+
+            event.stopPropagation();
+              var iL=event.touches[0].clientX-distX;//移动出的距离长度，以left为坐标,
+
+              oDiv.style.WebkitTransform="translate3d(" + iL + "px, 0, 0)";
+
+              lastX = event.touches[0].clientX;//最后X轴的坐标
+              return false;
+        });
+        oDiv.addEventListener('touchend',function(event){
+
+            event.stopPropagation();
+            var iL=lastX-distX;
+            var limitX= -60;//阀值
+            oDiv.style.webkitTransition = '-webkit-transform 0.3s';
+            //judge clicking
+            var S = parseInt(oDiv.style.transform.replace(/translate3d|\(|\)]/g,'')) || 0;//取到显示距离，相当于translateX
+            dist2X=lastX-S;
+            T2=(new Date()).getTime();
+            if(Math.abs(T2-T1)<100 && (Math.abs(dist2X-distX)<40 || lastX==-1)){
+                console.log("click event");
+                oDiv.style.WebkitTransform="translate3d(0px,0,0)";
+                lastX = -1;
+                return;
+            }
+            lastX = -1;
+            if(iL < limitX){
+                var yy1 = 100
+                console.log("show delete");
+                oDiv.style.WebkitTransform="translate3d(-100px,0,0)";
+
+            } else {
+                console.log("hide delete");
+                oDiv.style.WebkitTransform="translate3d(0px,0,0)";
+            }
+
+        });
+
+</script>
+<script>
+    function Remove(dom){
+        console.log(dom);
+        dom.parentNode.remove();
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no"/>
+    <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=e3ZohdqyB0RL98hFOiC29xqh"></script>
+</head>
+<body>
+<div style="width:100%;height:780px"></div>
+<script>
+    var map = new BMap.Map("container", {enableMapClick: true});
+
+    map.centerAndZoom(new BMap.Point(120.213634, 30.24583), 15);  // 初始化地图,设置中心点坐标和地图级别
+
+    map.setCurrentCity("杭州");          // 设置地图显示的城市 此项是必须设置的
+
+    map.enableScrollWheelZoom(true);
+
+
+    // ************************************自定义覆盖物**************************************************************
+
+    // 覆盖物构造方法
+
+    function ComplexCustomOverlay(point, index) {
+
+        this._point = point;
+
+        this._index = index;
+
+    }
+
+    ComplexCustomOverlay.prototype = new BMap.Overlay();
+
+    ComplexCustomOverlay.prototype.initialize = function (map) {
+
+        this._map = map;
+
+        var span = this._span = document.createElement("span");
+
+        //这里用jquery设置样式
+
+        $(span).css({
+
+            'position': 'absolute',
+
+            'zIndex': BMap.Overlay.getZIndex(this._point.lat),
+
+            'display': 'block',
+
+            'width': '26px',
+
+            'color': '#FFF',
+
+            'text-align': 'center',
+
+            'point-events': 'none'
+        });
+
+        //设置数字也就是我们的标注
+
+        this._span.innerHTML = this._index;
+
+        map.getPanes().labelPane.appendChild(span);
+
+
+        return span;
+
+    }
+
+
+    ComplexCustomOverlay.prototype.draw = function () {
+
+        var map = this._map;
+
+        var pixel = map.pointToOverlayPixel(this._point);
+
+        //设置自定义覆盖物span 与marker的位置
+
+        this._span.style.left = pixel.x - 12 + 'px';
+
+        this._span.style.top = pixel.y - 14 + 'px';
+
+    }
+
+
+    // *******************************添加点******************************
+
+    // 添加点
+
+    function addMarker(point, type) {
+
+        // 设置不同点的背景图（红色和绿色两个图片）
+
+
+        if (type == 'red') {
+
+            var myIcon = new BMap.Icon('img/position01.png', new BMap.Size(23, 35));
+
+        } else {
+
+            var myIcon = new BMap.Icon('img/position02.png', new BMap.Size(23, 35));
+
+        }
+
+        var marker = new BMap.Marker(point);
+
+        marker.setIcon(myIcon);
+
+        map.addOverlay(marker);
+
+
+    }
+
+    // 随机向地图添加25个标注
+
+    var bounds = map.getBounds();
+
+    var sw = bounds.getSouthWest();
+
+    var ne = bounds.getNorthEast();
+
+    var lngSpan = Math.abs(sw.lng - ne.lng);
+
+    var latSpan = Math.abs(ne.lat - sw.lat);
+
+    for (var i = 0; i < 25; i++) {
+
+        var point = new BMap.Point(sw.lng + lngSpan * (Math.random() * 0.7), ne.lat - latSpan * (Math.random() * 0.7));
+
+        // 设置不同点的类型（红或者绿）
+
+        if (i % 2 == 0) {
+
+            addMarker(point, 'red');
+
+        } else {
+
+            addMarker(point, 'green');
+
+        }
+
+        var myCompOverlay = new ComplexCustomOverlay(point, i);
+
+        map.addOverlay(myCompOverlay);
+
+    }
+</script>
+</body>
+</html>

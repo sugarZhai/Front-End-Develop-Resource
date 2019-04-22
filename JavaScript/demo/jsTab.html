@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        #example{
+            width: 500px;
+            height: 400px;
+            margin: 0 auto;
+        }
+        #example .hd ul li{
+            display: inline-block;
+            width: 32%;
+            height: 36px;
+            line-height: 36px;
+            border-radius: 5px;
+            background-color: #333;
+            text-align: center;
+            color: #fff;
+        }
+        #example .hd ul li.current{
+            background-color: green;
+        }
+        #example .bd{
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        #example .bd ul li{
+            display: none;
+        }
+        #example .bd ul li.current{
+            display: block;
+        }
+    </style>
+</head>
+<body>
+<div id="example">
+    <div class="hd" >
+        <ul>
+            <li class="current">Beijing</li>
+            <li>Shanghai</li>
+            <li>Guangzhou</li>
+            <li>90808089080890809</li>
+        </ul>
+    </div>
+    <div class="bd">
+        <ul>
+            <li class="current">This is Beijing!</li>
+            <li><div><span>98679679868</span></div>
+                <div>8979798798888888888888</div>This is Shanghai</li>
+            <li>This is Guangzhou</li>
+            <li>87979797987987979797979</li>
+        </ul>
+    </div>
+</div>
+<script type="text/javascript">
+    var hd = document.getElementsByClassName("hd")[0].getElementsByTagName("li");
+    var bd = document.getElementsByClassName("bd")[0].getElementsByTagName("li");
+    for (var i = 0; i < hd.length; i++) {
+        hd[i].onclick = function(){
+            doTabs(this);
+        }
+    }
+    function doTabs(obj){
+        for (var i = 0; i < hd.length; i++) {
+            if(hd[i]==obj){
+                hd[i].className = "current";
+                bd[i].className = "current";
+            }else{
+                hd[i].className = "";
+                bd[i].className = "";
+            }
+        }
+    }
+</script>
+</body>
+</html>

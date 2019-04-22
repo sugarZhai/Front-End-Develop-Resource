@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html>
+
+
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style type="text/css">
+        .left {
+            width: 0px;
+            height: 0px;
+            border-top: 8px solid transparent;
+            border-right: 8px solid #3081C2;
+            border-bottom: 8px solid transparent;
+            border-left: 8px solid transparent;
+            display: inline-block;
+            margin: 2px 0px 0px -8px;
+        }
+
+        .right {
+            width: 0px;
+            height: 0px;
+            border-top: 8px solid transparent;
+            border-right: 8px solid transparent;
+            border-bottom: 8px solid transparent;
+            border-left: 8px solid #3081C2;
+            display: inline-block;
+            margin: 2px -8px 0px 0px;
+        }
+
+        .bottom {
+            width: 0px;
+            height: 0px;
+            border-top: 6px solid #3081C2;
+            border-right: 6px solid transparent;
+            border-bottom: 6px solid transparent;
+            border-left: 6px solid transparent;
+            display: inline-block;
+            margin-top: 6px;
+            margin-left: -6px;
+        }
+
+        .wrapper_l {
+            vertical-align: middle;
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border-top: 1px solid #DEECF8;
+            border-right: 1px solid #B1D2EC;
+            border-bottom: 1px solid #DEECF8;
+            border-left: 1px solid #DEECF8;
+            background-color: #DEECF8;
+        }
+
+        .wrapper_r {
+            vertical-align: middle;
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border-top: 1px solid #DEECF8;
+            border-right: 1px solid #DEECF8;
+            border-bottom: 1px solid #DEECF8;
+            border-left: 1px solid #B1D2EC;
+            background-color: #DEECF8;
+        }
+
+        .wrapper_b {
+            vertical-align: middle;
+            display: inline-block;
+            width: 10px;
+            height: 20px;
+            border: 1px solid transparent;
+            background-color: transparent;
+            margin: 0px;
+        }
+
+        #c_top {
+            /*background-color: teal;*/
+            text-align: center;
+            overflow: hidden;
+            padding: 2px;
+            font-size: 0px;
+        }
+
+        #year {
+            display: inline-block;
+            height: 20px;
+            width: 10em;
+            text-align: center;
+            border: 1px solid transparent;
+            padding: 0px;
+            vertical-align: middle;
+        }
+
+        input {
+            font-size: 16px;
+        }
+
+        #left_w {
+            border: 1px solid #B1D2EC;
+            display: inline-block;
+            position: relative;
+        }
+
+        #content table {
+            width: 100%;
+            border: 1px solid#B1D2EC;
+            border-collapse: collapse;
+            text-align: center;
+        }
+
+        td {
+            border: 1px solid#B1D2EC;
+        }
+        .have{
+            background-color: red;
+        }
+    </style>
+</head>
+
+
+<body>
+<div id="container">
+    <div id="c_top">
+        <div id="left_w">
+            <div class="wrapper_l" onclick="add()">
+                <a href="#" class="left"></a>
+            </div>
+            <input id="year" value="2016年7月" />
+            <!--<div class="wrapper_b" onclick="doClick()">
+            <a href="#" class="bottom"></a>
+            </div>-->
+            <div class="wrapper_r" onclick="minus()">
+                <a href="#" class="right"></a>
+            </div>
+        </div>
+    </div>
+    <div id="content">
+        <table id="calendar">
+        </table>
+    </div>
+    <div id="datass">
+        <table id="chart"></table>
+    </div>
+</div>
+<script type="text/javascript">
+    var jsonData;
+    function removeChildren(pnode){
+        var childs=pnode.childNodes;
+        for(var i=childs.length-1;i>=0;i--){
+            pnode.removeChild(childs.item(i));
+        }
+    }
+    function add() {
+        var date_in = document.getElementById("year");
+        var date = date_in.value;
+        date=date.replace('年','').replace('月','');
+        var year=date.substring(0,4);
+        var month=date.substring(4);
+        year=Number(year);
+        month=Number(month);
+        if(month==1)
+        {
+            month=12;
+            year-=1;
+        }else{
+            month-=1;
+        }
+        date_in.value=year+"年"+month+"月";
+        createC(year,month);
+    }
+    function formatDate(day){
+        day=Number(day);
+        if(day<10)
+        {
+            day="0"+day;
+        }
+        var date_in = document.getElementById("year");
+        var date = date_in.value;
+        date=date.replace('年','').replace('月','');
+        var year=date.substring(0,4);
+        var month=date.substring(4);
+        year=Number(year);
+        month=Number(month);
+        if(month<10)
+        {
+            month="0"+month;
+        }
+        return year+''+month+''+day;
+    }
+    function minus() {
+        var date_in = document.getElementById("year");
+        var date = date_in.value;
+        date=date.replace('年','').replace('月','');
+        var year=date.substring(0,4);
+        var month=date.substring(4);
+        year=Number(year);
+        month=Number(month);
+        if(month==12)
+        {
+            month=1;
+            year=year+1;
+        }else{
+            month=month+1;
+        }
+        date_in.value=year+"年"+month+"月";
+        createC(year,month);
+    }
+    function is_leap(year) {
+        return (year%100==0?res=(year%400==0?1:0):res=(year%4==0?1:0));
+    } //是否为闰年
+    function createC(year,month){
+        var calend =document.getElementById('calendar');
+        removeChildren(calend);
+        var tr_title=document.createElement('tr');
+        var titles=['日','一','二','三','四','五','六'];
+        for(var m=0;m<titles.length;m++){
+            var td_title=document.createElement('td');
+            td_title.innerText=titles[m];
+            tr_title.appendChild(td_title);
+        }
+        calend.appendChild(tr_title);
+        year=Number(year);
+        month=Number(month)-1;
+        var nstr=new Date(year,month,1); //当前Date资讯
+        var firstday=nstr.getDay();//星期几
+        var m_days=new Array(31,28+is_leap(year),31,30,31,30,31,31,30,31,30,31); //各月份的总天数
+        var tr_str=Math.ceil((m_days[month] + firstday)/7); //表格所需要行数
+        for(i=0;i<tr_str;i++) { //表格的行
+            var tr=document.createElement("tr");
+            for(k=0;k<7;k++) { //表格每行的单元格
+                var td=document.createElement("td");
+                idx=i*7+k; //单元格自然序列号
+                date_str=idx-firstday+1; //计算日期
+                (date_str<=0 || date_str>m_days[month]) ? date_str="" : date_str=idx-firstday+1; //过滤无效日期（小于等于零的、大于月总天数的）
+                td.innerText=date_str;
+                if(date_str!='')
+                {
+                    td.onclick=function(){
+                        console.log(this.innerText);
+                        var f_d=formatDate(this.innerText);
+                        console.log(f_d);
+                    }
+                }
+                tr.appendChild(td);
+            }
+            calend.appendChild(tr);
+        }
+    }
+    createC(2016,7);
+</script>
+</body>
+</html>

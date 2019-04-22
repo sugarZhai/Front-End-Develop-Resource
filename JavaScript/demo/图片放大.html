@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>phonto</title>
+</head>
+<style>
+    *{
+        padding: 0px;
+        margin: 0px;
+    }
+    img{
+        width: 20%;
+        height: auto;
+        cursor: pointer;
+    }
+    .window{
+        position: fixed;
+        width: 100%;
+        height: 100%;
+        left: 50%;
+        top: 50%;
+        visibility: hidden;
+        opacity: 0;
+        background-color: white;
+
+        -webkit-transition: all 0.6s;
+        -webkit-transform: translateX(-50%) translateY(-50%) scale(0.6);
+    }
+
+    .window img{
+        width: 100%;
+    }
+
+    .window-show{
+        visibility: visible;
+        opacity: 1;
+        -webkit-transform: translateX(-50%) translateY(-50%) scale(1);
+    }
+</style>
+<body>
+<img src="https://zhaishuangshuang292.github.io/storeImg/pic01.png">
+<div class="window">
+    <img>
+</div>
+<script>
+
+var $ = function( obj ){
+    return document.querySelector( obj );
+}
+
+    var initWindowWithIMGAndShow = function( src ){
+        $('.window img').src = src;
+        $('.window').classList.add('window-show');
+    }
+
+    $('img').addEventListener('click', function(){
+        var src = this.src;
+        initWindowWithIMGAndShow( src );
+    }, false)
+
+    $('.window').addEventListener('click', function(){
+        $('.window').classList.remove('window-show');
+    }, false)
+
+</script>
+<script>
+    var obj1={};
+    Object.defineProperty(obj1,"x",{value:42,writable:false});
+    obj1.x=9;
+    var obj2={get x(){
+        return 17
+    }}
+    obj2.x=5
+    var fixed={};
+    Object.preventExtensios(fixed);
+    fixed.newProp="ohai"
+</script>
+<script>
+    "use strict"
+    var o={
+        p:1,
+        p:2
+    }
+</script>
+<script>
+    (function(){
+        "use strict";
+        false.true="";
+        (14).sailing="home";
+        "with".you="far away";
+    })()
+</script>
+</body>
+</html>

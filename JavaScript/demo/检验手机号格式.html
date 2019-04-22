@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>用特殊字符检验输入</title>
+    <script type="text/javascript">
+        var re = /(?:\d{3}|\(\d{3}\))([-\/\.])\d{3}\1\d{4}/;
+        function testInfo(phoneInput) {
+            var OK = re.exec(phoneInput.value);
+            if (!OK)
+                window.alert(phoneInput.value + ' isn\'t a phone number with area code!');
+            else
+                window.alert('Thanks, your phone number is ' + OK[0]);
+        }
+    </script>
+
+</head>
+<body>
+<p>Enter your phone number (with area code) and then click "Check".
+    <br>The expected format is like ###-###-####.</p>
+<form action="#">
+    <input id="phone"><button onclick="testInfo(document.getElementById('phone'));">Check</button>
+</form>
+</body>
+</html>

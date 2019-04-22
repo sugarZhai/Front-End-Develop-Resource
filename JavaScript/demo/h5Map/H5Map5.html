@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #l-map{height:300px;width:100%;}
+        #r-result{width:100%}
+    </style>
+    <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=e3ZohdqyB0RL98hFOiC29xqh"></script>
+</head>
+<body>
+<div id="l-map"></div>
+<div id="r-result"></div>
+</body>
+</html>
+<script>
+    http://api.map.baidu.com/direction?destination=大雁塔&mode=driving&region=西安&output=html&src=yourCompanyName|yourAppName
+    var map=new BMap.Map("l-map");
+    map.centerAndZoom(new BMap.Point(116.404,39.915),11);
+    var mykeys=["酒店","加油站"];
+    var local=new BMap.LocalSearch(map,{
+        renderOptions:{map:map,panel:'r-result'},
+        pageCapacity:2
+    });
+    local.searchInBounds(mykeys,map.getBounds());
+</script>

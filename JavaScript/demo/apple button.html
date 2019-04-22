@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        #div1{
+            width: 100px;
+            height:50px;
+            border-radius: 50px;
+            position: relative;
+        }
+        #div2{
+            width: 56px;
+            height:46px;
+            border-radius: 48px;
+            position: absolute;
+            background: white;
+            box-shadow: 0px 2px 4px rgba(0,0,0,0.4);
+        }
+        .open1{
+            background: rgba(0,184,0,0.8);
+        }
+        .open2{
+            top: 2px;
+            right: 1px;
+        }
+        .close1{
+            background: rgba(255,255,255,0.4);
+            border:3px solid rgba(0,0,0,0.15);
+            border-left: transparent;/*固体透明*/
+        }
+        .close2{
+            left: 0;
+            top: 0;
+            border:2px solid rgba(0,0,0,0.1);
+        }
+    </style>
+
+</head>
+<body>
+<p>
+<div id="div1" class="open1">
+    <div id="div2" class="open2"></div>
+</div>
+</p>
+<script>
+    window.onload=function(){
+        var div2=document.getElementById("div2");
+        var div1=document.getElementById("div1");
+        div2.onclick=function(){
+            div1.className=(div1.className=="close1")?"open1":"close1";
+            div2.className=(div2.className=="close2")?"open2":"close2";
+        }
+    }
+</script>
+</body>
+</html>

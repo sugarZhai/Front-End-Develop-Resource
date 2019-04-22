@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<style>
+  #msg {
+    position: absolute;
+    width: 100px;
+    background-color: blue;
+    color: white;
+    border: 1px solid red;
+  }
+
+</style>
+
+<body>
+  <div id="msg">
+    跑马灯文本
+  </div>
+  <script>
+    var pos = 0;
+    var direction = 1;
+    onload = function () {
+      setInterval(run, 100);
+    }
+
+
+    function run() {
+      if (pos + 100 >= innerWidth) {
+        direction = -1;
+      }
+      if (pos <= 0) {
+        direction = 1;
+      }
+      pos += 10 * direction;
+      document.getElementById('msg').style.left = pos + "px";
+    }
+
+  </script>
+</body>
+
+</html>

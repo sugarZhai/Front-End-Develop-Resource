@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0,user-scalable=no"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="pragma" content="no-cache">
+    <meta http-equiv="cache-control" content="no-cache">
+    <meta http-equiv="expires" content="0">
+    <title>picker demo</title>
+    <script>
+    </script>
+    <style>
+
+        /*content*/
+        .pluginList {
+            overflow: hidden;
+            width: 100%;
+            padding-bottom: 0.2rem;
+        }
+
+        .pluginList > li {
+            width: 100%;
+            margin-bottom: 0.6rem;
+        }
+
+        .pluginList > li > h3 {
+            font-size: 0.3rem;
+            font-weight: 500;
+            margin-bottom: 0.1rem;
+        }
+
+        .pluginList > li > div.text {
+            background: #f1f1f1;
+            padding: 0.2rem 0 0.2rem 0.3rem;
+            line-height: 0.55rem;
+            border-radius: 0.05rem;
+        }
+
+        .pluginList > li > div.text > p {
+            padding: 0.1rem 0;
+        }
+
+        .pluginList > li > div.text > a {
+            display: inline-block;
+            text-decoration: underline;
+        }
+
+        .pluginList > li > div.text > input {
+            width: 100%;
+            font-size: 0.3rem;
+            border: none;
+            line-height: 0.55rem;
+            background: none;
+            color: red;
+        }
+
+        .pluginList > li > p.btn {
+            font-size: 0.3rem;
+            width: 100%;
+            line-height: 0.9rem;
+            margin-bottom: 0.3rem;
+            text-align: center;
+            background: #333;
+            color: white;
+            border-radius: 0.1rem;
+        }
+    </style>
+
+    <link href="./picker.css" rel="stylesheet"/>
+</head>
+<body>
+<div>
+    <ul class="pluginList">
+        <li>
+            <h3>Demo（选择器）：</h3>
+            <p class="btn" onclick="picker1()">demoData1</p>
+            <p class="btn" onclick="picker2()">demoData2</p>
+            <p class="btn" onclick="picker3()">demoData3</p>
+            <div class="text">
+                您选择的为：<input type="text" readonly="readonly" id="nowValue">
+            </div>
+        </li>
+    </ul>
+</div>
+
+
+<script src="./city.js"></script>
+<script src="./picker.min.js"></script>
+<script>
+    // 选择器
+    function picker1() {
+        var nowValue = document.getElementById('nowValue');
+        new Picker({
+            "title": '请选择',//标题(可选)
+            "defaultValue": nowValue.value,//默认值（可选）
+            "type": 1,//需要联动级数[1、2、3]（可选、不传时默认获取数据的深度,最多3级）
+            "data": cityData,//数据(必传)
+            "keys": {
+                "id": "Code",
+                "value": "Name",
+                "childData": "level"//最多3级联动
+            },//数组内的键名称(必传，id、text、data)
+            "callBack": function (val) {
+                //回调函数（val为选择的值）
+                nowValue.value = val;
+            }
+        });
+    };
+
+    function picker2() {
+        var nowValue = document.getElementById('nowValue');
+        new Picker({
+            "title": '请选择',//标题(可选)
+            "defaultValue": nowValue.value,//默认值-多个以空格分开（可选）
+            "type": 2,//需要联动级数[1、2、3]（可选）
+            "data": cityData,//数据(必传)
+            "keys": {
+                "id": "Code",
+                "value": "Name",
+                "childData": "level"//最多3级联动
+            },//数组内的键名称(必传，id、text、data)
+            "callBack": function (val) {
+                //回调函数（val为选择的值）
+                nowValue.value = val;
+            }
+        });
+    };
+
+    function picker3() {
+        var nowValue = document.getElementById('nowValue');
+        new Picker({
+            "title": '请选择',//标题(可选)
+            "defaultValue": nowValue.value,//默认值-多个以空格分开（可选）
+            "data": cityData,//数据(必传)
+            "keys": {
+                "id": "Code",
+                "value": "Name",
+                "childData": "level"//最多3级联动
+            },//数组内的键名称(必传，id、text、data)
+            "callBack": function (val) {
+                //回调函数（val为选择的值）
+                nowValue.value = val;
+            }
+        });
+    }
+</script>
+</body>
+</html>

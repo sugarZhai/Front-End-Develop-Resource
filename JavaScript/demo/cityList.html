@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>citySelectInfo</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1, user-scalable=no">
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .box>div{
+            height: 40px;
+            width: 100px;
+            border: 1px solid red;
+        }
+        ul{
+            position: fixed;
+            top: 10px;
+            right: 10px;
+        }
+        ul>li{
+            height: 30px;
+            width: 30px;
+            border: 1px solid red;
+            list-style: none;
+        }
+        .box>li{
+            height: 20px;
+            width: 100px;
+            list-style: none;
+            border: 1px solid black;
+        }
+    </style>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+</head>
+<body>
+<div class="box">
+    <div class="box1"></div>
+    <div class="box2"></div>
+    <li class="aaaa">a</li>
+    <div class="box3"></div>
+    <div class="box4"></div>
+    <li>b</li>
+    <div class="box5"></div>
+    <div class="box6"></div>
+    <div class="box7"></div>
+    <li>c</li>
+    <div class="box8"></div>
+    <div class="box5"></div>
+    <div class="box6"></div>
+    <li>d</li>
+    <div class="box7"></div>
+    <li>e</li>
+    <div class="box5"></div>
+    <div class="box6"></div>
+    <div class="box7"></div>
+    <li>f</li>
+    <div class="box5"></div>
+    <div class="box6"></div>
+    <div class="box7"></div>
+    <div class="box5"></div>
+    <div class="box6"></div>
+    <li>g</li>
+    <div class="box7"></div>
+    <li>o</li>
+    <div class="box7"></div>
+</div>
+<ul>
+    <li class="a1">a</li>
+    <li class="a2">b</li>
+    <li class="aa">c</li>
+    <li class="a4">d</li>
+    <li class="a5">e</li>
+    <li class="a5">f</li>
+    <li class="a5">g</li>
+    <li class="a5">o</li>
+</ul>
+<script>
+    var boxlLi = document.querySelectorAll('.box>li');
+    var box = document.querySelector('.box');
+
+    var list = [];
+    for(var i=0;i<boxlLi.length;i++){
+        list.push(boxlLi[i]);
+    }
+
+
+    var li = document.querySelectorAll('ul>li');
+    for(var i=0;i<li.length;i++){
+        li[i].addEventListener('click',function(){
+            var heightAll = 0;
+            // 1: js获取当前元素前面的所有兄弟元素
+            // 2: jquery的 li.prevAll() 也可以获取
+            for(var j = 0;j < list.length; j++) {
+                if(list[j].innerHTML === this.innerHTML){
+                    var liArrays = [];
+                    var templi = list[j];
+                    while(templi.previousElementSibling!=undefined){
+                        liArrays.push(templi.previousElementSibling);
+                        templi = templi.previousElementSibling;
+                    }
+                    for(var k=0;k<liArrays.length;k++){
+                        heightAll+=liArrays[k].offsetHeight;
+
+                    }
+                }
+            }
+            box.style.transform = "translateY("+-heightAll+"px)";
+            box.style.transition = "all .7s";
+            console.log(heightAll);
+
+        })
+    }
+    var li = document.querySelectorAll('.box1');
+    //          console.log(li.previousElementSibling); //undefined
+</script>
+</body>
+</html>

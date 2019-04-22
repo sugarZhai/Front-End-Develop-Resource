@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>indexOf</title>
+</head>
+<body>
+<SCRIPT>
+    "Blue Whale".indexOf("Blue")!==-1;
+    "Blue Whale".indexOf("Blue")
+</SCRIPT>
+<script>
+    //区分大小写
+    "Blue whale".indexOf("Blue") //0
+    "Blue whale".indexOf("blue") //-1
+</script>
+<script>
+    //来统计一个字符串中某个字母出现的次数
+    var str='To be, or not to be, that is the question.';
+    var count =0;
+    var pos=str.indexOf('e');
+    while(pos !==-1){
+        count++;
+        pos=str.indexOf('e',pos+1);
+    }
+    console.log(count)
+</script>
+</body>
+</html>

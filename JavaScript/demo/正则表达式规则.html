@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>正则表达式</title>
+</head>
+<body>
+<!--pattern-->
+<!--正则表达式的文本-->
+<!--flags-->
+<!--如果指定，标志可以具有以下值的任意组合-->
+<!--g-->
+<!--全局匹配；找到所有匹配，而不是在第一个匹配后停止-->
+<!--i-->
+<!--忽略大小写-->
+<!--m-->
+<!--多行; 将开始和结束字符（^和$）视为在多行上工作（也就是，分别匹配每一行的开始和结束（由 \n 或 \r 分割），而不只是只匹配整个输入字符串的最开始和最末尾处。<script>-->
+<!--u-->
+<!--Unicode; 将模式视为Unicode序列点的序列-->
+<!--y-->
+<!--粘性匹配; 仅匹配目标字符串中此正则表达式的lastIndex属性指示的索引(并且不尝试从任何后续的索引匹配)。   -->
+<!--表 4.2 使用正则表达式的方法-->
+<!--方法	描述-->
+<!--exec	一个在字符串中执行查找匹配的RegExp方法，它返回一个数组（未匹配到则返回null）。-->
+<!--test	一个在字符串中测试是否匹配的RegExp方法，它返回true或false。-->
+<!--match	一个在字符串中执行查找匹配的String方法，它返回一个数组或者在未匹配到时返回null。-->
+<!--search	一个在字符串中测试匹配的String方法，它返回匹配到的位置索引，或者在失败时返回-1。-->
+<!--replace	一个在字符串中执行查找匹配的String方法，并且使用替换字符串替换掉匹配到的子字符串。-->
+<!--split	一个使用正则表达式或者一个固定字符串分隔一个字符串，并将分隔后的子字符串存储到数组中的String方法。-->
+<!--lastIndex	下一个匹配的索引值。（这个属性只有在使用g参数时可用在 通过参数进行高级搜索 一节有详细的描述.)-->
+<!--正则表达式标志-->
+<!--标志	描述-->
+<!--g	全局搜索。-->
+<!--i	不区分大小写搜索。-->
+<!--m	多行搜索。-->
+<!--y	执行“粘性”搜索,匹配从目标字符串的当前位置开始，可以使用y标志。-->
+<!--m标志用于指定多行输入字符串应该被视为多个行。如果使用m标志，^和$匹配的开始或结束输入字符串中的每一行，而不是整个字符串的开始或结束。-->
+<script>
+    var re = /(\w+)\s(\w+)/;
+    var str = 'John Smith';
+    str.replace(re, '$2, $1'); // "Smith, John"
+    RegExp.$1; // "John"
+    RegExp.$2; // "Smith"
+</script>
+<script>
+    function checkMobile(sMobile){
+        if(!(/^1[34578]\d{9}$/.test(sMobile))){
+            alert("手机号码有误，请重填");
+            return false;
+        }
+    }
+    checkMobile(17601310600)
+    function checkPhone(str){
+        var re=(^(\d{3,4}-)?\d{7,8})$|(13[0-9]{9})
+        if(re.test(str)){
+            alert('正确')
+        }else{
+            alert('错误')
+        }
+    }
+    checkPhone(111111786876)
+</script>
+<!--从 URL 中提取子域名-->
+<script>
+    var url = "http://xxx.domain.com";
+    print(/[^.]+/.exec(url)[0].substr(7)); // prints "xxx"
+</script>
+<script>
+    var names = "Harry Trump ;Fred Barney; Helen Rigby ; Bill Abel ; Chris Hand ";
+    var output = ["---------- Original String\n", names + "\n"];
+    var pattern = /\s*;\s*/;
+    var nameList = names.split(pattern);
+    pattern = /(\w+)\s+(\w+)/;
+    var bySurnameList = [];
+    output.push("---------- After Split by Regular Expression");
+    var i, len;
+    for (i = 0, len = nameList.length; i < len; i++){
+        output.push(nameList[i]);
+        bySurnameList[i] = nameList[i].replace(pattern, "$2, $1");
+    }
+    output.push("---------- Names Reversed");
+    for (i = 0, len = bySurnameList.length; i < len; i++){
+        output.push(bySurnameList[i]);
+    }
+    bySurnameList.sort();
+    output.push("---------- Sorted");
+    for (i = 0, len = bySurnameList.length; i < len; i++){
+        output.push(bySurnameList[i]);
+    }
+
+    output.push("---------- End");
+
+    console.log(output.join("\n"));
+</script>
+</body>
+</html>

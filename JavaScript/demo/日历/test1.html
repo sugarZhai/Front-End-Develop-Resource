@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    function sleep(time) {
+        return new Promise((resolve) => setTimeout(resolve, time));
+    }
+</script>
+
+<!--<form>-->
+<input type="date"/>
+<!--<input type="submit" />-->
+<!--</form>-->
+<div style="height:1px;overfloww:hidden;background:red;"></div>
+<script>
+    function isArray(arr) {
+        return Object.prototype.toString.call(arr) === '[Object Array]'
+    }
+
+    var testA = {a: '1', b: '2'}
+    var testB = [{a: '1', b: '2'}, {a: '3', b: '4'}, {a: '5', b: '6'}]
+
+    function getType(nm) {
+        return Object.prototype.toString.call(nm);
+    }
+
+    getType(testB)
+</script>
+<script>
+    var testC = ['1', '2', '3']
+    testC.map((item) => {
+        return parseInt(item, 10)
+    })
+</script>
+<script>
+    var foo = {n: 1};
+    var bar = foo;
+    foo.x = foo = {n: 2}
+    console.log(foo.x)
+    console.log(bar.x)
+
+    function timeout(ms, i) {
+        return new Promise((resolve(i))
+    =>
+        setTimeout(resolve(i), ms)
+    )
+        ;
+    }
+
+    Promise.resolve(value).then((value) => {
+        console.log(value);
+    })
+
+    for (let i = 0; i < 5; i++) {
+        setTimeout(()=>{console.log(i)},3000)
+    }
+</script>
+<script>
+//    const p2 = new Promise(resolve=>setTimeout(resolve,3000))
+    for(let i=0;i<5;i++){
+        const p2=a=> new Promise(resolve=>setTimeout(()=>{
+            console.log(a)
+        },3000))
+        p2(i)
+    }
+</script>
+<script>
+    const delay=i=>new Promise(resolve=>
+        setTimeout(()=>{console.log(i)},3000))
+   for(let i=0;i<5;i++){
+       delay(i)
+   }
+</script>
+<script>
+
+
+</script>
+<script>
+    function createPromise() {
+        var promise;
+        promise = new Promise(function(resolve, reject) {
+            setTimeout(resolve, 3000);
+        });
+        return promise;
+    }
+    var promiseArray = [];
+    for (var i = 0; i < 10; i++) {
+        promiseArray.push(createPromise());
+    }
+    Promise.all(promiseArray).then(function() {
+        for (i = 0; i < data.length; i++)
+            console.log(i);
+    })
+</script>
+<script>
+    function addNum(x){
+        var sum=x;
+        var tmp=(y)=>{
+            sum=sum+y;
+            return tmp;
+        }
+        tmp.toString=()=>{
+            return sum;
+        }
+        return tmp;
+    }
+    addNum(2)(5)
+</script>
+<script>
+    //http头部
+    Accept-Language
+    Accept
+    Accept-Encoding
+    user-Agent
+    cookie
+    host
+    origin
+    connection
+    cache-control
+    //响应头
+    Server
+    content-type
+    content-Length
+    content-Language
+    Content-Encoding
+
+</script>
+<ul id="ul">
+    <li>98</li>
+    <li>98000</li>
+    <li>9808080</li>
+    <li>98000</li>
+    <li>dddddd</li>
+    <li>98000</li>
+    <li>9808080</li>
+</ul>
+<script>
+    var ulNode=document.getElementById("ul");
+    ulNode.addEventListener('click',function(e){
+        if(e.target&&e.target.nodeName.toUpperCase()==='LI'){
+            alert(e.target.innerHTML)
+        }
+    },false)
+</script>
+<script>
+    var testA=[{a:'',b:'13'}]
+    var testB=[{a:'12',b:''}]
+    const testC=testA.concat(testB)
+    console.log(testC)
+</script>
+</body>
+</html>
