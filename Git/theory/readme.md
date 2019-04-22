@@ -7,25 +7,24 @@ git checkout master切换master分支
 ### Git 本地分支管理
 > 查看、切换、创建和删除分支
 
-git br -r # 查看远程分支
-git br <new_branch> # 创建新的分支
-git br -v # 查看各个分支最后提交信息
-git br --merged # 查看已经被合并到当前分支的分支
-git br --no-merged # 查看尚未被合并到当前分支的分支
-git co <branch> # 切换到某个分支
-git co -b <new_branch> # 创建新的分支，并且切换过去
-git co -b <new_branch> <branch> # 基于branch创建新的new_branch
-git co $id # 把某次历史提交记录checkout出来，但无分支信息，切换到其他分支会自动删除
-git co $id -b <new_branch> # 把某次历史提交记录checkout出来，创建成一个分支
-git br -d <branch> # 删除某个分支
-git br -D <branch> # 强制删除某个分支 (未被合并的分支被删除的时候需要强制)
+git br -r # 查看远程分支  
+git br <new_branch> # 创建新的分支  
+git br -v # 查看各个分支最后提交信息  
+git br --merged # 查看已经被合并到当前分支的分支  
+git br --no-merged # 查看尚未被合并到当前分支的分支  
+git co <branch> # 切换到某个分支  
+git co -b <new_branch> # 创建新的分支，并且切换过去  
+git co -b <new_branch> <branch> # 基于branch创建新的new_branch  
+git co $id # 把某次历史提交记录checkout出来，但无分支信息，切换到其他分支会自动删除  
+git co $id -b <new_branch> # 把某次历史提交记录checkout出来，创建成一个分支  
+git br -d <branch> # 删除某个分支  
+git br -D <branch> # 强制删除某个分支 (未被合并的分支被删除的时候需要强制)  
 
 > 分支合并和rebase
 
-git merge <branch> # 将branch分支合并到当前分支
-git merge origin/master --no-ff # 不要Fast-Foward合并，这样可以生成merge提交
-git rebase master <branch> # 将master rebase到branch，相当于： git co <branch> && git rebase master && git co master && git merge 
-<branch>
+git merge <branch> # 将branch分支合并到当前分支  
+git merge origin/master --no-ff # 不要Fast-Foward合并，这样可以生成merge提交  
+git rebase master <branch> # 将master rebase到branch，相当于： git co <branch> && git rebase master && git co master && git merge <branch>
 
 ### Git远程分支管理
 git pull # 抓取远程仓库所有分支更新并合并到本地
