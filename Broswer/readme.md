@@ -35,7 +35,7 @@
 
 <h5 id='l3'>3. 浏览器渲染机制</h5>
 
-![avatar](/render.png)
+![avatar](render.png)
 
 参考 [这里](https://juejin.im/entry/59e1d31f51882578c3411c77)
 * [浏览器的渲染机制](https://www.jianshu.com/p/05eb1b17b298)
