@@ -11,7 +11,8 @@
 
 [5. 浏览器渲染的过程和原理](https://zhuanlan.zhihu.com/p/29418126)
 
-[6. 浏览器内核、JS 引擎、页面呈现原理及其优化](https://www.zybuluo.com/yangfch3/note/671516)
+[6. 浏览器内核、JS 引擎、页面呈现原理及其优化](https://www.zybuluo.com/yangfch3/note/671516)  
+
 [7. 浏览器304缓存原理](https://my.oschina.net/ososchina/blog/494074)
 
 ### 浏览器相关
