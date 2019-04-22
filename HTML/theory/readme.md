@@ -237,3 +237,9 @@ HTML5 规范中 `disabled`、`checked`、`selected` 等属性不用设置值。
     <link rel="shortcut icon" href="path/to/favicon.ico">
 </head>
 ```
+
+# HTML5(HTML)
+深入理解HTML5标签	https://segmentfault.com/a/1190000002695791
+如何写出高效率的HTML	https://segmentfault.com/a/1190000002680822
+HTML meta标签总结与属性使用介绍	https://segmentfault.com/a/1190000004279791
+戏说HTML5	http://www.cnblogs.com/dojo-lzz/p/5059316.html

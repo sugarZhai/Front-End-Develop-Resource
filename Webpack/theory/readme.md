@@ -4,6 +4,11 @@
 - [深入浅出的webpack](http://webpack.wuhaolin.cn/)
 - [webpack性能优化1](https://zhuanlan.zhihu.com/p/27710902)
 - [webpack性能优化2](https://zhuanlan.zhihu.com/p/26710831?refer=ElemeFE)
+- [Webpack 和 React 小书](https://fakefish.github.io/react-webpack-cookbook)
+webpack	https://github.com/webpack/webpack
+Webpack，101入门体验	http://html-js.com/article/3009
+webpack入门教程	http://html-js.com/article/3113
+基于webpack搭建前端工程解决方案探索	http://segmentfault.com/a/1190000003499526
 
 ### webpack中loader和plugin：
 对于loader，它就是一个转换器，将A文件进行编译形成B文件，这里操作的是文件，比如将A.scss或A.less转变为B.css，单纯的文件转换过程；  

@@ -19,7 +19,16 @@
 
 &emsp;[8. ssh端口为什么是22](#h8)
 
+
+
 ### HTTP相关
+
+|#|HTTP|
+|---|----|
+|1|[SSL/TLS协议运行机制](https://blog.csdn.net/MichelleZhai/article/details/82979467)|
+|2|[HTTPS详解](https://note.youdao.com/share/?id=d8999256f7d7e4cfc008587adbfa6f0f&type=note#/) |
+|3|[跨域CORS详解](http://www.ruanyifeng.com/blog/2016/04/cors.html)|
+
 
 <h5 id='h1'>1. HTTP有什么特点</h5>
 
