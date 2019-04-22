@@ -9,3 +9,6 @@
 
 什么是前端工程化	https://github.com/fouber/blog/issues/10?from=timeline&isappinstalled=0#
 [译] 前端攻略-从路人甲到英雄无敌	https://segmentfault.com/a/1190000005174755
+
+
+* [全栈成长指南](https://github.com/phodal/growth-ebook)

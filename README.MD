@@ -7,7 +7,7 @@
 前端的每个区域都划分为理论、实践、面试三个方面,系统性的消化某项知识点
 如果文章中有出现纰漏、错误之处，还请看到的小伙伴多多指教，先行谢过
 
-### 理论
+### 基础概念
 * [Git ](Git/theory/readme.md)
 * [Html ](HTML/theory/readme.md)
 * [Css ](CSS/theory-css.md)
@@ -35,23 +35,20 @@
 * [vue ](VUE/interview-vue.md)
 * [webpack ](Webpack/interview-webpack.md)
 
+| 前端类目 | 链接 |
+| ------ | ------ |
+| 数据可视化 | 数据可视化/dataview.md  |
+| Navicat | [https://www.navicat.com.cn/](https://www.navicat.com.cn/) |
+| Koa2中文学习资料 | https://chenshenhai.github.io/koa2-note/note/static/middleware.html |
+
+### 数据可视化
+* [数据可视化](数据可视化/dataview.md)
+
 ### 全栈成长指南
-* [全栈成长指南](https://github.com/phodal/growth-ebook)
-
-### chrome常用插件
-
-- [收藏的chrome插件](其他/chromePlugin.md)
-
-### 网络安全
-
-* [网络安全学习资源](https://github.com/euphrat1ca/fuzzdb-collect)
-* [webhack](https://wizardforcel.gitbooks.io/web-hacking-101/content/3.html)
-
-
+* [全栈成长指南](前端架构/framework.md)
 
 ### CI CD 持续集成 部署
-* jenkins https://jenkins.io/
-* travis-ci https://www.travis-ci.org/
+* [持续集成 部署](部署/deploy.md)
 
 
 ### 推荐的学习博客或者平台
