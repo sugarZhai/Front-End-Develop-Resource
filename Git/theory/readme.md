@@ -44,7 +44,7 @@ git push origin :<remote_branch> #先删除本地分支(git br -d <branch>)，�
 git checkout b  b-file： 意思就是本地分支a拉取远程分支b上远程文件b-file的改动
 
 
-## Git <font color="red">如何删除远程仓库中提交记录</font>
+<font color="red">## Git 如何删除远程仓库中提交记录</font>
 1、git reset commitId （注：不要带–hard）到上个版本  
 2、git stash 暂存修改  
 3、git push --force 强制push，远程的最新的一次commit被删除  
