@@ -45,7 +45,7 @@ git checkout b  b-file： 意思就是本地分支a拉取远程分支b上远程�
 
 
 ## Git 如何删除远程仓库中提交记录
-1、git reset commitId （注：不要带–hard）到上个版本 
+1、git reset commitId （注：不要带–hard）到上个版本   
 2、git stash 暂存修改  
 3、git push --force 强制push，远程的最新的一次commit被删除  
 4、git stash pop 释放暂存的修改，开始修改代码  
