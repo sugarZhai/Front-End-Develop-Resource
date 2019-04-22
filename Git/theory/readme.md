@@ -27,17 +27,17 @@ git merge origin/master --no-ff # 不要Fast-Foward合并，这样可以生成me
 git rebase master <branch> # 将master rebase到branch，相当于： git co <branch> && git rebase master && git co master && git merge <branch>
 
 ### Git远程分支管理
-git pull # 抓取远程仓库所有分支更新并合并到本地
-git pull --no-ff # 抓取远程仓库所有分支更新并合并到本地，不要快进合并
-git fetch origin # 抓取远程仓库更新
-git merge origin/master # 将远程主分支合并到本地当前分支
-git co --track origin/branch # 跟踪某个远程分支创建相应的本地分支
-git co -b <local_branch> origin/<remote_branch> # 基于远程分支创建本地分支，功能同上
-git push # push所有分支
-git push origin master # 将本地主分支推到远程主分支
-git push -u origin master # 将本地主分支推到远程(如无远程主分支则创建，用于初始化远程仓库)
-git push origin <local_branch> # 创建远程分支， origin是远程仓库名
-git push origin <local_branch>:<remote_branch> # 创建远程分支
+git pull # 抓取远程仓库所有分支更新并合并到本地  
+git pull --no-ff # 抓取远程仓库所有分支更新并合并到本地，不要快进合并  
+git fetch origin # 抓取远程仓库更新  
+git merge origin/master # 将远程主分支合并到本地当前分支  
+git co --track origin/branch # 跟踪某个远程分支创建相应的本地分支  
+git co -b <local_branch> origin/<remote_branch> # 基于远程分支创建本地分支，功能同上  
+git push # push所有分支  
+git push origin master # 将本地主分支推到远程主分支  
+git push -u origin master # 将本地主分支推到远程(如无远程主分支则创建，用于初始化远程仓库) 
+git push origin <local_branch> # 创建远程分支， origin是远程仓库名  
+git push origin <local_branch>:<remote_branch> # 创建远程分支  
 git push origin :<remote_branch> #先删除本地分支(git br -d <branch>)，然后再push删除远程分支
 
 ### Git checkout 高级用法
@@ -45,12 +45,12 @@ git checkout b  b-file： 意思就是本地分支a拉取远程分支b上远程�
 
 
 ## Git 如何删除远程仓库中提交记录
-1、git reset commitId （注：不要带–hard）到上个版本
-2、git stash 暂存修改
-3、git push --force 强制push，远程的最新的一次commit被删除
-4、git stash pop 释放暂存的修改，开始修改代码
-5、再决定是否需要的修改git add . -> git commit -m "message" -> git push
+1、git reset commitId （注：不要带–hard）到上个版本  
+2、git stash 暂存修改  
+3、git push --force 强制push，远程的最新的一次commit被删除  
+4、git stash pop 释放暂存的修改，开始修改代码  
+5、再决定是否需要的修改git add . -> git commit -m "message" -> git push  
 
 ### 其他
-git branch -m ”本地重命名“ 给本地分支重命名
+git branch -m ”本地重命名“ 给本地分支重命名  
 git pull 会自动auto-merge，git fetch不会
