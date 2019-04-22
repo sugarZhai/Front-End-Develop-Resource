@@ -6,6 +6,7 @@ git checkout master切换master分支
 
 ### Git 本地分支管理
 > 查看、切换、创建和删除分支
+
 git br -r # 查看远程分支
 git br <new_branch> # 创建新的分支
 git br -v # 查看各个分支最后提交信息
@@ -20,6 +21,7 @@ git br -d <branch> # 删除某个分支
 git br -D <branch> # 强制删除某个分支 (未被合并的分支被删除的时候需要强制)
 
 > 分支合并和rebase
+
 git merge <branch> # 将branch分支合并到当前分支
 git merge origin/master --no-ff # 不要Fast-Foward合并，这样可以生成merge提交
 git rebase master <branch> # 将master rebase到branch，相当于： git co <branch> && git rebase master && git co master && git merge 
