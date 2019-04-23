@@ -18,37 +18,39 @@
 * [vue ](VUE/theory/readme.md)
 * [webpack ](Webpack/theory/readme.md)
 * [小程序](小程序/theory/readme.md)
-* [浏览器 ](Broswer/readme.md)
 * [开发工具](Utils/utils.md)
 
 ### 面试
-* [Http ](Http/readme.md)
-* [性能优化](性能优化/README.md)
-* [小程序](小程序/interview-wechat.md)
-* [Css ](CSS/interview-css.md)
-* [Git ](Git/interview-git.md)
-* [Html ](HTML/interview/readme.md)
-* [js ](JavaScript/interview/readme.md)
-* [nginx ](Nginx/interview-nginx.md)
-* [node ](Node/interview-node.md)
-* [react ](React/interview-react.md)
-* [vue ](VUE/interview-vue.md)
-* [webpack ](Webpack/interview-webpack.md)
-
-| 前端类目 | 链接 |
+| 前端面试类目 | 链接 |
 | ------ | ------ |
-| 数据可视化 |[d3、map、Echart...](数据可视化/dataview.md)  |
-| Navicat | [https://www.navicat.com.cn/](https://www.navicat.com.cn/) |
-| Koa2中文学习资料 | https://chenshenhai.github.io/koa2-note/note/static/middleware.html |
-
-<!-- ### 数据可视化
-* [数据可视化]([数据可视化](数据可视化/dataview.md) ) -->
+| HTML基础 | [Html\html5 ](HTML/interview/readme.md)|
+| JS相关 | [原型\闭包\es6\异步编程 ](JavaScript/interview/readme.md)|
+| 样式布局 | [Css\Sass\Less\Flex\Grid ](CSS/interview-css.md)|
+| React | [react ](React/interview-react.md)|
+| Vue | [vue ](VUE/interview-vue.md)|
+| Webpack | [webpack ](Webpack/interview-webpack.md)|
+| Node | [node ](Node/interview-node.md)|
+| 性能优化 | [性能优化相关](性能优化/README.md) |
+| 样式布局 | [Css\Sass\Less\Flex\Grid ](CSS/interview-css.md)|
+| 小程序\微信平台 | [小程序\微信平台  ](小程序/interview-wechat.md)|
+| 浏览器相关 | [渲染\缓存\优化 ](Broswer/readme.md)|
+|数据可视化 |[d3\map\Echart...](数据可视化/dataview.md)  |
+| 网络安全 | [Http ](Http/readme.md) |
+| 性能优化 | [性能优化相关](性能优化/README.md) |
+| Git进阶使用 | [Git](Git/interview-git.md)|
+| nginx进阶使用 | [nginx ](Nginx/interview-nginx.md)|
+| VPN使用指南 | [VPN ](VPN/vpn.md)|
+| 兼容性 | [nginx ](Nginx/interview-nginx.md)|
+| 正则表达式 | [nginx ](Nginx/interview-nginx.md)|
+| 函数式编程 | [nginx ](Nginx/interview-nginx.md)|
+| 设计模式 | [nginx ](Nginx/interview-nginx.md)|
+| 集成部署 | [nginx ](Nginx/interview-nginx.md)|
+| 调试 | [nginx ](Nginx/interview-nginx.md)|
+| 代码规范 | [nginx ](Nginx/interview-nginx.md)|
+| 面试笔记 | [nginx ](Nginx/interview-nginx.md)|
 
 ### 全栈成长指南
 * [全栈&架构](前端架构/framework.md)
-
-### CI CD 持续集成 部署
-* [持续集成 部署](部署/deploy.md)
 
 
 ### 推荐的学习博客或者平台
@@ -58,10 +60,6 @@
 | 技术胖博客 | http://jspang.com/ |
 | 前端TOP100 | https://www.awesomes.cn/rank?sort=trend |
 | 林鑫 | https://github.com/lin-xin/blog |
-* [leetcode中文网](https://leetcode-cn.com/)
-* [技术胖博客](http://jspang.com/)
-* [前端TOP100](https://www.awesomes.cn/rank?sort=trend)
-* [林鑫](https://github.com/lin-xin/blog)
 前端知识体系	http://www.cnblogs.com/sb19871023/p/3894452.html
 前端知识结构	https://github.com/JacksonTian/fks
 Web前端开发大系概览	https://github.com/unruledboy/WebFrontEndStack
