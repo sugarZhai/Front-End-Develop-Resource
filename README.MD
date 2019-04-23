@@ -37,12 +37,12 @@
 
 | 前端类目 | 链接 |
 | ------ | ------ |
-| 数据可视化 | [数据可视化](数据可视化/dataview.md)  |
+| 数据可视化 |[vue ](VUE/interview-vue.md)  |
 | Navicat | [https://www.navicat.com.cn/](https://www.navicat.com.cn/) |
 | Koa2中文学习资料 | https://chenshenhai.github.io/koa2-note/note/static/middleware.html |
 
 ### 数据可视化
-* [数据可视化]([vue ](VUE/interview-vue.md))
+* [数据可视化]([数据可视化](数据可视化/dataview.md) )
 
 ### 全栈成长指南
 * [全栈&架构](前端架构/framework.md)
