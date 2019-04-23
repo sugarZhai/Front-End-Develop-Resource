@@ -4,7 +4,7 @@
 
 [HTML部分](#html)
 
-&emsp;[1. Doctype作用，HTML5 为什么只需要写`<!DOCTYPE HTML>`](#l1)
+&emsp;[1. Doctype作用？HTML5 为什么只需要写`<!DOCTYPE HTML>`、设立严格模式目的](#l1)
 
 &emsp;[2. 行内元素有哪些，块级元素有哪些，空(void)元素有那些](#l2)
 
@@ -12,7 +12,7 @@
 
 &emsp;[4. 常见的浏览器内核有哪些，介绍一下你对浏览器内核的理解](#l4)
 
-&emsp;[5. html5有哪些新特性](#l5)
+&emsp;[5. html5有哪些新特性？如何处理HTML5新标签的浏览器兼容问题？如何区分 HTML 和 HTML5？](#l5)
 
 &emsp;[6. 描述一下 cookies，sessionStorage 和 localStorage 的区别](#l6)
 
@@ -24,16 +24,33 @@
 
 &emsp;[10. 表单提交中Get和Post方式的区别](#l10)
 
+&emsp;[11. xhtml和html的区别](#l11)
+
 
 ### HTML
 
-<h5 id='l1'>1. Doctype作用，HTML5 为什么只需要写 <!DOCTYPE HTML></h5>
+<h5 id='l1'>1. Doctype作用？HTML5 为什么只需要写 <!DOCTYPE HTML>设立严格模式目的</h5>
 
 > doctype是一种标准通用标记语言的文档类型声明，目的是告诉标准通用标记语言解析器要使用什么样的文档类型定义（DTD）来解析文档.`<!DOCTYPE>`声明必须是HTML文档的第一行，位于html标签之前
+
+> 标准模式与兼容模式各有什么区别?
+DOCTYPE不存在或格式不正确会导致文档以兼容模式呈现,
+标准模式的排版 和JS运作模式都是以该浏览器支持的最高标准运行。
+在兼容模式中，页面以宽松的向后兼容的方式显示,模拟老式浏览器的行为以防止站点无法工作。
+
 
 > HTML5不基于SGML，所以不需要引用DTD。在HTML5中<!DOCTYPE>只有一种
 
 > SGML: 标准通用标记语言,是现时常用的超文本格式的最高层次标准
+
+>设立严格模式目的:  
+1、
+- 消除Javascript语法的一些不合理、不严谨之处，减少一些怪异行为;（函数重命名、变量保留字，this指向全局，函数必须声明在顶层等等  
+- 消除代码运行的一些不安全之处，保证代码运行的安全；  
+- 提高编译器效率，增加运行速度； 
+- 为未来新版本的Javascript做好铺垫。 
+2、
+- 规定只要函数参数使用了默认值、解构赋值、或者扩展运算符，那么函数内部就不能显式设定为严格模式，否则会报错。设定全局性的严格模式，这是合法的或者把函数包在一个无参数的立即执行函数里面。
 
 <h5 id='l2'>2. 行内元素有哪些，块级元素有哪些，空(void)元素有那些</h5>
 
@@ -44,11 +61,24 @@
 空元素：`br` `hr` `link` 等
 
 <h5 id='l3'>3. 简述一下你对HTML语义化的理解</h5>
+1、HTML5的语义化的标签是什么？
+<article>   
+<section>   
+<nav>   
+<aside>  
+<header>  
+ <footer>  
+(<aside>页面、文章的侧边栏、广告、友情链接等区域,  
+<section>标签所包裹的是有一组相似的主题的内容，可以用这个标签来实现文章的章节、标签式对话框中的各种标签页等类似的功能)
 
-简单来说，就是合适的标签做合适的事情，这样具有以下好处：
+2、为什么要语义化？ 
+
+简单来说，就是合适的标签做合适的事情，这样具有以下好处
+- 为了在没有CSS的情况下，页面也能呈现出很好地内容结构、代码结构:为了裸奔时好看；
 - 有助于构架良好的HTML结构，有利于搜索引擎的建立索引、抓取，利于SEO
 - 有利于不同设备的解析
 - 有利于构建清晰的机构，有利于团队的开发、维护
+- 用户体验：例如title、alt用于解释名词或解释图片信息、label标签的活用；
 
 <h5 id='l4'>4. 常见的浏览器内核有哪些，介绍一下你对浏览器内核的理解</h5>
 
@@ -62,8 +92,9 @@
 
 浏览器内核又可以分成两部分：**渲染引擎和JS引擎。** 渲染引擎主要负责取得网页的内容、整理讯息、计算网页的显示方式等，JS引擎则是解析Javascript语言，执行javascript语言来实现网页的动态效果。
 
-<h5 id='l5'>5. html5有哪些新特性</h5>
+<h5 id='l5'>5. html5有哪些新特性？如何处理HTML5新标签的浏览器兼容问题？如何区分 HTML 和 HTML5？</h5>
 
+> html5有哪些新特性？  
 - 语义化标签: `header` `footer` `nav` `section` `article` `aside` 等
 - 增强型表单：`date`(从一个日期选择器选择一个日期) `email`(包含 e-mail 地址的输入域) `number`(数值的输入域) `range`(一定范围内数字值的输入域) `search`(用于搜索域) `tel`(定义输入电话号码字段) 等
 - 视频和音频：`audio` `video`
@@ -73,6 +104,20 @@
 - web worker：是运行在后台的 JavaScript，独立于其他脚本，不会影响页面的性能
 - web storage: `localStorage` `sessionStorage` 
 - WebSocket: HTML5开始提供的一种在单个 TCP 连接上进行全双工通讯的协议
+
+> 如何处理HTML5新标签的浏览器兼容问题？ 
+* 支持HTML5新标签：  
+    * IE8/IE7/IE6支持通过document.createElement方法产生的标签  
+    * 可以利用这一特性让这些浏览器支持HTML5新标签  
+    * 浏览器支持新标签后，还需要添加标签默认的样式 
+* 当然也可以直接使用成熟的框架、比如html5shim   
+```js
+  <!--[if lt IE 9]>
+  <script> src="http://html5shim.googlecode.com
+  /svn/trunk/html5.js"</script><![endif]-->
+```
+> 如何区分h5?  
+DOCTYPE声明\新增的结构元素\功能元素
 
 <h5 id='l6'>6. 描述一下 cookie，sessionStorage 和 localStorage 的区别</h5>
 
@@ -106,7 +151,9 @@
 
 - 使用localStorage: `localStorage.setItem(key,value)`、`localStorage.getItem(key)`
 - websocket协议
-- webworker
+* iframe + contentWindow
+* postMessage
+* SharedWorker(Web Worker API)
 
 [多个标签页之间的通信](https://juejin.im/post/5acdba01f265da23826e5633)
 
@@ -130,3 +177,10 @@
 - Get安全性非常低，Post安全性较高
 - 在FORM提交的时候，如果不指定Method，则默认为Get请求
 
+<h5 id='l11'>11.xhtml和html的区别</h5>
+HTML是一种基本的WEB网页设计语言，XHTML是一个基于XML的置标语言  
+最主要的不同：  
+- XHTML 元素必须被正确地嵌套。  
+- XHTML 元素必须被关闭。  
+- 标签名必须用小写字母。  
+- XHTML 文档必须拥有根元素。  

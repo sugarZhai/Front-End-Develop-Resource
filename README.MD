@@ -23,15 +23,14 @@
 ### 面试
 | 前端面试类目 | 链接 |
 | ------ | ------ |
-| HTML基础 | [Html\html5 ](HTML/interview/readme.md)|
-| JS相关 | [原型\闭包\es6\异步编程 ](JavaScript/interview/readme.md)|
+| HTML基础 | [Html\html5 ](HTML/interview-html.md)|
+| JS相关 | [原型\闭包\es6\异步编程 ](JavaScript/interview-js.md)|
 | 样式布局 | [Css\Sass\Less\Flex\Grid ](CSS/interview-css.md)|
 | React | [react ](React/interview-react.md)|
 | Vue | [vue ](VUE/interview-vue.md)|
 | Webpack | [webpack ](Webpack/interview-webpack.md)|
 | Node | [node ](Node/interview-node.md)|
 | 性能优化 | [性能优化相关](性能优化/README.md) |
-| 样式布局 | [Css\Sass\Less\Flex\Grid ](CSS/interview-css.md)|
 | 小程序\微信平台 | [小程序\微信平台  ](小程序/interview-wechat.md)|
 | 浏览器相关 | [渲染\缓存\优化 ](Broswer/readme.md)|
 |数据可视化 |[d3\map\Echart...](数据可视化/dataview.md)  |

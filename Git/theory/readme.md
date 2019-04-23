@@ -55,3 +55,16 @@ git checkout b  b-file： 意思就是本地分支a拉取远程分支b上远程�
 ### 其他
 git branch -m ”本地重命名“ 给本地分支重命名  
 git pull 会自动auto-merge，git fetch不会
+
+### git生成公钥步骤 ssh
+cd ~/.ssh/  
+ssh-keygen -t rsa -C “539138838@qq.com"  
+3次回车  
+vim ~/.ssh/id_rsa.pub  
+ls查看文件  
+id_rsa  
+id_rsa.pub  
+执行命令vi  id_rsa.pub  
+shift i  
+生成可复制的密码  
+

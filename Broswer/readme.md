@@ -9,11 +9,13 @@
 
 &emsp;[4. 几个很实用的BOM属性对象方法](#l4)
 
-  [5. 浏览器渲染的过程和原理](https://zhuanlan.zhihu.com/p/29418126)
+&emsp;[5. 常见的浏览器内核有哪些？](#l5)
 
-  [6. 浏览器内核、JS 引擎、页面呈现原理及其优化](https://www.zybuluo.com/yangfch3/note/671516)  
+  [*. 浏览器渲染的过程和原理](https://zhuanlan.zhihu.com/p/29418126)
+
+  [*. 浏览器内核、JS 引擎、页面呈现原理及其优化](https://www.zybuluo.com/yangfch3/note/671516)  
   
-  [7. 浏览器304缓存原理](https://my.oschina.net/ososchina/blog/494074)
+  [**. 浏览器304缓存原理](https://my.oschina.net/ososchina/blog/494074)
 
 
 ### 浏览器相关
@@ -62,3 +64,9 @@ history.forward() // 前进一页
 navigator.userAgent  //返回用户代理头的字符串表示(就是包括浏览器版本信息等的字符串)
 navigator.cookieEnabled // 返回浏览器是否支持(启用)cookie
 ```
+
+<h5 id='l5'>5.常见的浏览器内核有哪些？</h5>
+1、* Trident内核：IE,MaxThon,TT,The World,360,搜狗浏览器等。[又称MSHTML]    
+2、* Gecko内核：Netscape6及以上版本，FF,MozillaSuite/SeaMonkey等  
+3、* Presto内核：Opera7及以上。 [Opera内核原为：Presto，现为：Blink;]  
+4、* Webkit内核：Safari,Chrome等。 [ Chrome的Blink（WebKit的分支）]  
