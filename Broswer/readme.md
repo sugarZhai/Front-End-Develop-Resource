@@ -30,6 +30,7 @@
 
 <h5 id='l2'>2. 浏览器缓存机制</h5>
 
+![avatar](broswer-cache.png)
 > 浏览器的缓存机制也就是我们说的 `HTTP` 缓存机制，其机制是根据 `HTTP` 报文的缓存标识进行的
 
 参考 [这里](https://juejin.im/entry/5ad86c16f265da505a77dca4)

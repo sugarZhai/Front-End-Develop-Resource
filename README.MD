@@ -37,7 +37,7 @@
 
 | 前端类目 | 链接 |
 | ------ | ------ |
-| 数据可视化 | 数据可视化/dataview.md  |
+| 数据可视化 | [数据可视化](数据可视化/dataview.md)  |
 | Navicat | [https://www.navicat.com.cn/](https://www.navicat.com.cn/) |
 | Koa2中文学习资料 | https://chenshenhai.github.io/koa2-note/note/static/middleware.html |
 
@@ -45,13 +45,19 @@
 * [数据可视化](数据可视化/dataview.md)
 
 ### 全栈成长指南
-* [全栈成长指南](前端架构/framework.md)
+* [全栈&架构](前端架构/framework.md)
 
 ### CI CD 持续集成 部署
 * [持续集成 部署](部署/deploy.md)
 
 
 ### 推荐的学习博客或者平台
+| 描述 | 网站 |
+| ------ | ------ |
+| leetcode中文网 | https://leetcode-cn.com/   |
+| 技术胖博客 | http://jspang.com/ |
+| 前端TOP100 | https://www.awesomes.cn/rank?sort=trend |
+| 林鑫 | https://github.com/lin-xin/blog |
 * [leetcode中文网](https://leetcode-cn.com/)
 * [技术胖博客](http://jspang.com/)
 * [前端TOP100](https://www.awesomes.cn/rank?sort=trend)
@@ -118,14 +124,12 @@ zepto 中文注释	http://www.cnblogs.com/sky000/archive/2013/03/29/2988952.html
 jqmobile 手册	http://app-framework-software.intel.com/api.php
 移动浏览器开发集合	https://github.com/maxzhang/maxzhang.github.com/issues
 移动开发大杂烩	https://github.com/hoosin/mobile-web-favorites
-
-
-# 综合API
 javascripting	http://www.javascripting.com
 各种流行库搜索	http://microjs.com
 runoob.com-包含各种API集合	http://www.runoob.com
 开源中国在线API文档合集	http://tool.oschina.net/apidocs
 devdocs	http://devdocs.io 英文综合API网站
+
 
 
 # 开发中心
