@@ -50,6 +50,13 @@
 
 &emsp;[24. 对JS引擎执行机制的理解](#j24)
 
+&emsp;[25. webSocket如何兼容低浏览器？websocket长连接原理是什么?](#j25)
+
+&emsp;[26. web开发中会话跟踪的方法有哪些?](#j26)
+
+&emsp;[27. caller 和callee 的作用？](#j27)
+
+&emsp;[28. call和apply作用和区别。传null有没有影响,Function.call(null)  ，Function.apply(null)？](#j28)
 
 <h5 id='j1'>1. JavaScript 有哪些数据类型</h5>
 
@@ -725,3 +732,56 @@ new Promise(function(resolve){
 
 参考 [JS引擎的执行机制](https://segmentfault.com/a/1190000012806637)
 
+<h5 id='j25'>25、webSocket如何兼容低浏览器？websocket长连接原理是什么?</h5>
+
+> webSocket如何兼容低浏览器?
+
+* Adobe Flash Socket  
+* ActiveX HTMLFile (IE)  
+* 基于 multipart 编码发送 XHR  
+* 基于长轮询的 XHR  
+
+> websocket长连接原理是什么?
+
+含义:Websocket是一个持久化的协议，相对于HTTP这种非持久的协议来说。 
+
+原理:类似长轮循长连接 ; 发送一次请求 ; 源源不断的得到信息
+
+<h5 id='j26'>26、web开发中会话跟踪的方法有哪些?</h5>
+
+  * cookie  
+  * session  
+  * url重写  
+  * 隐藏input  
+  * ip地址  
+
+<h5 id='j27'>27、caller 和callee的作用?</h5>
+caller是返回一个对函数的引用，该函数调用了当前函数；  
+callee 是返回正在被执行的function函数，也就是所指定的function对象的正文  
+如果一对兔子每月生一对兔子；一对新生兔，从第二个月起就开始生兔子；假定每对兔子都是一雌一雄，试问一对兔子，第n个月能繁殖成多少对兔子？（使用callee完成） 
+```js
+   let result=[];
+   function fn(n){//斐波那契数列
+      if(n===1||n===2){
+        return 1
+      }else{
+        return result[n]?result[n]:arguments.callee(n-1)+arguments.callee(n-2);
+      }
+   }
+```
+
+<h5 id="j28">28、call 和apply 作用和区别。传null有没有影响,Function.call(null)  ，Function.apply(null) ？</h5>
+
+> apply 和call 都能继承另外一个对象的方法和属性； 
+
+> Apply巧妙之处：可以将一个数组默认的转换为一个参数列表[param1,param2,param3] (apply会将一个数组装换为一个 参数接一个参数的传递给方法)
+
+> Call巧妙之处:1、直接用A 对象方法来替换B对象  2、直接用B 对象来执行A对象的方法 3、可以用 call 来实现继承 
+
+> 使用apply的情况：在给对象参数的情况下,如果参数的形式是数组的时候,比如apply 示例里面传递了参数arguments,这个参数是数组类型。
+
+> 使用call的情况： 如果我的Person的参数列表是这样的(age,name),而Student的参数列表是(name,age,grade),这样就可以用call来实现了,也就是直接指定参数列表对应值的位置(Person.call(this,age,name,grade));
+
+> 区别在于 call 的第二个参数可以是任意类型，而apply的第二个参数必须是数组，也可以是arguments。传null/undefined 返回值为window
+
+![avatar](callee.png)

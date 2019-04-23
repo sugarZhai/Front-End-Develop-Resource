@@ -26,6 +26,11 @@
 
 &emsp;[11. xhtml和html的区别](#l11)
 
+&emsp;[12. iframe有那些优点和缺点？](#l12)
+
+&emsp;[13. label的作用是什么？怎么使用的？](#l13)
+
+&emsp;[14. title与h1的区别、b与strong的区别、i与em的区别？](#l14)
 
 ### HTML
 
@@ -104,6 +109,9 @@ DOCTYPE不存在或格式不正确会导致文档以兼容模式呈现,
 - web worker：是运行在后台的 JavaScript，独立于其他脚本，不会影响页面的性能
 - web storage: `localStorage` `sessionStorage` 
 - WebSocket: HTML5开始提供的一种在单个 TCP 连接上进行全双工通讯的协议
+> HTML5的form如何关闭自动完成功能？
+
+* 给不想要提示的 form 或某个 input 设置为 autocomplete=off。
 
 > 如何处理HTML5新标签的浏览器兼容问题？ 
 * 支持HTML5新标签：  
@@ -117,6 +125,7 @@ DOCTYPE不存在或格式不正确会导致文档以兼容模式呈现,
   /svn/trunk/html5.js"</script><![endif]-->
 ```
 > 如何区分h5?  
+
 DOCTYPE声明\新增的结构元素\功能元素
 
 <h5 id='l6'>6. 描述一下 cookie，sessionStorage 和 localStorage 的区别</h5>
@@ -158,6 +167,26 @@ DOCTYPE声明\新增的结构元素\功能元素
 [多个标签页之间的通信](https://juejin.im/post/5acdba01f265da23826e5633)
 
 <h5 id='l8'>8. HTML5的离线存储怎么使用，解释一下工作原理</h5>
+* 在用户没有与因特网连接时，可以正常访问站点或应用，在用户与因特网连接时，更新用户机器上的缓存文件 
+
+* 原理：HTML5的离线存储是基于一个新建的.appcache文件的缓存机制(不是存储技术)，通过这个文件上的解析清单离线存储资源，这些资源就会像cookie一样被存储了下来。之后当网络在处于离线状态下时，浏览器会通过被离线存储的数据进行页面展示
+
+* 如何使用：
+    * 页面头部像下面一样加入一个manifest的属性；
+    * 在cache.manifest文件的编写离线存储的资源
+    * 在离线状态时，操作window.applicationCache进行需求实现
+
+```js
+    CACHE MANIFEST
+    #v0.11
+    CACHE:
+    js/app.js
+    css/style.css
+    NETWORK:
+    resourse/logo.png
+    FALLBACK:
+    / /offline.html
+```
 
 [HTML5的离线存储](https://segmentfault.com/a/1190000006984353)
 
@@ -183,4 +212,33 @@ HTML是一种基本的WEB网页设计语言，XHTML是一个基于XML的置标�
 - XHTML 元素必须被正确地嵌套。  
 - XHTML 元素必须被关闭。  
 - 标签名必须用小写字母。  
-- XHTML 文档必须拥有根元素。  
+- XHTML 文档必须拥有根元素。 
+
+<h5 id='l12'>12.iframe 有那些优点和缺点？</h5>
+
+* 优点：
+    * 用来加载速度较慢的内容（如广告）
+    * 可以使脚本可以并行下载
+    * 可以实现跨子域通信
+* 缺点：
+    * iframe 会阻塞主页面的 onload 事件
+    * 无法被一些搜索引擎索识别
+    * 会产生很多页面，不容易管理
+
+<h5 id='l13'>13.label 的作用是什么？怎么使用的？</h5>
+* label标签来定义表单控件的关系：
+    * 当用户选择label标签时，浏览器会自动将焦点转到和label标签相关的表单控件上
+* 使用方法1：
+    * <label for="mobile">Number:</label>
+    * <input type="text" id="mobile"/>
+* 使用方法2：
+    * <label>Date:<input type="text"/></label>
+
+<h5 id='l14'>14.title 与 h1 的区别、b 与 strong 的区别、i 与 em 的区别？</h5>
+
+* title 表示是整个页面标题，h1 则表示层次明确的标题，对页面信息的抓取有很大的影响
+* strong 标明重点内容，有语气加强的含义，使用阅读设备阅读网络时，strong 会重读，而 b是展示强调内容
+* i 内容展示为斜体，em 表示强调的文本
+* 自然样式标签：b, i, u, s, pre
+* 语义样式标签：strong, em, ins, del, code
+* 应该准确使用语义样式标签, 但不能滥用。如果不能确定时，首选使用自然样式标签
