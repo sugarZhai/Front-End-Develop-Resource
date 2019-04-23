@@ -41,13 +41,23 @@
 | nginx进阶使用 | [nginx ](Nginx/interview-nginx.md)|
 | VPN使用指南 | [VPN ](VPN/vpn.md)|
 | 兼容性 | [compatibility ](兼容性/compatibility.md)|
-| 正则表达式 | [正则表达式 ](正则表达式/regular.md)|
-| 函数式编程 | [函数式编程 ](函数式编程/function-code.md)|
-| 设计模式 | [设计模式 ](设计模式/design-code.md)|
-| 集成部署 | [可持续继承部署 ](部署/deploy.md)|
 | 移动端调试 | [调试 ](调试/debug.md)|
-| 代码规范 | [代码规范 ](代码规范/norm.md)|
 | 面试笔记 | [面试 ](面试/interview.md)|
+
+### 设计模式
+* [设计模式 ](设计模式/design-code.md)
+
+### 函数式编程
+* [函数式编程 ](函数式编程/function-code.md)
+
+### 正则表达式
+* [正则表达式 ](正则表达式/regular.md)
+
+### 可持续集成部署
+* [集成部署 ](部署/deploy.md)
+
+### 代码规范
+* [代码规范 ](代码规范/norm.md)
 
 ### 全栈成长指南
 * [全栈&架构](前端架构/framework.md)
