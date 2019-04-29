@@ -21,13 +21,8 @@
 | 小程序\微信平台 |  [小程序](小程序/theory/readme.md)|  [小程序\微信平台  ](小程序/interview-wechat.md)|
 | Nginx进阶使用 | [nginx进阶使用 ](Nginx/theory/readme.md)|  [nginx ](Nginx/interview-nginx.md)|
 | Git | [Git知识点](Git/theory/readme.md)| [Git常见问题](Git/interview-git.md) |
-
-### 拓展性概念
-
-| 扩展类目 | 链接 |
-| ------ | ------ |
-| 性能优化 | [性能优化相关](性能优化/README.md) |
 | 浏览器相关 | [渲染\缓存\优化 ](Broswer/readme.md)|
+| 性能优化 | [性能优化相关](性能优化/README.md) |
 | 数据可视化 |[d3\map\Echart...](数据可视化/dataview.md)  |
 | 网络安全 | [Http ](Http/readme.md) |
 | VPN使用指南 | [VPN ](VPN/vpn.md)|
