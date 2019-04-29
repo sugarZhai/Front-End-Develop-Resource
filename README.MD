@@ -11,39 +11,29 @@
 
 | 基础分类 | 知识点 | 面试常见问题 |
 | ------ | ------ |------ |
-| Git | [Git ](Git/theory/readme.md)| [Html\html5 ](HTML/interview-html.md)|
-| HTML页面 | [Html ](HTML/theory/readme.md)| [Html\html5 ](HTML/interview-html.md)|
-| CSS | [Css ](CSS/theory-css.md)| [Html\html5 ](HTML/interview-html.md)|
-| JS | [js ](JavaScript/theory/readme.md)| [Html\html5 ](HTML/interview-html.md)|
-| Nginx | [nginx ](Nginx/theory/readme.md)| [Html\html5 ](HTML/interview-html.md)|
-| Node | [node ](Node/theory/readme.md)| [Html\html5 ](HTML/interview-html.md)|
-| React | [react ](React/theory/readme.md)| [Html\html5 ](HTML/interview-html.md)|
-| Vue | [vue ](VUE/theory/readme.md) | [Html\html5 ](HTML/interview-html.md)|
-| Webpack | [webpack ](Webpack/theory/readme.md)| [Html\html5 ](HTML/interview-html.md)|
-| 小程序 |  [小程序](小程序/theory/readme.md)| [Html\html5 ](HTML/interview-html.md)|
-| 开发工具 |  [开发工具](Utils/utils.md)| [Html\html5 ](HTML/interview-html.md)|
+| HTML页面 | [Html ](HTML/theory/readme.md) | [Html\html5 ](HTML/interview-html.md) |
+| JS/TS| [js ](JavaScript/theory/readme.md) | [原型\闭包\es6\异步编程 ](JavaScript/interview-js.md) |
+| Css\Sass\Less\Flex\Grid | [Css ](CSS/theory-css.md)| [Css\Sass\Less\Flex\Grid ](CSS/interview-css.md)|
+| React/Redux/Mobx | [react ](React/theory/readme.md) |   [react ](React/interview-react.md) |
+| Vue生态 | [vue ](VUE/theory/readme.md) | [vue ](VUE/interview-vue.md)|
+| Node | [node ](Node/theory/readme.md)|   [node ](Node/interview-node.md) |
+| Webpack | [webpack ](Webpack/theory/readme.md)| [webpack ](Webpack/interview-webpack.md) |
+| 小程序\微信平台 |  [小程序](小程序/theory/readme.md)|  [小程序\微信平台  ](小程序/interview-wechat.md)|
+| Nginx进阶使用 | [nginx进阶使用 ](Nginx/theory/readme.md)|  [nginx ](Nginx/interview-nginx.md)|
+| Git | [Git ](Git/theory/readme.md)| [Git](Git/interview-git.md) |
 
-### 面试
-| 前端面试类目 | 链接 |
+### 拓展性概念
+
+| 扩展类目 | 链接 |
 | ------ | ------ |
-| HTML基础 | [Html\html5 ](HTML/interview-html.md)|
-| JS相关 | [原型\闭包\es6\异步编程 ](JavaScript/interview-js.md)|
-| 样式布局 | [Css\Sass\Less\Flex\Grid ](CSS/interview-css.md)|
-| React | [react ](React/interview-react.md)|
-| Vue | [vue ](VUE/interview-vue.md)|
-| Webpack | [webpack ](Webpack/interview-webpack.md)|
-| Node | [node ](Node/interview-node.md)|
 | 性能优化 | [性能优化相关](性能优化/README.md) |
-| 小程序\微信平台 | [小程序\微信平台  ](小程序/interview-wechat.md)|
 | 浏览器相关 | [渲染\缓存\优化 ](Broswer/readme.md)|
-|数据可视化 |[d3\map\Echart...](数据可视化/dataview.md)  |
+| 数据可视化 |[d3\map\Echart...](数据可视化/dataview.md)  |
 | 网络安全 | [Http ](Http/readme.md) |
-| 性能优化 | [性能优化相关](性能优化/README.md) |
-| Git进阶使用 | [Git](Git/interview-git.md)|
-| nginx进阶使用 | [nginx ](Nginx/interview-nginx.md)|
 | VPN使用指南 | [VPN ](VPN/vpn.md)|
 | 兼容性 | [compatibility ](兼容性/compatibility.md)|
 | 移动端调试 | [调试 ](调试/debug.md)|
+| 开发工具 |  [开发工具](Utils/utils.md)|
 | 面试笔记 | [面试 ](面试/interview.md)|
 
 ### 客户端
