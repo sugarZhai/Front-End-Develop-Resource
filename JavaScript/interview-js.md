@@ -58,6 +58,8 @@
 
 &emsp;[28. call和apply作用和区别。传null有没有影响,Function.call(null)  ，Function.apply(null)？](#j28)
 
+&emsp;[29. 单线程原理的过程？](#j29)
+
 <h5 id='j1'>1. JavaScript 有哪些数据类型</h5>
 
 6种原始数据类型：
@@ -756,7 +758,7 @@ new Promise(function(resolve){
   * ip地址  
 
 <h5 id='j27'>27、caller 和callee的作用?</h5>
-caller是返回一个对函数的引用，该函数调用了当前函数；  
+> caller是返回一个对函数的引用，该函数调用了当前函数；  
 callee 是返回正在被执行的function函数，也就是所指定的function对象的正文  
 如果一对兔子每月生一对兔子；一对新生兔，从第二个月起就开始生兔子；假定每对兔子都是一雌一雄，试问一对兔子，第n个月能繁殖成多少对兔子？（使用callee完成） 
 ```js
@@ -785,3 +787,17 @@ callee 是返回正在被执行的function函数，也就是所指定的function
 > 区别在于 call 的第二个参数可以是任意类型，而apply的第二个参数必须是数组，也可以是arguments。传null/undefined 返回值为window
 
 ![avatar](callee.png)
+
+<h5 id='j29'>29、单线程原理的过程?</h5>
+
+> JS只有一个主线程，主线程执行完执行栈的任务后去检查异步的任务队列，如果异步事件触发，则将其加到主线程的执行栈
+
+> (1)所有同步任务都在主线程上执行，形成一个执行栈（execution context stack）。
+
+> （2）主线程之外，还存在一个"任务队列"（task queue）。只要异步任务有了运行结果，就在"任务队列"之中放置一个事件。
+
+> （3）一旦"执行栈"中的所有同步任务执行完毕，系统就会读取"任务队列"，看看里面有哪些事件。那些对应的异步任务，于是结束等待状态，进入执行栈，开始执行。
+
+> （4）主线程不断重复上面的第三步。
+
+![avatar](thread.png)

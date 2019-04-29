@@ -32,6 +32,8 @@
 
 &emsp;[14. title与h1的区别、b与strong的区别、i与em的区别？](#l14)
 
+&emsp;[14. title与h1的区别、b与strong的区别、i与em的区别？](#l14)
+
 ### HTML
 
 <h5 id='l1'>1. Doctype作用？HTML5 为什么只需要写 <!DOCTYPE HTML>设立严格模式目的</h5>
@@ -155,6 +157,31 @@ DOCTYPE声明\新增的结构元素\功能元素
    </tr>
 </table>
 
+> 1. web storage两种方式(sessionStorage和localStorage)
+sessionStorage用于本地存储的一个会话数据，这些数据只有在同一个会话中的页面才能访问并且会话结束后数据也随之销毁。因此seeionStorage不是一种持久化的储存，仅仅是会话级别的存储。    
+而localStorage用于持久化的本地存储，除非主动删除数据，否则数据是用于不会过期的
+
+> 2. localstorage 与sessionStorage的区别  
+sessionStorage当前会话，当前访问的储存  
+localstorage服务端永久存在，除非手动清空
+
+> 3. web storage 和cookie的区别
+- cookie的大小是受限的（不能超过4K，最多只有20条），并且每次你请求一个新的页面时，cookie都会被发送过去，这样无形中浪费了带宽，另外cookie还需要指定作用域，不可以跨域调用。Web Storage更大容量存储  
+
+- web storage拥有setItem,getItem,removeItem,clear等方法，不像cookie需要前端开发者自己封装setCookie，getCookie。
+
+- cookie的作用是与服务器进行交互，作为HTTP规范的一部分而存在 ，而Web Storage仅仅是为了在本地“存储”数据而生
+
+
+> 4. cookie 和session 的区别：
+
+- cookie数据存放在客户的浏览器上，session数据放在服务器上。
+
+- cookie不是很安全，别人可以分析存放在本地的COOKIE并进行COOKIE欺骗考虑到安全应当使用session。
+
+- session会在一定时间内保存在服务器上。当访问增多，会比较占用你服务器的性能考虑到减轻服务器性能方面，应当使用COOKIE。
+
+- 单个cookie保存的数据不能超过4K，很多浏览器都限制一个站点最多保存20个cookie。
 
 <h5 id='l7'>7. 如何实现浏览器内多个标签页之间的通信</h5>
 

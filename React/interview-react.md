@@ -50,6 +50,8 @@
 
 &emsp;[24. 对JS引擎执行机制的理解](#j24)
 
+&emsp;[25. Mobx与Redux区别](#j25)
+
 
 <h5 id='j1'>1. JavaScript 有哪些数据类型</h5>
 
@@ -724,4 +726,71 @@ new Promise(function(resolve){
 在异步任务中，定时器也属于特殊的存在。有人将其称之为 宏任务、微任务，定时器就属于宏任务的范畴。
 
 参考 [JS引擎的执行机制](https://segmentfault.com/a/1190000012806637)
+
+
+<h5 id='j25'>25. Mobx 与 Redux区别</h5>
+
+>某一状态只有一个可信数据来源（通常命名为store，指状态容器）；  
+操作更新状态方式统一，并且可控（通常以action方式提供更新状态的途径）；  
+支持将store与React组件连接，如react-redux，mobx-react；通常使用状态管理库后，我们将React组件从业务上划分为两类：  
+    容器组件（Container Components）：负责处理具体业务和状态数据，将业务或状态处理函数传入展示型组件；  
+    展示型组件（Presentation Components）：负责展示视图，视图交互回调内调用传入的处理函数；  
+
+
+### 关注点不同:
+
+> 1. Redux更多的是遵循Flux模式的一种实现，是一个JavaScript库，它的关注点在于：  
+     Action：一个JavaScript对象，描述动作相关信息，主要包含type属性和payload属性：  
+     Reducer：定义应用状态如何响应不同动作（action），如何更新状态；  
+     Store：管理action和reducer及其关系的对象，主要提供以下功能：  
+          1>. 维护应用状态并支持读取访问状态（getState()）；  
+          2>. 支持监听action的分发，更新状态（dispatch(action)）；  
+          3>. 支持订阅store的变更（subscribe(listener)）；  
+          4>. 支持通过中间件（redux-thunk、redux-saga、redux-promise等）处理异步任务流程  
+
+
+> 2. Mobx是一个透明函数响应式编程的状态管理库，它使得状态管理简单可伸缩，它的关注点在于：  
+    Action：定义改变状态的动作函数，包括如何变更状态；  
+    Store：集中管理模块状态（State）和动作（action）；  
+    Derivation（衍生）：从应用状态中派生而出，且没有任何其他影响的数据，我们称为derivation（衍生），衍生在以下情况下存在：  
+       1>. 用户界面；  
+       2>. 衍生数据, 衍生主要有两种：  
+        Computed Values（计算值）：计算值总是可以使用纯函数（pure function）从当前可观察状态中获取；  
+        Reactions（反应）：反应指状态变更时需要自动发生的副作用，这种需要实现其读写操作  
+
+###  设计思想的不同(函数式和面向对象)
+
+ > 1. Redux更多的是遵循函数式编程（Functional Programming, FP）思想，而Mobx则更多从面相对象角度考虑问题。  
+ > 2. Redux提倡编写函数式代码，如reducer就是一个纯函数（pure function）纯函数，接受输入，然后输出结果，除此之外不会有任何影响，也包括不会影响接收的参数；对于相同的输入总是输出相同的结果。    
+ > 3. Mobx设计更多偏向于面向对象编程（OOP）和响应式编程（Reactive Programming），通常将状态包装成可观察对象，于是我们就可以使用可观察对象的所有能力，一旦状态对象变更，就能自动获得更新。  
+
+ ### 对store管理的不同(单一Store和多Store)
+ Store是应用管理数据的地方，在Redux应用中，我们总是将所有共享的应用数据集中在一个大的store中，而Mbox则通常按模块将应用状态划分，在多个独立的store中管理.
+
+ ###  数据可变性的不同(不可变（Immutable）和可变（Mutable)
+
+ > 1. Redux状态对象通常是不可变的（Immutable）：我们不能直接操作状态对象，而总是在原来状态对象基础上返回一个新的状态对象，这样就能很方便的返回应用上一状态
+
+ > 2. 而Mobx中可以直接使用新值更新状态对象。
+
+ ### JavaScript对象和可观察对象
+ 
+ > 1. Redux默认以JavaScript原生对象形式存储数据，而Mbox使用可观察对象：
+ > 2. Redux需要手动追踪所有状态对象的变更
+ > 3. Mobx中可以监听可观察对象，当其变更时将自动触发监听
+
+ ### Mobx-react 和 React-redux
+
+> 使用Redux和React应用连接时，需要使用react-redux提供的Provider和connect：
+1、Provider:负责将Store注入React应用
+2、connect:负责将store state 注入容器组件，并选择特定状态作为容器组件props传递；
+
+
+> 对于Mobx而言，同样需要两个步骤：  
+1、Provider:使用mobx-react提供的Provider将所有stores注入应用；  
+2、使用inject将特定store注入某组件，store可以传递状态或action；然后使用observer保证组件能响应store中的可观察对象  （observable）变更，即store更新，组件试图响应式更新。  
+
+参考链接：https://segmentfault.com/a/1190000017538995?utm_source=tag-newest
+
+https://blog.csdn.net/vhwfr2u02q/article/details/79395072
 
