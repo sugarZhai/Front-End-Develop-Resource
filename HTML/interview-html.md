@@ -158,12 +158,14 @@ DOCTYPE声明\新增的结构元素\功能元素
 </table>
 
 > 1. web storage两种方式(sessionStorage和localStorage)
-sessionStorage用于本地存储的一个会话数据，这些数据只有在同一个会话中的页面才能访问并且会话结束后数据也随之销毁。因此seeionStorage不是一种持久化的储存，仅仅是会话级别的存储。    
-而localStorage用于持久化的本地存储，除非主动删除数据，否则数据是用于不会过期的
+
+- sessionStorage用于本地存储的一个会话数据，这些数据只有在同一个会话中的页面才能访问并且会话结束后数据也随之销毁。因此  seeionStorage不是一种持久化的储存，仅仅是会话级别的存储。  
+
+- 而localStorage用于持久化的本地存储，除非主动删除数据，否则数据是用于不会过期的
 
 > 2. localstorage 与sessionStorage的区别  
-sessionStorage当前会话，当前访问的储存  
-localstorage服务端永久存在，除非手动清空
+- sessionStorage当前会话，当前访问的储存  
+- localstorage服务端永久存在，除非手动清空
 
 > 3. web storage 和cookie的区别
 - cookie的大小是受限的（不能超过4K，最多只有20条），并且每次你请求一个新的页面时，cookie都会被发送过去，这样无形中浪费了带宽，另外cookie还需要指定作用域，不可以跨域调用。Web Storage更大容量存储  
