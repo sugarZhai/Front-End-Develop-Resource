@@ -68,7 +68,7 @@
 | 阮一峰 | http://www.ruanyifeng.com/blog|
 | 廖雪峰 | https://www.liaoxuefeng.com|
 | 林鑫 | https://github.com/lin-xin/blog |
-| JavaScript中的this陷阱的最全收集--没有之一 | http://segmentfault.com/a/1190000002640298 |	
+
 
 #### Team
 | 描述 | 网站 |
@@ -88,10 +88,7 @@
 | 前端书籍 | https://github.com/dypsilon/frontend-dev-bookmarks |
 | 前端免费书籍大全 | 	https://github.com/vhf/free-programming-books |
 | 智能社 - 精通JavaScript开发	 | http://study.163.com/course/introduction/224014.htm |
-| 重新介绍 JavaScript（JS 教程） | https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/A_re-introduction_to_JavaScript |
 | 麻省理工学院公开课：计算机科学及编程导论 | http://v.163.com/special/opencourse/bianchengdaolun.html |	
-| JS函数式编程指南 | https://llh911001.gitbooks.io/mostly-adequate-guide-chinese/content/ch1.html |	
-| JavaScript Promise迷你书（中文版） | http://liubin.github.io/promises-book|	
 | Front-End-Develop-Guide 前端开发指南 | https://github.com/Front-End-Developers-Hunan/Front-End-Develop-Guide|	
 | 前端开发笔记本 | https://li-xinyang.gitbooks.io/frontend-notebook/content |	
 | 大前端工具集 | https://github.com/nieweidong/fetool|	
@@ -115,6 +112,9 @@
 | 重新介绍 JavaScript |	https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/A_re-introduction_to_JavaScript |	
 | microsoft js参考 |https://msdn.microsoft.com/zh-cn/library/d1et7k7c(v=vs.94.aspx |	
 | js秘密花园 |	http://sanshi.me/articles/JavaScript-Garden-CN/html/index.html |
+| JavaScript中的this陷阱的最全收集--没有之一 | http://segmentfault.com/a/1190000002640298 |	
+| JavaScript Promise迷你书（中文版） | http://liubin.github.io/promises-book|	
+| JS函数式编程指南 | https://llh911001.gitbooks.io/mostly-adequate-guide-chinese/content/ch1.html |
 
 #### CSS
 
@@ -178,15 +178,6 @@
 | WebGl| http://www.hewebgl.com |	
 
 
-#### 其他
-
-| 描述 | 链接 |
-| ------ | ------ |
-| mozilla js参考 |https://developer.mozilla.org/zh-CN/docs/Web/JavaScript |	
-| chrome开发中心（chrome的内核已转向blink） |	https://developer.chrome.com/extensions/api_index.html|
-| safari开发中心 |https://developer.apple.com/library/safari/navigation |	
-| 综合Bug集合网站 |	http://www.w3help.org |	
-
 
 ### 常用后端技术工具资料库
 | 技术名称 | 网站 | 描述 |
@@ -200,6 +191,10 @@
 ### 其他API
 | 描述 | 网站 |
 | ------ | ------ |
+| mozilla js参考 |https://developer.mozilla.org/zh-CN/docs/Web/JavaScript |	
+| chrome开发中心（chrome的内核已转向blink） |	https://developer.chrome.com/extensions/api_index.html|
+| safari开发中心 |https://developer.apple.com/library/safari/navigation |	
+| 综合Bug集合网站 |	http://www.w3help.org |	
 | HTTP API 设计指南	| http://segmentfault.com/bookmark/1230000002521721    |
 | 验证api | http://niceue.com/validator/demo/index.php |
 | underscrejs en api | http://underscorejs.org |
