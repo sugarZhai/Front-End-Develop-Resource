@@ -33,10 +33,10 @@
 
 
 ### 客户端
-* [客户端 ](客户端原生/primary.md)
+* [客户端 ](客户端/primary.md)
 
 ### 设计模式
-* [设计模式 ](设计模式/design-code.md)
+* [设计模式 ](设计模式/design-mode.md)
 
 ### 函数式编程
 * [函数式编程 ](函数式编程/function-code.md)
@@ -46,6 +46,7 @@
 
 ### 可持续集成部署
 * [集成部署 ](部署/deploy.md)
+
 
 ### 代码规范
 * [代码规范 ](代码规范/norm.md)
@@ -65,7 +66,7 @@
 | ------ | ------ |
 | 技术胖 | http://jspang.com/ |
 | 张鑫旭 | https://www.zhangxinxu.com|
-| 阮一峰 | http://www.ruanyifeng.com/blog|
+| 阮一峰 | https://www.yuque.com/ruanyf/weekly|
 | 廖雪峰 | https://www.liaoxuefeng.com|
 | 林鑫 | https://github.com/lin-xin/blog |
 
@@ -180,11 +181,11 @@
 
 
 ### 常用后端技术工具资料库
-| 技术名称 | 网站 | 描述 |
-| ------ | ------ | ------|
-| pm2 | http://www.cnblogs.com/chyingp/p/pm2-documentation.html   | node生产环境部署工具 |
-| Navicat | [https://www.navicat.com.cn/](https://www.navicat.com.cn/) |  数据库客户端 |
-| Koa2中文 | https://chenshenhai.github.io/koa2-note/note/static/middleware.html | 学习资料
+| 技术名称 | 网站 | 
+| ------ | ------ |
+| pm2 | http://www.cnblogs.com/chyingp/p/pm2-documentation.html   | 
+| Navicat | [https://www.navicat.com.cn/](https://www.navicat.com.cn/) |  
+| Koa2中文 | https://chenshenhai.github.io/koa2-note/note/static/middleware.html |
 
 
 
@@ -214,6 +215,49 @@
 | 英文综合API网站 | http://devdocs.io |	
 
 
+### Online Tools
+
+| 描述 | 地址 |
+| ------ | ------ |
+| 在线工具合集--程序员的工具箱 | https://tool.lu|
+| 占位图片 | https://tool.lu/imageholder|
+| 压缩图片 | https://tinypng.com|
+| 正则验证 | https://regexr.com|
+| 正则大全 | https://any86.github.io/any-rule|
+| webpack 配置工具 | https://createapp.dev|
+| 一键生成配置nginx | https://nginxconfig.io|
+| 在线雪碧图生成器 | https://sprite.ydr.me|
+| ProcessOn | https://www.processon.com|
+| 时间戳转换工具 | https://tool.lu/timestamp|
+| RGB颜色值转换工具 | https://www.sioe.cn/yingyong/yanse-rgb-16|
+| PDF转换工具 | https://smallpdf.com/cn/result|
+| Markdown使用指南 | https://blog.csdn.net/cacacai/article/details/80003498|
+| MAC精品分享 | https://xclient.info|
+| 百度网盘不限速 | https://github.com/high-speed-downloader/high-speed-downloader|
+
+
+
+### 社区门户
+
+| 描述 | 地址 |
+| ------ | ------ |
+| csdn | https://www.csdn.net|
+| segmentfault | https://segmentfault.com|
+| 掘金 | https://juejin.im/timeline/frontend|
+| stackoverflow | https://stackoverflow.com|
+| cnodejs | https://cnodejs.org|
+| v2ex | https://www.v2ex.com|
+| Leecode | https://leetcode-cn.com/explore/interview/card/tencent/225/design|
+| w3cplus | https://www.w3cplus.com|
+
+
+
+
+
+
+
+
+
 
 ### 面试
 | 描述 | 地址 |
@@ -232,15 +276,4 @@
 | 面试大全 | https://github.com/haizlin/fe-interview|
 
 
-### 社区门户
 
-| 描述 | 地址 |
-| ------ | ------ |
-| csdn | https://www.csdn.net|
-| segmentfault | https://segmentfault.com|
-| 掘金 | https://juejin.im/timeline/frontend|
-| stackoverflow | https://stackoverflow.com|
-| cnodejs | https://cnodejs.org|
-| v2ex | https://www.v2ex.com|
-| Leecode | https://leetcode-cn.com/explore/interview/card/tencent/225/design|
-| w3cplus | https://www.w3cplus.com|
