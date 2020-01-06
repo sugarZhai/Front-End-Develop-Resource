@@ -8,6 +8,12 @@
 
 &emsp;[3. React与Vue区别](#j3)
 
+&emsp;[4. react中如何获取一个dom元素的所有方法和属性](#j4)
+
+&emsp;[5. react渲染机制](#j5)
+
+&emsp;[6. react生命周期](#j6)
+
 <h5 id='j1'>1. React diff算法</h5>
 
 - 1、在React中，两棵DOM树只会对同一层的节点进行比较，若发现节点已不存在，则该节点及其子节点会被完全删除，不会用于进一步的比较。这样，只需要对树进行一次遍历，就能完成整个DOM树的比较
@@ -102,5 +108,49 @@ React每当应用的状态被改变时，全部子组件都会重新渲染。这
 
 6 生命周期函数名太长 directive
 
+<h5 id='j4'>要从组件中获取真实的DOM节点，则可在jsx标签中加入<font color="red">ref</font>属性</h5>
+
+<h5 id='j5'>react渲染机制</h5>
+
+1、react render()函数将组建或者虚拟DOM元素渲染到真实的DOM上，将任务交给浏览器，进而进行layout和paint等步骤
+
+`render():function(nextElement,container,callback){}`
+
+>nextElement :要插入到DOM中的内容
+>container :要插入到的容器
+>callback: 回调函数
+>createElement()接收三个参数（type，config，children），做了一些变量初始化，接着调用了ReactElement()方法。 
+ReactElement()是一个工厂方法，根据传入的参数返回一个element对象
 
 
+2、进入页面后render()执行了几次
+
+首次加载
+
+setState改变组件内部state。 注意： 此处是说通过setState方法改变。
+
+接受到新的props
+
+
+3、进行Diff算法虚拟DOM
+
+>https://blog.csdn.net/MichelleZhai/article/details/88640265
+
+<h5 id='j6'>react生命周期</h5>
+
+一、挂载(Mounting)
+constructor(props)
+componentWillMount()
+render()
+componentDidMount()
+
+二、更新(Updating)
+componentWillReceiveProps(nextProps)
+shouldComponentUpdate(nextProps, nextState)
+componentWillUpdate(nextProps, nextState)
+componentDidUpdate(prevProps, prevState)
+
+三、卸载(Unmounting)
+componentWillUnmount()
+
+![在这里插入图片描述](https://img-blog.csdn.net/2018042618533222?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L01pY2hlbGxlWmhhaQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70)
