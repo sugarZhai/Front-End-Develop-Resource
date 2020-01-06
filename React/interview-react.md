@@ -139,18 +139,26 @@ setState改变组件内部state。 注意： 此处是说通过setState方法改
 <h5 id='j6'>react生命周期</h5>
 
 一、挂载(Mounting)
+
 constructor(props)
+
 componentWillMount()
 render()
+
 componentDidMount()
 
 二、更新(Updating)
+
 componentWillReceiveProps(nextProps)
+
 shouldComponentUpdate(nextProps, nextState)
+
 componentWillUpdate(nextProps, nextState)
+
 componentDidUpdate(prevProps, prevState)
 
 三、卸载(Unmounting)
+
 componentWillUnmount()
 
-![在这里插入图片描述](https://img-blog.csdn.net/2018042618533222?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L01pY2hlbGxlWmhhaQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70)
+![这里写图片描述](https://img-blog.csdn.net/2018042618533222?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L01pY2hlbGxlWmhhaQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70)
