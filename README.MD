@@ -272,6 +272,7 @@
 | WECHAT | [小程序\微信平台  ](小程序/interview-wechat.md)|
 | NIGNX | [nginx ](Nginx/interview-nginx.md)|
 | GIT | [Git常见问题](Git/interview-git.md)|
+| FrameWork | [前端框架总结与区别](前端架构/interview-git.md)|
 | 面试笔记 | [面试 ](面试/interview.md)|
 | 面试大全 | https://github.com/haizlin/fe-interview|
 
