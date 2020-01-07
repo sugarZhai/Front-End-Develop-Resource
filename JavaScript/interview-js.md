@@ -76,6 +76,11 @@
 
 &emsp;[37、移动端300ms延时的原因? 如何处理?](#j37)
 
+&emsp;[38、JSBridge原理, js和native是如何通信的?](#j38)
+
+&emsp;[39、实现简易模板函数?](#j39)
+
+
 <h5 id='j1'>1. JavaScript 有哪些数据类型</h5>
 
 6种原始数据类型：
@@ -745,8 +750,37 @@ new Promise(function(resolve){
  
  // 2 4 3 1
 ```
-
 在异步任务中，定时器也属于特殊的存在。有人将其称之为 宏任务、微任务，定时器就属于宏任务的范畴。
+```js
+console.log('1');
+
+setTimeout(function () {
+  console.log('2');
+});
+
+console.log('3');
+
+(async function() {
+  console.log('4');
+  await Promise.resolve();
+  console.log('5');
+})();
+
+var a = new Promise(function (resolve) {
+    resolve();
+    console.log('6');
+});
+
+console.log('7');
+
+a.then(function () {
+  console.log('8');
+});
+ 
+ // 1 3 4 6 7 5 8 2
+```
+
+
 
 参考 [JS引擎的执行机制](https://segmentfault.com/a/1190000012806637)
 
@@ -955,3 +989,24 @@ SSR 的出现一定程度上解决了 SPA 首屏慢的问题，又极大的减�
 原因：双击缩放
 
 处理：1、touch-action: manipulation（ touch-action 用于指定某个给定的区域是否允许用户操作，以及如何响应用户操作（比如浏览器自带的划动、缩放等）
+
+<h5 id="j38">JSBridge原理, js和native是如何通信的?</h5>
+
+
+<h5 id="j39">实现简易模板函数</h5>
+
+```js
+function template(tmpl, data) {
+  let result = tmpl;
+  for (var key in data) {
+    result = result.replace(new RegExp("\\(" + key + "\\)", "g"), data[key]);
+  }
+  return result;
+}
+let me2 = template("我的名字是(name)，我的工作是(work)，(name) Love (work)", {
+  name: "xxx",
+  work: "yy"
+});
+console.log(me2)
+// 函数的输出是 '我的名字是小周，我的工作是编程，我喜欢编程'
+```
