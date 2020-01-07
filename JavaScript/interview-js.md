@@ -62,6 +62,8 @@
 
 &emsp;[30. 观察者模式实现？](#j30)
 
+&emsp;[31. HTTP报文头部有哪些字段? 有什么意义？](#j31)
+
 <h5 id='j1'>1. JavaScript 有哪些数据类型</h5>
 
 6种原始数据类型：
@@ -816,3 +818,58 @@ callee 是返回正在被执行的function函数，也就是所指定的function
 1、一对多的依赖关系,当一个对象的状态发生改变时, 所有依赖于它的对象都得到通知并被自动更新。
 
 2、一是被观察者(Subject)，多是观察者(Observer)
+
+<h5 id='j31'>31、HTTP报文头部有哪些字段?有什么意义？HTTP状态码？</h5>
+
+![avatar](http.png)
+
+![avatar](http1.png)
+
+#### 请求头部：
+
+Accept：浏览器可接受的MIME类型。
+
+Accept-Charset：浏览器可接受的字符集。
+
+Accept-Encoding：浏览器能够进行解码的数据编码方式，比如gzip。
+
+Accept-Language：浏览器所希望的语言种类
+
+Connection：表示是否需要持久连接
+
+Cookie：这是最重要的请求头信息之一
+
+Host：初始URL中的主机和端口。
+
+If-Modified-Since：只有当所请求的内容在指定的日期之后又经过修改才返回它，否则返回304“Not Modified”应答。
+
+Referer：包含一个URL，用户从该URL代表的页面出发访问当前请求的页面。
+
+User-Agent：浏览器类型
+
+#### HTTP状态码：
+100  Continue  继续
+
+201  Created  请求成功并且服务器创建了新的资源
+202  Accepted  服务器已接受请求，但尚未处理
+
+301  Moved Permanently  请求的网页已永久移动到新位置。
+
+302 Found  临时性重定向。
+
+303 See Other  临时性重定向，且总是使用 GET 请求新的 URL。
+
+304  Not Modified  自从上次请求后，请求的网页未修改过。<font color="red">浏览器的缓存机制，第一遍200，第二遍304表示和上次请求相同，使用本地缓存</font>
+
+400 Bad Request  服务器无法理解请求的格式
+
+401 Unauthorized  请求未授权。
+
+403 Forbidden  禁止访问。
+
+404 Not Found  找不到如何与 URL 相匹配的资源。
+
+502 HTTP 502 – 网关错误
+
+503 Service Unavailable 服务器端暂时无法处理请求（可能是过载或维护）
+

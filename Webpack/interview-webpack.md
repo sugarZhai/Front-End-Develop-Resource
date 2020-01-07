@@ -34,6 +34,7 @@
 <h5 id='w1'>1. 对webpack的了解</h5>
 
 [官方文档](https://www.webpackjs.com/concepts/)
+<img src="https://pic2.zhimg.com/50/v2-8b265c60d7c84f9fb538fad39be4f0a3_hd.jpg"/>
 
 > 本质上，webpack 是一个现代 JavaScript 应用程序的静态模块打包器(module bundler)，将项目当作一个整体，通过一个给定的的主文件，webpack将从这个文件开始找到你的项目的所有依赖文件，使用loaders处理它们，最后打包成一个或多个浏览器可识别的js文件
 
@@ -61,6 +62,10 @@ module.exports = {
 - 插件(plugins)
 
 `loader` 被用于转换某些类型的模块，而插件则可以用于执行范围更广的任务。插件的范围包括，从打包优化和压缩，一直到重新定义环境中的变量
+
+- Babel
+
+Babel 是一个 JavaScript 编译器。他把最新版的javascript编译成当下可以执行的版本，简言之，利用babel就可以让我们在当前的项目中随意的使用这些新最新的es6，甚至es7的语法,babel-core是Babel的核心包。
 
 - 模式
 

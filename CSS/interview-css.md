@@ -126,6 +126,26 @@ CSS的两种盒模型：
 
 > `rem`的值并不是固定的，始终是基于根元素 `<html>` 的，也代表倍数
 
+<h5 id='c4-1'>4-1. 移动端高清方案如何解决 ? rem适配方案</h5>
+
+<meta name="viewport" 
+content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no"/>
+
+<body style="margin:0;padding:0;font-size:0.32rem"></body>
+
+>width=device-width:表示宽度是设备屏幕的宽度
+>initial-scale=1.0:表示初始的缩放比例
+>minimum-scale=1.0:表示最小的缩放比例
+>maximum-scale=1.0:表示最大的缩放比例
+>user-scalable=no: 表示用户是否可以调整缩放比例
+
+##### 原理：
+1、动态设置html的font-size,设备屏幕的DPR(设备像素比，又称DPPX,比如dpr=2时,表示1个css像素由4个物理像素点组成)
+
+2、自动设置meta标签viewport
+
+https://www.cnblogs.com/Vayne-N/p/6913204.html附阿里提供的原生JS压缩的高清方案布局代码
+
 <h5 id='c5'>5. position的值有哪些</h5>
 
 > static： 默认值。没有定位，元素出现在正常的流中
