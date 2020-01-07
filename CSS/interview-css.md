@@ -34,6 +34,8 @@
 
 &emsp;[15. css预处理器](#c15)
 
+&emsp;[16. css外边距(margin)重叠及防止](#c16)
+
 <h3 id='start'>前言</h3>
 
   每年都会出去面试一圈，积累更多的经验、拓展自己的知识面，整体的感觉是大多数都比较注重基础性的东西，那就从最基本的写起吧↓
@@ -50,6 +52,11 @@ box-sizing: content-box|border-box|inherit:
 - content-box 使得元素的宽高即为内容区的宽高(默认模式)
 - border-box: 计算方式content + padding + border = 本身元素大小，即缩小了content大小
 - inherit 指定box-sizing属性的值，应该从父元素继承
+
+CSS的两种盒模型：
+
+1、在W3C标准的盒子模型中,width指content部分的宽度
+2、在IE盒子模型中,width表示content+padding+border这三个部分的宽度
 
 <h5 id='c2'>2. 清除浮动，什么时候需要清除浮动，清除浮动都有哪些方法</h5>
 
@@ -193,3 +200,23 @@ box-sizing: content-box|border-box|inherit:
 <h5 id='c15'>15. css预处理器</h5>
 
 提供了一种css的书写方式，常见的就是 [SAAS文档](http://sass.bootcss.com/docs/sass-reference/) 和 [LESS文档](https://less.bootcss.com/)
+
+<h5 id='c16'>16. css外边距(margin)重叠及防止</h5>
+
+现象是：外边距重叠是指两个垂直相邻的块级元素，当上下两个边距相遇时，起外边距会产生重叠现象，且重叠后的外边距，等于其中较大者。
+![avatar](css-margin.png)
+
+解决方案：
+
+1、外层元素padding代替
+
+2、内层元素透明边框 border:1px solid transparent;
+
+3、内层元素绝对定位 postion:absolute:
+
+4、外层元素 overflow:hidden;
+
+5、内层元素 加float:left;或display:inline-block;
+
+6、内层元素padding:1px;
+
