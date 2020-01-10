@@ -162,3 +162,10 @@ componentDidUpdate(prevProps, prevState)
 componentWillUnmount()
 
 <img src="https://img-blog.csdn.net/2018042618533222?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L01pY2hlbGxlWmhhaQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70"/>
+
+
+<h5 id='j6'>React中setState什么时候是同步的，什么时候是异步的？</h5>
+
+1、如果是由React引发的事件处理(比如通过onClick引发的事件处理)，调用setState不会同步更新this.state,除此之外的setState调用会同步执行this.state.所谓“除此之外”，指的是绕过React通过addEventListener直接添加的事件处理函数，还有通过setTimeout/setInterval产生的异步调用
+
+2、原因是：在React的setState函数实现中，会根据一个变量isBatchingUpdates判断是直接更新this.state还是放到队列中回头再说，而isBatchingUpdates默认是false，也就表示setState会同步更新this.state，但是，有一个函数batchedUpdates，这个函数会把isBatchingUpdates修改为true，而当React在调用事件处理函数之前就会调用这个batchedUpdates，造成的后果，就是由React控制的事件处理过程setState不会同步更新this.state。

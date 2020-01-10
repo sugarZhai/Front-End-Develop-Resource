@@ -1010,3 +1010,295 @@ let me2 = template("我的名字是(name)，我的工作是(work)，(name) Love 
 console.log(me2)
 // 函数的输出是 '我的名字是小周，我的工作是编程，我喜欢编程'
 ```
+
+```js
+let promise1=Promise.resolve(3);
+let promise2=42;
+let promise3=new Promise((resolve,reject)=>{
+  setTimeout(resolve,100,'foo');
+})
+Promise.all([promise1,promise2,promise3]).then((value)=>{
+  console.log(value)
+})
+```
+
+<h5 id="j40">es5实现const</h5>
+
+```js
+function myConst(key,val){
+  window.key=val
+  Object.defineProperty(window,key,{
+    enumerable:false,
+    configurable:false,
+    get:function(){
+      return val
+    },
+    set:function(value){
+      if(value!==val){
+        throw new TypeError('不能重复定义')
+      }else{
+        return val
+      }
+    }
+  })
+}
+myConst('a',1)
+console.log(a)
+```
+
+<h5 id="j41">编程实现new操作符</h5>
+
+```js
+ var a={};
+ a.__proto__ = A.prototype;
+ A.call(a);
+ console.log(a.name)
+```
+
+<h5 id="j42">ES5实现Promise.all</h5>
+
+```js
+   Promise.all=function(pArray){
+     var rArray=[];
+     var promise=new Promise(function(resolve,reject){
+       pArray.forEach(function(pr,i){
+         if(pr instanceof Promise){
+           pr.then(function(value1){
+             analysisPromise(value1,function(value2){
+               rArray[i]=value2;
+               if(rArray.length === pArray.length){
+                 resolve(rArray);
+               }
+             },reject);
+           })
+         }else{
+           rArray[i]=pr;
+           if(rArray.length===pArray.length){
+             resolve(rArray);
+           }
+         }
+       });
+     });
+     return promise
+   }
+```
+<h5 id="j43">43.实现const对象内部的key值不可修改</h5>
+
+const只读属性不可修改，但是const对象内部的key值可以修改，比如说const Test={}不可修改，但是const Test={key1:value1}中的key1就可以修改
+
+```js
+   //方法一 Object.freeze()
+   const Test={key1:22}
+   Object.freeze(Test)
+   Test.key1=78
+   console.log(Test.key1);//22
+```
+
+```js
+   //方法二 利用对象的数据属性writable
+   const Test={key1:22}
+   Object.defineProperty(Test,'key1',{
+     value:Test.key1,
+     writeable:false
+   });
+   Test.key1=77
+   console.log(Test.key1);//22
+```
+```js
+   //方法三 利用对象的访问器getter和setter属性
+   const book={
+     year:2004,
+   };
+   Object.defineProperty(book,'year',{
+     get:function(){
+       return this.year;
+     },
+     set:function(newValue){
+       if(newValue!==2004){
+         alert('不可修改')
+       }else{
+         return this.year;
+       }
+     }
+   })
+   book.year=2007
+   console.log(book)
+```
+
+<h5 id="j44">44.手写一个Bind函数</h5>
+
+```js
+   //方法一
+    Function.prototype.myBind=function(thisArg){
+      if( typeof this !== 'function'){
+           return;
+      }
+      var _self=this
+      var args=Array.prototype.slice.call(arguments,1)
+      var fnBound=function(){
+        var _this=this instanceof _self?this:thisArg;
+        return _self.apply(_this,args.concat(Array.prototype.slice.call(arguments)));
+      }
+      fnBound.prototype=this.prototype;
+      return fnBound;
+    }
+```
+```js
+ //方法二
+ Function.prototype.myBind=function(context){
+   const fnToBind=this
+   const fnBound=function(){
+     return fnToBind.apply(context)
+   }
+   return fnBound
+ }
+ const boy={
+   x:8,
+   getX(){return this.x}
+ }
+ const getX=boy.getX
+ getX.myBind(boy)()
+```
+
+
+<h5 id="j45">45.JS实现页面滚动至图片处加载</h5>
+
+1、初始进入页面，计算要加载哪些图片，创建Image,加载图片，让要显示的图片路径改为实际路径
+
+2、滚动至图片要显示出来时（diff设置滚动至距图片多少距离开始加载），执行1的逻辑
+
+原理：
+
+1、给页面绑定滚动事件；
+
+2、加载页面的时候把真正的图片地址放在某属性中；
+
+3、然后再滚动过程中判断元素是否进入当前浏览器窗口内；
+
+4、最后加载图片
+
+https://blog.csdn.net/MichelleZhai/article/details/103908218
+
+
+
+<h5 id="j46">46、webpack如何配置ES6语法IE兼容性处理</h5>
+
+webpack使用babel处理ES6语言兼容浏览器
+
+1、使用babel处理高级JS语法，安装babel-core babel-loader babel-plugin-transform等等
+
+2、安装babel-preset-es2015 babel-preset-es2016
+
+3、在项目根目录中添加.babelrc文件，并修改这个配置文件如下：
+
+{"presets":["es2015","stage-0"],"plugins":["transform-runtime"]}
+
+4、但是这时候ES6中的一些新增的Promise或WeakMap,静态方法，如Array.from或Object.assign等等，这些不会被转义，这时候需用到<font color="red">@Babel/Polyful就可以转义</font>
+
+```js
+   npm install --save @babel/polyfill
+```
+
+<h5 id="j47">47、forEach与map的区别</h5>
+
+1、forEach()返回值undefined，不可以链式调用(没有返回值)。
+
+2、map()返回一个新数组，原数组不会改变(有返回值，可以return出来)。
+
+<h5 id="j48">48、数组多类型去重</h5>
+1、复杂的
+数组reduce去重
+
+```js
+    const oldInfo=[
+      {id:1,name:'cen'},
+      {id:2,name:'cen'},
+      {id:3,name:'hua'},
+      {id:4,name:'chen'}
+    ]
+    const hash={}
+    let newInfo=[]
+    newInfo=oldInfo.reduce((item,next)=>{
+      hash[next.name]?item.push():hash[next.name]=true&&item.push(next)
+      return item
+    },[])
+```
+2、简单的
+
+    new Set(Array)等等
+
+<h5 id="j49">49、Async/Await 如何通过同步的方式实现异步</h5>
+async await 用于把异步请求变为同步请求的方式,第一个请求的返回值作为后面一个请求的参数,其中每一个参数都是一个promise对象
+
+```js
+   (async ()=>{
+      var a=await A();
+      var b=await B(a);
+      var c=await C(b);
+      var d=await D(c);
+   })();
+```
+<h5 id="j50">50、简单讲解一下 http2 的多路复用</h5>
+
+HTTP2采用二进制格式传输，取代了HTTP1.x的文本格式，二进制格式解析更高效。
+多路复用代替了HTTP1.x的序列和阻塞机制，所有的相同域名请求都通过同一个TCP连接并发完成。在HTTP1.x中，并发多个请求需要多个TCP连接，浏览器为了控制资源会有6-8个TCP连接都限制。
+HTTP2中
+
+1、同域名下所有通信都在单个连接上完成，消除了因多个 TCP 连接而带来的延时和内存消耗
+
+2、单个连接上可以并行交错的请求和响应，之间互不干扰
+
+
+<h5 id="j51">51、Promise 构造函数是同步执行还是异步执行，那么 then 方法呢？</h5>
+
+```js
+   const promise=new Promise((resolve,reject)=>{
+     console.log(1)
+     resolve()
+     console.log(2)
+   })
+   promise.then(()=>{
+     console.log(3)
+   })
+   console.log(4)
+   //1243
+   //promise构造函数是同步执行的，then方法是异步执行的
+```
+
+
+<h5 id="j52">52、JS异步解决方案的发展历程以及优缺点？</h5>
+
+1、callback(回调函数)
+
+缺点：回调地狱,不能用try catch捕获错误，不能return
+
+2、Promise
+
+Promise就是为了解决callback的问题而产生的
+
+Promise实现了链式调用，也就是说每次then后返回的都是一个全新的Promise，如果我们在then中return，return的结果会被Promise.resolve()包装
+
+
+优点：解决了回调地狱的问题
+
+缺点：无法取消Promise，错误需要通过回调函数来捕获
+
+3、Generator
+
+特点:可以控制函数的执行，可以配合co函数库使用
+
+```js
+  function* fetch(){
+    yield ajax('xxx1',()=>{})
+    yield ajax('xxx2',()=>{})
+    yield ajax('xxx3',()=>{})
+  }
+```
+
+4、Aysnc / await
+
+async、await是异步的终极解决方案
+
+优点：代码清晰，不用像Promise写一大堆then链，处理了回调地狱的问题
+
+缺点：await将异步代码改造成同步代码，如果多个异步操作没有依赖性而使用await会导致性能上的降低
