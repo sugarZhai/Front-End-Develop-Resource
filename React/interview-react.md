@@ -14,6 +14,10 @@
 
 &emsp;[6. react生命周期](#j6)
 
+&emsp;[7. react Hooks](#j7)
+
+&emsp;[8. react组件之间如何通信](#j8)
+
 <h5 id='j1'>1. React diff算法</h5>
 
 - 1、在React中，两棵DOM树只会对同一层的节点进行比较，若发现节点已不存在，则该节点及其子节点会被完全删除，不会用于进一步的比较。这样，只需要对树进行一次遍历，就能完成整个DOM树的比较
@@ -169,3 +173,51 @@ componentWillUnmount()
 1、如果是由React引发的事件处理(比如通过onClick引发的事件处理)，调用setState不会同步更新this.state,除此之外的setState调用会同步执行this.state.所谓“除此之外”，指的是绕过React通过addEventListener直接添加的事件处理函数，还有通过setTimeout/setInterval产生的异步调用
 
 2、原因是：在React的setState函数实现中，会根据一个变量isBatchingUpdates判断是直接更新this.state还是放到队列中回头再说，而isBatchingUpdates默认是false，也就表示setState会同步更新this.state，但是，有一个函数batchedUpdates，这个函数会把isBatchingUpdates修改为true，而当React在调用事件处理函数之前就会调用这个batchedUpdates，造成的后果，就是由React控制的事件处理过程setState不会同步更新this.state。
+
+<h5 id='j7'>React Hooks简单介绍？</h5>
+
+#### 背景
+
+1、组件类的缺点
+
+大型组件很难拆分和重构，也很难测试
+
+业务逻辑分散在组件的各个方法之中，导致重复逻辑或关联逻辑
+
+组件类引入了复杂的编程模式，比如render props和高阶组件
+
+2、函数组件
+
+组件的最佳写法应该是函数，而不是类
+
+React早期的函数组件，必须是纯函数，不能包含状态，也不支持生命周期方法，因此无法取代类。
+
+<font color="red">React Hooks的设计目的，就是加强版函数组件，完全不使用“类”,就能写出一个全功能的组件</font>
+
+
+#### 概念
+
+1、React Hooks的意思是，组件尽量写成纯函数，如果需要外部功能和副作用，就用钩子把外部代码“钩”进来。React Hooks就是那些钩子。
+
+React Hooks四个钩子：
+
+useState()
+
+useContext()
+
+useReducer()
+
+useEffect()
+
+<h5 id='j8'>react中组件之间如何通信</h5>
+
+1、父传子：this.props
+
+2、子传父：利用回调函数，使用 props 回调,父组件将一个函数作为 props 传递给子组件，子组件调用该回调函数，便可以向父组件通信。
+
+3、同级或跨级组件：Mbox和context
+
+- 上级组件要声明自己支持 context，并提供一个函数来返回相应的 context 对象
+- 子组件要声明自己需要使用 context
+- context是一个全局变量，像是一个大容器，在任何地方都可以访问到，我们可以把要通信的信息放在context上，然后在其他组件可以随意取到
+- ###### React官方不建议使用大量context,当组件结构复杂时候，我们并不知道context是从哪里传过来的；而且context是一个全局变量，全局变量正是导致应用走向混乱的罪魁祸首。

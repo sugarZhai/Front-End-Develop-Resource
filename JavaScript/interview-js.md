@@ -1248,7 +1248,7 @@ HTTP2中
 2、单个连接上可以并行交错的请求和响应，之间互不干扰
 
 
-<h5 id="j51">51、Promise 构造函数是同步执行还是异步执行，那么 then 方法呢？</h5>
+<h5 id="j51">51、Promise为什么比setTimeout先执行？？</h5>
 
 ```js
    const promise=new Promise((resolve,reject)=>{
@@ -1263,6 +1263,7 @@ HTTP2中
    //1243
    //promise构造函数是同步执行的，then方法是异步执行的
 ```
+https://blog.csdn.net/MichelleZhai/article/details/103978257
 
 
 <h5 id="j52">52、JS异步解决方案的发展历程以及优缺点？</h5>
@@ -1301,3 +1302,27 @@ async、await是异步的终极解决方案
 优点：代码清晰，不用像Promise写一大堆then链，处理了回调地狱的问题
 
 缺点：await将异步代码改造成同步代码，如果多个异步操作没有依赖性而使用await会导致性能上的降低
+
+<h5 id="j53">53、是否改变原数组的常用方法？</h5>
+
+改变原数组的
+
+1、shift:将第一个元素删除并且返回删除元素，空即为undefined
+
+2、unShift:向数组开头添加元素，并返回新的长度
+
+3、pop:删除最后一个并返回删除的元素
+
+4、push：向数组末尾添加元素，并返回新的长度
+
+5、reverse:颠倒数组顺序
+
+6、sort:对数组排序
+
+7、splice:splice(start,length,item)删、增，替换数组元素，返回被删除数组，无删除则不返回
+
+不改变原数组的：
+1、concat :连接多个数组，返回新的数组
+2、join:将数组中所有元素以参数作为分隔符放入一个字符
+3、slice:slice(start,end),返回选定元素
+4、map、filter、forEach、some、every等

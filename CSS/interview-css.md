@@ -36,6 +36,10 @@
 
 &emsp;[16. css外边距(margin)重叠及防止](#c16)
 
+&emsp;[17. css选择器及优先顺序](#c17)
+
+&emsp;[18. css浏览器兼容性问题和布局问题](#c18)
+
 <h3 id='start'>前言</h3>
 
   每年都会出去面试一圈，积累更多的经验、拓展自己的知识面，整体的感觉是大多数都比较注重基础性的东西，那就从最基本的写起吧↓
@@ -140,7 +144,7 @@ content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no
 >user-scalable=no: 表示用户是否可以调整缩放比例
 
 ##### 原理：
-1、动态设置html的font-size,设备屏幕的DPR(设备像素比，又称DPPX,比如dpr=2时,表示1个css像素由4个物理像素点组成)
+1、根据设备屏幕的设备像素比动态设置html的font-size,(设备像素比，又称DPPX,比如dpr=2时,表示1个css像素由4个物理像素点组成)
 
 2、自动设置meta标签viewport
 
@@ -239,4 +243,23 @@ https://www.cnblogs.com/Vayne-N/p/6913204.html附阿里提供的原生JS压缩�
 5、内层元素 加float:left;或display:inline-block;
 
 6、内层元素padding:1px;
+
+
+<h5 id='c17'>17. css选择器及优先级排序</h5>
+
+1、！important
+
+2、行内样式，在style属性里面写的样式
+
+3、id选择器
+
+4、class选择器
+
+5、标签选择器
+
+6、通配符选择器
+
+7、浏览器的自定义属性和继承
+
+
 
