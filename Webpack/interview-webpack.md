@@ -30,6 +30,7 @@
 
 &emsp;[15. 什么是bundle,什么是chunk，什么是module](#w15)
   
+&emsp;[16. webpack 从指定入口文件中提取公共文件的方法](#w16)
 
 <h5 id='w1'>1. 对webpack的了解</h5>
 
@@ -248,3 +249,46 @@ entry: {
 <h5 id='w15'>15. 什么是bundle,什么是chunk，什么是module</h5>
 
 > `bundle` 是由 `webpack` 打包出来的文件，`chunk` 是指 `webpack` 在进行模块的依赖分析的时候，代码分割出来的代码块。`module`是开发中的单个模块
+
+<h5 id='w16'>16. webpack 从指定入口文件中提取公共文件的方法</h5>
+
+1、从指定入口文件中提取公共文件
+
+```js
+   //CommonsChunkPlugin的实现:
+   entry:{
+     index:'./src/index.js',
+     index1:'./src/index1.js',
+     index2:'./src/index2.js'
+   },
+   plugins:[
+     new CommonsChunkPlugin({
+       name:'common1',
+       chunks:['index','index1','index2']
+     })
+   ]
+```
+
+2、其中index和index1以及index2都是打包的入口文件。splitChunks的实现：
+
+```js
+  // 提取公共模块，包括第三方库和自定义工具库等
+   optimization:{
+      // 找到chunk中共享的模块，取出来生成淡出的chunk
+      splitChunks:{
+        chunks:'all',//async表示抽取异步模块，all表示对所有模块生效，initial表示对同步模块生效
+        minSize:0,
+        cacheGroups:{
+          common:{//抽取公共文件
+            minChunks:3,
+            priority:1,
+            name:'common',
+            chunks(chunk){
+              //exclude `my-excluded-chunk`
+              return ['index','index1','index2'].includes(chunk.name);
+            }
+          }
+        }
+      }
+   }
+```

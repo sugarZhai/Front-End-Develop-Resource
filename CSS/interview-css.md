@@ -40,6 +40,8 @@
 
 &emsp;[18. css浏览器兼容性问题和布局问题](#c18)
 
+&emsp;[19. 移动端适配1px的问题](#c19)
+
 <h3 id='start'>前言</h3>
 
   每年都会出去面试一圈，积累更多的经验、拓展自己的知识面，整体的感觉是大多数都比较注重基础性的东西，那就从最基本的写起吧↓
@@ -261,5 +263,66 @@ https://www.cnblogs.com/Vayne-N/p/6913204.html附阿里提供的原生JS压缩�
 
 7、浏览器的自定义属性和继承
 
+<h5 id='c18'>18. css浏览器兼容性问题和布局问题</h5>
+
+
+<h5 id='c19'>19. 移动端适配1px的问题</h5>
+
+###### 原因：
+
+1、在window对象中有一个devicePixelRatio属性，可以反映css中的像素与设备的像素比。
+
+2、<font color="red">不同的移动设备有不同的像素密度。</font>
+
+3、devicePixelRatio=物理像素/独立像素 1px变粗的原因：viewport的设置物理像素和css像素的比例，在retina屏的苹果手机上，这个值为2或3，css里写的1px长度映射到物理像素上就有2px或3px那么长
+
+###### 解决：flexible.js布局(手淘团队)
+
+1、rem布局和字体的处理
+
+- rem布局中字体不是用rem而使用px（计算时会有偏差）
+- 为了更好的阅读体验，更好的做法是利用px和媒体查询来进行适配，对font-size进行放大的处理
+
+```js
+   @mixin font-dpr($font-size){
+     font-size:$font-size;
+     [data-dpr="2"]&{
+       font-size:$font-size*2;
+     }
+     [data-dpr="3"]&{
+       font-size:$font-size*3;
+     }
+   }
+```
+
+2、Retina屏幕下的处理与安卓手机的适配
+
+- flexible布局仅仅只是针对iPhone进行适配，而默认所有的安卓设备都强制性设置dpr为1（因为苹果Retina屏幕、安卓非Retina屏幕）
+
+###### 阻止用户缩放方法
+```js
+  <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no;" >
+```
+移动端手机上尽管这样设置了，用户还是可以通过手势来缩放，解决方案如下：
+```js
+  // 检测touch相关事件来阻止事件的触发即可
+  window.onload=function(){
+    // 同时按下两个手指
+    document.addEventListener('touchstart',function(event){
+       if(event.touches.length>1){
+          event.preventDefault()
+       }
+    })
+    var lastTouchEnd=0;
+    //特别注意300ms时差的设置
+    document.addEventListener('touchend',function(event){
+       var now=(new Date()).getTime();
+       if(now-lastTouchEnd <=300){
+         event.preventDefault();
+       }
+       lastTouchEnd=now;
+    })
+  }
+```
 
 
