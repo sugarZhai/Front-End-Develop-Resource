@@ -273,7 +273,7 @@
 | NIGNX | [nginx ](Nginx/interview-nginx.md)|
 | GIT | [Git常见问题](Git/interview-git.md)|
 | FrameWork | [前端框架总结与区别](前端架构/interview-git.md)|
-| 编码题目整理 | [编码题目整理](编码题目整合/interview-git.md)|
+| 编码题目整理 | [编码题目整理](编码题目整合/interview-code.md)|
 | 面试笔记 | [面试 ](面试/interview.md)|
 | 面试大全 | https://github.com/haizlin/fe-interview|
 

@@ -10,7 +10,11 @@
 
 &emsp;[4. Next优缺点](#j4)
 
-&emsp;[5. Jquery与React、vue的区别](#j4)
+&emsp;[5. Jquery与React、vue的区别](#j5)
+
+&emsp;[6. 前端工程化理论](https://blog.csdn.net/MichelleZhai/article/details/104475897)
+
+
 <h5 id='j1'>1. React的优缺点</h5>
 
 ##### 优点
