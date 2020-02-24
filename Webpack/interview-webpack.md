@@ -32,6 +32,8 @@
   
 &emsp;[16. webpack 从指定入口文件中提取公共文件的方法](#w16)
 
+&emsp;[17. webpack treeShacking](https://www.jianshu.com/p/cf930283d404)
+
 <h5 id='w1'>1. 对webpack的了解</h5>
 
 [官方文档](https://www.webpackjs.com/concepts/)

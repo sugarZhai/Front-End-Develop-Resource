@@ -9,6 +9,7 @@
 &emsp;[5.JS手动实现一个new操作符](#j5)
 &emsp;[6.实现简易模板函数](#j6)
 &emsp;[7.手写一个ajax请求函数](#j7)
+&emsp;[8.手写一个promise.all函数](https://blog.csdn.net/MichelleZhai/article/details/104475521)(#j8)
 
 <h5 id='j1'>1. 数组对象reduce去重</h5>
 
@@ -402,3 +403,6 @@ const只读属性不可修改，但是const对象内部的key值可以修改，�
      }
    }
 ```
+<h5 id='j8'>8.手写一个promise.all函数</h5>
+
+ [手写promise.all函数](https://blog.csdn.net/MichelleZhai/article/details/104475521)
