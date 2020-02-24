@@ -3,13 +3,20 @@
 </html>
 
 &emsp;[1. 数组对象reduce去重](#j1)
+
 &emsp;[2. 手写一个Bind函数](#j2)
+
 &emsp;[3. 实现const对象内部的key值不可修改](#j3)
+
 &emsp;[4. es5实现const](#j4)
+
 &emsp;[5.JS手动实现一个new操作符](#j5)
+
 &emsp;[6.实现简易模板函数](#j6)
+
 &emsp;[7.手写一个ajax请求函数](#j7)
-&emsp;[8.手写一个promise.all函数](https://blog.csdn.net/MichelleZhai/article/details/104475521)(#j8)
+
+&emsp;[8.手写一个promise.all函数](https://blog.csdn.net/MichelleZhai/article/details/104475521)
 
 <h5 id='j1'>1. 数组对象reduce去重</h5>
 
