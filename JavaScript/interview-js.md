@@ -102,9 +102,27 @@
 > `typeof` 操作符对于简单数据类型，返回其本身的数据类型，函数对象返回 `function` ，其他对象均返回 `Object`
 
 > `null` 返回 `Object`
+- instanceof的作用：1、用于判断一个引用类型是否属于某构造函数； 2、 还可以在继承关系中用来判断一个实例是否属于它的父类型
 
 - instanceof: 用来判断A 是否是 B的实例，表达式为 `A instanceof B`，返回一个`Boolean`类型的值
 
+- 和typeof的区别：typeof在对值类型number、string、boolean、null、undefined、以及引用类型的function的反应是精准的；但是，对于对象{}、数组[]、null都会返回object
+
+为了弥补这一点，instanceof从原型的角度，来判断某引用属于哪个构造函数，从而判定它的数据类型
+
+- instanceof 实现原理：通过原型链来实现继承关系的判断
+```javascript
+   function instance_of(L,R){
+     let o=R.prototype;//取R的显示原型
+     L = L.__proto__; //取L的隐式原型
+     while(true){     //循环执行，直到o严格等于L
+       if(L===null) return false;
+       if(o===L)return true
+       L=L.__proto__;
+     }  
+   }
+   //instance_of函数即是instanceof操作符的代码实现，并需要注意传入的参数都是为object类型
+```
 > `instanceof` **检测的是原型,只能用来判断两个对象是否属于实例关系， 而不能判断一个对象实例具体属于哪种类型**
 
 ```js

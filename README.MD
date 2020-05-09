@@ -264,6 +264,7 @@
 | ------ | ------ |
 | HTML | [Html\html5 ](HTML/interview-html.md)|
 | JS | [原型\闭包\es6\异步编程 ](JavaScript/interview-js.md)|
+| TYPESCRIPT | [typescript面试总结 ](Typescript/interview-typescript.md)|
 | CSS | [Css常见问题 ](CSS/interview-css.md)|
 | REACT | [react常见问题 ](React/interview-react.md)|
 | VUE | [vue常见问题 ](VUE/interview-vue.md)|
