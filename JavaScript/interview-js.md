@@ -40,6 +40,8 @@
 
 &emsp;[19. 箭头函数有什么特点](#j19)
 
+&emsp;[19.1 箭头函数和普通函数的区别](#j19.1)
+
 &emsp;[20. Promise 对象的了解](#j20)
 
 &emsp;[21. async 函数以及 awit 命令](#j21)
@@ -80,6 +82,35 @@
 
 &emsp;[39、实现简易模板函数?](#j39)
 
+&emsp;[40、es5实现const?](#j40)
+
+&emsp;[41、编程实现new操作符?](#j41)
+
+&emsp;[42、ES5实现Promise.all?](#j42)
+
+&emsp;[43、实现const对象内部的key值不可修改?](#j43)
+
+&emsp;[44、手写一个Bind函数?](#j44)
+
+&emsp;[45、JS实现页面滚动至图片处加载?](#j45)
+
+&emsp;[46、webpack如何配置ES6语法IE兼容性处理?](#j46)
+
+&emsp;[47、forEach与map的区别?](#j47)
+
+&emsp;[48、数组多类型去重?](#j48)
+
+&emsp;[49、Async/Await 如何通过同步的方式实现异步?](#j49)
+
+&emsp;[50、简单讲解一下 http2 的多路复用?](#j50)
+
+&emsp;[51、Promise为什么比setTimeout先执行?](#j51)
+
+&emsp;[52、JS异步解决方案的发展历程以及优缺点?](#j52)
+
+&emsp;[53、是否改变原数组的常用方法?](#j53)
+
+&emsp;[54、object.defineProperty与proxy的区别?](#j54)
 
 <h5 id='j1'>1. JavaScript 有哪些数据类型</h5>
 
@@ -607,6 +638,11 @@ var f = function (v) {
 - 不可以当作构造函数，也就是说，不可以使用 `new` 命令，否则会抛出一个错误
 - 不可以使用 `arguments` 对象，该对象在函数体内不存在。如果要用，可以用 `rest` 参数代替
 
+<h5 id='j19.1'>19.1 箭头函数与普通函数的区别</h5>
+
+1、箭头函数内的this指向上层对象，bind()、call()、apply()均无法改变指向
+
+2、普通函数内的this执行调用其函数的对象
 <h5 id='j20'>20. Promise 对象的了解</h5>
 
 > Promise 是异步编程的一种解决方案，比传统的解决方案——回调函数和事件——更合理和更强大.所谓Promise，简单说就是一个容器，里面保存着某个未来才会结束的事件（通常是一个异步操作）的结果 --ES6入门-阮一峰
@@ -1344,3 +1380,11 @@ async、await是异步的终极解决方案
 2、join:将数组中所有元素以参数作为分隔符放入一个字符
 3、slice:slice(start,end),返回选定元素
 4、map、filter、forEach、some、every等
+
+<h5 id="j54">54、object.defineProperty与proxy的区别？</h5>
+
+1、proxy直接劫持整个对象返回一个新对象可以直接监听数组变化，我们可以只操作新的对象达到目的，而object.defineProperty只能便利对象属性直接修改
+
+2、proxy缺点：浏览器兼容问题使用polyfill无法适配
+
+3、object.defineProperty无法简体数组变化，vue2对数组的push/pop/shift/unshift/splice/sort/reverse机型hock,其他的数组方法时无法识别的
