@@ -112,6 +112,14 @@
 
 &emsp;[54、object.defineProperty与proxy的区别?](#j54)
 
+&emsp;[55、怎么让Chrome支持小于12px的文字?](#j55)
+
+&emsp;[56、IOS手机浏览器字体齿轮?](#j56)
+
+&emsp;[57、link和@import的区别?](#j57)
+
+&emsp;[58、http和https的区别?](#j58)
+
 <h5 id='j1'>1. JavaScript 有哪些数据类型</h5>
 
 6种原始数据类型：
@@ -467,10 +475,12 @@ class Cat extends Animal {
 
 <h5 id='j12'>12. 跨域问题的产生，怎么解决它</h5>
 
-> 由于浏览器的 [同源策略](http://www.ruanyifeng.com/blog/2016/04/same-origin-policy.html)，在出现 域名、端口、协议有一种不一致时，就会出现跨域，属于浏览器的一种安全限制。
+>由于浏览器的同源策略会导致跨域,同源策略又分为
+>一、DOM同源策略：禁止对不同源页面的DOM进行操作，主要是不同域名的iframe是限制互相访问的
+>二、xmlHttpRequest同源策略：禁止使用XHR对象向不同源的服务器地址发起http请求，只要域名、协议、端口有一个不同都被当做不同的域之间的请求，即跨域请求
 
 解决跨域问题有很多种方式，常用的就是以下几种：
-
+- CORS跨域资源共享  后端需要设置Access-Control-Allow-Credentials:true
 - `jsonp` 跨域：动态创建`script`，再请求一个带参网址实现跨域通信.缺点就是只能实现 `get` 一种请求
 - `document.domain + iframe`跨域：两个页面都通过js强制设置`document.domain`为基础主域，就实现了同域.但是仅限主域相同，子域不同的跨域应用场景
 - 跨域资源共享（CORS）：只服务端设置`Access-Control-Allow-Origin`即可，前端无须设置，若要带`cookie`请求：前后端都需要设置
@@ -1388,3 +1398,60 @@ async、await是异步的终极解决方案
 2、proxy缺点：浏览器兼容问题使用polyfill无法适配
 
 3、object.defineProperty无法简体数组变化，vue2对数组的push/pop/shift/unshift/splice/sort/reverse机型hock,其他的数组方法时无法识别的
+
+<h5 id="j55">55、怎么让Chrome支持小于12px的文字？</h5>
+
+这个我们在做移动端的时候，设计师图片上的文字假如是10px,我们实现在网页上之后。往往设计师回来找我们，这个字体能小一些吗？我设计的是10px?为啥是12px?其实我们都知道，谷歌Chrome最小字体是12px,不管i设置成8px还是10px,在浏览器中只会显示12px,那么如何解决这个坑爹的问题呢？
+
+我们的做法是：
+针对谷歌浏览器内核，加webkit前缀,用transform:scale()这个属性进行缩放！
+```javascript
+  <style>
+   p span{font-size:10px;-webkit-transform:scale(0.8);display:block;}
+  </style>
+  <p>
+    <span>hao rooms博客测试10px</span>
+  </p>
+```
+<h5 id="j56">56、IOS手机浏览器字体齿轮？</h5>
+修改-webkit-font-smoothing属性，结果是：
+-webkit-font-smoothing:none:无抗锯齿
+-webkit-font-smoothing:antialiased | subpixel-antialiased |default：灰度平滑
+
+<h5 id="j57">57、link和@import的区别？</h5>
+```javascript
+   1、link是html的标签，不仅可以加载css还可以定义Rss,rel连接属性；@import是css的语法规则,只能手动引入样式
+   2、加载页面时，link是同时加载的，@import是页面加载完后才加载
+   3、link没有兼容性的问题，而@import只在较高版本的浏览器才可以识别
+   4、link可以通过js插入操作dom，@import不可以
+```
+<h5 id="j58">58、http和https的区别？</h5>
+
+```javascript
+  Http:超文本传输协议（Http，HyperText Transfer Protocol）是互联网上应用最为广泛的一种网络协议。设计Http最初的目的是为了提供一种发布和接收HTML页面的方法。它可以使浏览器更加高效。Http协议是以明文方式发送信息的，如果黑客截取了web浏览器和服务器之间的传输报文，就可以直接获得其中的信息。
+  Https:是以安全为目标的Http通道，是Http的安全版。Https的安全基础是SSL。SSL协议位于TCP/IP协议与各种应用层协议之间，为数据通讯提供安全支持。SSL协议可分为两层：SSL记录协议（SSL Record Protocol）,它建立在可靠的传输协议（如TCP）之上，为高层协议提供数据封装、压缩、加密等基本功能的支持。SSL握手协议（SSL Handshake Protocol）,它建立在SSL记录协议之上，用于在实际的数据传输开始前，通讯双方进行身份认证、协商加密算法、交换加密密钥等。
+
+  HTTP与HTTPS的区别
+
+  1、HTTP是超文本传输协议，信息是明文传输，HTTPS是具有安全性的SSL加密传输协议。
+
+  2、HTTPS协议需要ca申请证书，一般免费证书少，因而需要一定费用。
+
+  3、HTTP和HTTPS使用的是完全不同的连接方式，用的端口也不一样。前者是80,后者是443。
+
+  4、HTTP连接是无状态的，HTTPS协议是由SSL+HTTP协议构建的可进行加密传输、身份认证的网络协议，安全性高于HTTP协议。
+
+  https的优点：
+   尽管HTTPS并非绝对安全，掌握根证书的机构、掌握加密算法的组织同样可以进行中间人形式的攻击，但HTTPS仍是现行架构下最安全的解决方案，主要有以下几个好处：
+   1）使用HTTPS协议可认证用户和服务器，确保数据发送到正确的客户机和服务器；
+   2）HTTPS协议是由SSL+HTTP协议构建的可进行加密传输、身份认证的网络协议，要比http协议安全，可防止数据在传输过程中不被窃取、改变，确保数据的完整性。
+   3）HTTPS是现行架构下最安全的解决方案，虽然不是绝对安全，但它大幅增加了中间人攻击的成本。
+   4）谷歌曾在2014年8月调整搜索引擎算法，并称"比起同等HTTP网站，采用HTTPS加密的网站在搜索结果中的排名将会更高"
+
+    https的缺点：
+    1）Http协议握手阶段比较费时、会使页面的加载时间延长近。
+    2）Https连接缓存不如Http高效，会增加数据开销，甚至已有的安全措施也会因此而受到影响。
+    3）SSL证书通常需要绑定IP，不能在同一IP上绑定多个域名，IPv4资源不可能支撑这个消耗。
+    4）Http协议的加密范围也比较有限。最关键的，SSL证书的信用链体系并不安全，特别是在某些国家可以控制CA根证书的情况下，中间人攻击一样可行。
+
+```

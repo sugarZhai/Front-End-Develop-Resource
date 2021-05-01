@@ -42,6 +42,8 @@
 
 &emsp;[19. 移动端适配1px的问题](#c19)
 
+&emsp;[20. 画一条0.5px的直线](#c20)
+
 <h3 id='start'>前言</h3>
 
   每年都会出去面试一圈，积累更多的经验、拓展自己的知识面，整体的感觉是大多数都比较注重基础性的东西，那就从最基本的写起吧↓
@@ -268,6 +270,7 @@ https://www.cnblogs.com/Vayne-N/p/6913204.html附阿里提供的原生JS压缩�
 
 <h5 id='c19'>19. 移动端适配1px的问题</h5>
 
+
 ###### 原因：
 
 1、在window对象中有一个devicePixelRatio属性，可以反映css中的像素与设备的像素比。
@@ -324,5 +327,11 @@ https://www.cnblogs.com/Vayne-N/p/6913204.html附阿里提供的原生JS压缩�
     })
   }
 ```
+<h5 id='c20'>20. 画一条0.5px的直线？</h5>
 
+```javascript
+  height:1px;
+  transform:scale(0.5);
+  
+```
 
