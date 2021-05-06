@@ -2,212 +2,239 @@
 <h2>目录</h2>
 </html>
 
-&emsp;[1. 数组对象reduce去重](#j1)
+&emsp;[1. 数组对象 reduce 去重](#j1)
 
-&emsp;[2. 手写一个Bind函数](#j2)
+&emsp;[2. 手写一个 Bind 函数](#j2)
 
-&emsp;[3. 实现const对象内部的key值不可修改](#j3)
+&emsp;[3. 实现 const 对象内部的 key 值不可修改](#j3)
 
-&emsp;[4. es5实现const](#j4)
+&emsp;[4. es5 实现 const](#j4)
 
-&emsp;[5.JS手动实现一个new操作符](#j5)
+&emsp;[5.JS 手动实现一个 new 操作符](#j5)
 
 &emsp;[6.实现简易模板函数](#j6)
 
-&emsp;[7.手写一个ajax请求函数](#j7)
+&emsp;[7.手写一个 ajax 请求函数](#j7)
 
-&emsp;[8.手写一个promise.all函数](https://blog.csdn.net/MichelleZhai/article/details/104475521)
+&emsp;[8.手写一个 promise.all 函数](https://blog.csdn.net/MichelleZhai/article/details/104475521)
 
 <h5 id='j1'>1. 数组对象reduce去重</h5>
 
 ```js
-   const oldInfo=[
-     {id:1,name:'cen'},
-     {id:2,name:'cen'},
-     {id:3,name:'hua'},
-     {id:4,name:'cen'}
-   ]
-   const hash={}
-   let newInfo=[]
-   newInfo=oldInfo.reduce((item,next)=>{
-     hash[next.name]?item.push():hash[next.name]=true&&item.push(next)
-     return item
-   },[])
-
+const oldInfo = [
+  { id: 1, name: "cen" },
+  { id: 2, name: "cen" },
+  { id: 3, name: "hua" },
+  { id: 4, name: "cen" },
+];
+const hash = {};
+let newInfo = [];
+newInfo = oldInfo.reduce((item, next) => {
+  hash[next.name] ? item.push() : (hash[next.name] = true && item.push(next));
+  return item;
+}, []);
 ```
 
 <h5 id='j2'>2. 手写一个Bind函数</h5>
+Bind函数有哪些特性：
+1、改变调用者的this指向(使用new时该功能无效)
+2、能接受参数
+3、返回的是一个函数
+4、不会自动执行，需要手动调用
 
 ```js
-    Function.prototype.myBind=function(thisArg){
-      if(typeof this!=='function'){
-        return;
-      }
-      var _self=this
-      var args=Array.prototype.slice.call(arguments,1)
-      var fnBound=function(){
-        var _this=this instanceof _self?this:thisArg;
-        return _self.apply(_this,args.concat(Array.prototype.slice.call(arguments)));
-      }
-      fnBound.prototype=this.prototype
-      return fnBound;
-    }
+//写法一
+Function.prototype._bind = function (...args) {
+  if (typeof this !== "function") return;
+  //获取this数组args的第一项(要指向的this{x:100})
+  const _this = args.shift();
+  //获取fn._bind(...)中fn
+  const self = this;
+  return function () {
+    return self.apply(_this, args);
+  };
+};
+//测试代码
+function fn() {
+  console.log(this); //{x:100}
+}
+let say = fn._bind({ x: 100 }, 1, 2, 3);
+say();
 ```
 
 ```js
-   if(!Function.prototype.bind){
-     Function.prototype.bind=function(){
-       var self=this,                        // 保存原函数
-           context=[].shift.call(arguments) //  保存需要绑定的this上下文
-           args=[].slice.call(arguments);  //   剩余的参数转为数组
-       return function(){
-           self.apply(context,[].concat.call(args,[].slice.call(arguments)));
-       }
-     }
-   }
+//写法二
+Function.prototype._bind = function () {
+  if (typeof this !== "function") return;
+  //利用Array原型对象上的slice()方法，该方法返回一个新的数组，获取传入的参数arguments
+  const args = Array.prototype.slice.call(arguments);
+  const _this = args.shift();
+  const self = this;
+  return function () {
+    return self.apply(_this, args);
+  };
+};
+//测试代码
+function fn() {
+  console.log(this);
+}
+let say = fn._bind({ x: 90 }, 123, 67, 8);
+say();
 ```
 
 ```js
-   Function.prototype.myBind=function(context){
-     const fnToBind=this
-     const fnBound=function(){
-       return fnToBind.apply(context)
-     }
-     return fnBound
-   }
+//写法三
+Function.prototype._bind = function () {
+  if (typeof this !== "function") return;
+  const args = Array.from(arguments);
+  const _this = args.shift();
+  const self = this;
+  return function () {
+    return self.apply(_this, args);
+  };
+};
+//测试代码
+function fn() {
+  console.log(this);
+}
+let say = fn._bind({ x: 60 }, 1, 2, 3);
+say();
 ```
 
 <h5 id='j3'>3. 实现const对象内部的key值不可修改</h5>
 
-const只读属性不可修改，但是const对象内部的key值可以修改，比如说const Test={}不可修改，但是const Test={key1:value1}中的key1就可以修改
+const 只读属性不可修改，但是 const 对象内部的 key 值可以修改，比如说 const Test={}不可修改，但是 const Test={key1:value1}中的 key1 就可以修改
 
 ```js
-   //方法一 Object.freeze()
-   const Test={key1:22}
-   Object.freeze(Test)
-   Test.key1=78
-   console.log(Test,key1)
+//方法一 Object.freeze()
+const Test = { key1: 22 };
+Object.freeze(Test);
+Test.key1 = 78;
+console.log(Test);
 ```
 
 ```js
-   //方法二 利用 对象的数据属性writable
-   const Test={key1:22}
-   Object.defineProperty(Test,'key1',{
-     value:Test.key1,
-     writeable:false
-   });
-   Test.key1=77
-   console.log(Test.key1)//22
+//方法二 利用 对象的数据属性writable
+const Test = { key1: 22 };
+Object.defineProperty(Test, "key1", {
+  value: Test.key1,
+  writeable: false,
+});
+Test.key1 = 77;
+console.log(Test.key1); //22
 ```
-```js
-   //方法三 利用对象的访问器getter和setter属性
-   const book={
-     year:2004,
-   };
-   Object.defineProperty(book,'year',{
-     get:function(){
-       return  this.year;
 
-     },
-     set:function(newValue){
-       if(newValue!==2004){
-         alert('不可修改')
-       }else{
-         return this.year;
-       }
-     }
-   })
-   book.year=2007
-   console.log(book)
+```js
+//方法三 利用对象的访问器getter和setter属性
+const book = {
+  year: 2004,
+};
+Object.defineProperty(book, "year", {
+  get: function () {
+    return this.year;
+  },
+  set: function (newValue) {
+    if (newValue !== 2004) {
+      alert("不可修改");
+    } else {
+      return this.year;
+    }
+  },
+});
+book.year = 2007;
+console.log(book);
 ```
+
 <h5 id='j4'>4. es5实现const</h5>
 
 ```js
-  function myConst(key,val){
-    window.key=val
-    Object.defineProperty(window.key,{
-      enumerable:false,
-      configurable:false,
-      get:function(){
-        return val
-      },
-      set:function(value){
-        if(value!==val){
-          throw new TypeError('不能重复定义')
-        }else{
-          return val
-        }
+function myConst(key, val) {
+  window.key = val;
+  Object.defineProperty(window.key, {
+    enumerable: false,
+    configurable: false,
+    get: function () {
+      return val;
+    },
+    set: function (value) {
+      if (value !== val) {
+        throw new TypeError("不能重复定义");
+      } else {
+        return val;
       }
-    })
-  }
+    },
+  });
+}
 ```
+
 <h5 id='j5'>5.JS手动实现一个new操作符</h5>
 要手动实现一个new操作符，首先要知道new操作符都做了什么事，即构造函数的内部原理：
 
 1、创建一个新对象
 
-2、链接到原型（将构造函数的prototype赋值给新对象的__proto__）;
+2、链接到原型（将构造函数的 prototype 赋值给新对象的**proto**）;
 
-3、绑定this(构造函数中的this指向新对象并且调用构造函数)
+3、绑定 this(构造函数中的 this 指向新对象并且调用构造函数)
 
 4、返回新对象
 
-这样我们就可以手动实现一个new方法了
+这样我们就可以手动实现一个 new 方法了
 
 ```js
-  function realizeNew(){
-    //创建一个新对象
-    let obj={};
-    // 获得构造函数
-    let Con=[].shift.call(arguments);
-    // 链接到原型(给obj这个新生对象的原型指向它的构造函数的原型)
-    obj.__proto__=Con.prototype;
-    // 绑定this
-    let result=Con.apply(obj,arguments);
-    // 确保new出来的是一个对象
-    return typeof result==='object'?result:obj
-  }
+function realizeNew() {
+  //创建一个新对象
+  let obj = {};
+  // 获得构造函数
+  let Con = [].shift.call(arguments);
+  // 链接到原型(给obj这个新生对象的原型指向它的构造函数的原型)
+  obj.__proto__ = Con.prototype;
+  // 绑定this
+  let result = Con.apply(obj, arguments);
+  // 确保new出来的是一个对象
+  return typeof result === "object" ? result : obj;
+}
 ```
+
 测试下
 
 ```js
-   function Person(name,age){
-     this.name=name;
-     this.age=age;
-     this.say=function(){
-       console.log('I am'+this.name)
-     }
-   }
+function Person(name, age) {
+  this.name = name;
+  this.age = age;
+  this.say = function () {
+    console.log("I am" + this.name);
+  };
+}
 
-   //通过new创建构造实例
-   let person1=new Person("Curry",18);
-   console.log(person1.name);//Curry
-   console.log(person1.age);//18
-   person1.say()//I am Curry
+//通过new创建构造实例
+let person1 = new Person("Curry", 18);
+console.log(person1.name); //Curry
+console.log(person1.age); //18
+person1.say(); //I am Curry
 
-   //通过realize()方法创造实例
-   let person2=realizeNew(Person,"Curry",18);
-   console.log(person2.name);//Curry
-   console.log(person2.age);//18
-   person2.say();//I am Curry
+//通过realize()方法创造实例
+let person2 = realizeNew(Person, "Curry", 18);
+console.log(person2.name); //Curry
+console.log(person2.age); //18
+person2.say(); //I am Curry
 ```
 
 <h5 id='j6'>6.实现简易模板函数</h5>
 
 ```js
-   function template(tmpl,data){
-     let result=tmpl;
-     for(var key in data){
-       result=result.replace(new RegExp("\\("+key+"\\)","g"),data[key]);
-     }
-     return result;
-   }
-   let me2=template("我的名字是(name),我的工作是(work)，(name) Love (work)",{
-     name:"xxx",
-     work:"yy"
-   });
-   console.log(me2)
-   //我的名字是小周，我的工作是编程，我喜欢编程
+function template(tmpl, data) {
+  let result = tmpl;
+  for (var key in data) {
+    result = result.replace(new RegExp("\\(" + key + "\\)", "g"), data[key]);
+  }
+  return result;
+}
+let me2 = template("我的名字是(name),我的工作是(work)，(name) Love (work)", {
+  name: "xxx",
+  work: "yy",
+});
+console.log(me2);
+//我的名字是小周，我的工作是编程，我喜欢编程
 ```
 
 <h5 id='j7'>7.手写一个ajax请求函数</h5>
@@ -215,76 +242,78 @@ const只读属性不可修改，但是const对象内部的key值可以修改，�
 1、获取异步请求对象
 
 ```js
-   //获取异步请求对象
-   function getXhr(){
-     var xhr=null;
-     if(window.XMLHttpRequest){
-       xhr=new XMLHttpRequest();
-     }else{
-       //如果浏览器版本是IE8以下浏览器
-       xhr=new ActiveXObject('Microsoft.XMLHttp');
-     }
-     return xhr;
-   }
+//获取异步请求对象
+function getXhr() {
+  var xhr = null;
+  if (window.XMLHttpRequest) {
+    xhr = new XMLHttpRequest();
+  } else {
+    //如果浏览器版本是IE8以下浏览器
+    xhr = new ActiveXObject("Microsoft.XMLHttp");
+  }
+  return xhr;
+}
 ```
-2、创建ajax函数
+
+2、创建 ajax 函数
+
 ```js
-  //url:'url路径' type:请求方式 data：请求参数类型 dataType:返回的字符串类型
-  function ajax({url,type,data,dataType}){
-    return new Promise(function(open,err){
-      //1、创建异步请求对象
-      var xhr=new XMLHttpRequest();
-      //2.绑定监听事件
-      xhr.onreadystatechange=function(){
-          //当异步请求状态变为4时，并且返回的状态码为200，接收响应成功
-          if(xhr.readyState===4&&xhr.status===200){
-            //当返回接收的字符串类型为json串时，自动转换json串
-            if(dataType!==undefined&&dataType.toLowerCase()==="json"){
-              var res=JSON.parse(xhr.responseText)
-            }else{
-              // 否则直接获取返回的响应文本中的内容
-              var res=xhr.responseText
-              // 通过Promise,将返回的数据向后传递
-              open(res);
-            }
-          }
-      }
-      // 如果请求方式为get请求，则将请求参数拼接在url后
-      if(type.toLowerCase()=="get"&&data!==undefined){
-         url+="?"+data;
-      }
-      //3.打开链接
-      xhr.open(type,url,true);
-      //如果请求方式为post请求，则修改请求消息头
-      if(type.toLowerCase()==="post"){
-        // 增加：设置请求消息头
-        xhr.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
-        // 4.发送请求
-        if(type.toLowerCase()=="post"&&data!==undefined){
-          xhr.send(data)
-        }else{
-          xhr.send(null)
+//url:'url路径' type:请求方式 data：请求参数类型 dataType:返回的字符串类型
+function ajax({ url, type, data, dataType }) {
+  return new Promise(function (open, err) {
+    //1、创建异步请求对象
+    var xhr = new XMLHttpRequest();
+    //2.绑定监听事件
+    xhr.onreadystatechange = function () {
+      //当异步请求状态变为4时，并且返回的状态码为200，接收响应成功
+      if (xhr.readyState === 4 && xhr.status === 200) {
+        //当返回接收的字符串类型为json串时，自动转换json串
+        if (dataType !== undefined && dataType.toLowerCase() === "json") {
+          var res = JSON.parse(xhr.responseText);
+        } else {
+          // 否则直接获取返回的响应文本中的内容
+          var res = xhr.responseText;
+          // 通过Promise,将返回的数据向后传递
+          open(res);
         }
       }
-    })
-  }
+    };
+    // 如果请求方式为get请求，则将请求参数拼接在url后
+    if (type.toLowerCase() == "get" && data !== undefined) {
+      url += "?" + data;
+    }
+    //3.打开链接
+    xhr.open(type, url, true);
+    //如果请求方式为post请求，则修改请求消息头
+    if (type.toLowerCase() === "post") {
+      // 增加：设置请求消息头
+      xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+      // 4.发送请求
+      if (type.toLowerCase() == "post" && data !== undefined) {
+        xhr.send(data);
+      } else {
+        xhr.send(null);
+      }
+    }
+  });
+}
 ```
 
-3、jquery中调用ajax函数获取数据：通过promise中.then(function(res){}),其中res即返回给客户端的数据。或者通过success：function(res){}来获取服务器返回的数据
+3、jquery 中调用 ajax 函数获取数据：通过 promise 中.then(function(res){}),其中 res 即返回给客户端的数据。或者通过 success：function(res){}来获取服务器返回的数据
 
- 通过success:function(res){}来获取服务器返回的数据
+通过 success:function(res){}来获取服务器返回的数据
 
- ```js
-     $ajax({
-       url:"header.html",
-       success:function(res){
-            $(res).replaceAll("header");
-            $(`<link rel="stylesheet" href="css/header.css">`).prependTo("head")
-       }
-     })
- ```
- 
- 通过promise中.then(function(res)){}获取服务器返回的数据
+```js
+$ajax({
+  url: "header.html",
+  success: function (res) {
+    $(res).replaceAll("header");
+    $(`<link rel="stylesheet" href="css/header.css">`).prependTo("head");
+  },
+});
+```
+
+通过 promise 中.then(function(res)){}获取服务器返回的数据
 
 ```js
    $ajax({
@@ -410,6 +439,108 @@ const只读属性不可修改，但是const对象内部的key值可以修改，�
      }
    }
 ```
+
 <h5 id='j8'>8.手写一个promise.all函数</h5>
 
- [手写promise.all函数](https://blog.csdn.net/MichelleZhai/article/details/104475521)
+```js
+const promiseAll = (all) => {
+  return new Promise((resolve, reject) => {
+    let countNum = 0;
+    let res = new Array(all.length);
+    for (var i = 0; i < all.length; i++) {
+      (i) => {
+        Promise.resolve(all[i]).then(
+          (value) => {
+            countNum++;
+            res[i] = value;
+            if (countNum === all.length) {
+              return resolve(res);
+            }
+          },
+          (reason) => {
+            return reject(reason);
+          }
+        )(i);
+      };
+    }
+  });
+};
+let p1 = Promise.resolve(1);
+let p2 = Promise.resolve("hello I am No2");
+let p3 = Promise.resolve(3);
+promiseAll([p1, p2, p3]).then((value) => {
+  console.log(value);
+}); //[1,'hello I am No2',3]
+```
+
+[手写 promise.all 函数](https://blog.csdn.net/MichelleZhai/article/details/104475521)
+
+<h5 id='j9'>9.手写实现一个promise函数</h5>
+
+```js
+function promise() {
+  this.status = "pending";
+  this.msg = ""; //存储value与reason
+  let process = arguments[0];
+  let that = this;
+  process(
+    function () {
+      that.status = "resolve";
+      that.msg = argument[0];
+    },
+    function () {
+      that.status = "reject";
+      that.msg = argument[0];
+    }
+  );
+  return this;
+}
+promise.prototype.then = function () {
+  if (this.status === "resolve") {
+    arguments[0](this.msg);
+  } else if (this.status === "reject" && arguments[1]) {
+    arguments[1](this.msg);
+  }
+};
+```
+
+<h5 id='j10'>10.函数节流与函数防抖</h5>
+记得在网上看到一个比喻很形象
+
+节流：
+比如公交车站等车，每经过 5 分钟就会发车，不管有没有人都会发车，这就是节流的过程
+
+防抖：
+以最后一个上车乘客为准，再等 5 分钟，5 分钟内没人上来就发车，否则就再等 5 分钟，这就是防抖的过程
+
+```js
+// 函数节流
+function throttle(fn, wait) {
+  let last = 0;
+  let dur = wait || 500;
+  return function () {
+    let self = this;
+    const current_time = +new Date();
+    if (current_time - last > dur) {
+      fn.apply(self, arguments);
+      last = +new Date();
+    }
+  };
+}
+```
+
+```js
+// 函数防抖
+function debounce(fn, wait) {
+  let timer;
+  let dur = wait || 500; //间隔时间
+  return function () {
+    clearTimeout(timer);
+    let self = this;
+    let args = arguments; //保存此处的arguments
+    timer = setTimeout(function () {
+      fn.apply(self, args);
+    }, dur);
+  };
+}
+```
