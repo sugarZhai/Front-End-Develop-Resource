@@ -1,16 +1,16 @@
 <h2>目录</h2>
 
-&emsp;[1. 说一下Vue的双向绑定数据的原理](#k1)
+&emsp;[1. 说一下 Vue 的双向绑定数据的原理](#k1)
 
 &emsp;[2. 解释单向数据流和双向数据绑定](#k2)
 
-&emsp;[3. Vue如何去除url中的 #](#k3)
+&emsp;[3. Vue 如何去除 url 中的 #](#k3)
 
-&emsp;[4. 对 MVC、MVVM的理解](#k4)
+&emsp;[4. 对 MVC、MVVM 的理解](#k4)
 
-&emsp;[5. 介绍虚拟DOM](#k5)
+&emsp;[5. 介绍虚拟 DOM](#k5)
 
-&emsp;[6. vue生命周期的理解](#k6)
+&emsp;[6. vue 生命周期的理解](#k6)
 
 &emsp;[7. 组件通信](#k7)
 
@@ -18,13 +18,13 @@
 
 &emsp;[9. v-if 和 v-show 区别](#k9)
 
-&emsp;[10. $route和$router的区别](#k10)
+&emsp;[10. $route和$router 的区别](#k10)
 
 &emsp;[11. NextTick 是做什么的](#k11)
 
 &emsp;[12. Vue 组件 data 为什么必须是函数](#k12)
 
-&emsp;[13. 计算属性computed 和事件 methods 有什么区别](#k13)
+&emsp;[13. 计算属性 computed 和事件 methods 有什么区别](#k13)
 
 &emsp;[14. 对比 jQuery ，Vue 有什么优缺点](#k14)
 
@@ -40,7 +40,7 @@
 
 &emsp;[20. vue 等单页面应用的优缺点](#k20)
 
-&emsp;[21. vue-router 使用params与query传参有什么区别](#k21)
+&emsp;[21. vue-router 使用 params 与 query 传参有什么区别](#k21)
 
 <h5 id='k1'>1. 说一下Vue的双向绑定数据的原理</h5>
 
@@ -48,7 +48,7 @@
 
 <h5 id='k2'>2. 解释单向数据流和双向数据绑定</h5>
 
-> 单向数据流： 顾名思义，数据流是单向的。数据流动方向可以跟踪，流动单一，追查问题的时候可以更快捷。缺点就是写起来不太方便。要使UI发生变更就必须创建各种 `action` 来维护对应的 `state`
+> 单向数据流： 顾名思义，数据流是单向的。数据流动方向可以跟踪，流动单一，追查问题的时候可以更快捷。缺点就是写起来不太方便。要使 UI 发生变更就必须创建各种 `action` 来维护对应的 `state`
 
 > 双向数据绑定：数据之间是相通的，将数据变更的操作隐藏在框架内部。优点是在表单交互较多的场景下，会简化大量业务无关的代码。缺点就是无法追踪局部状态的变化，增加了出错时 `debug` 的难度
 
@@ -58,9 +58,9 @@
 
 ```js
 new Router({
-  mode: 'history',
-  routes: [ ]
-})
+  mode: "history",
+  routes: [],
+});
 ```
 
 > 需要注意的是，当我们启用 `history` 模式的时候，由于我们的项目是一个单页面应用，所以在路由跳转的时候，就会出现访问不到静态资源而出现 `404` 的情况，这时候就需要服务端增加一个覆盖所有情况的候选资源：如果 `URL` 匹配不到任何静态资源，则应该返回同一个 `index.html` 页面
@@ -72,6 +72,7 @@ new Router({
 ![image](https://raw.githubusercontent.com/ltadpoles/web-document/master/images/mvc.png)
 
 特点：
+
 1. `View` 传送指令到 `Controller`
 2. `Controller` 完成业务逻辑后，要求 `Model` 改变状态
 3. `Model` 将新的数据发送到 `View`，用户得到反馈
@@ -82,7 +83,8 @@ new Router({
 
 ![image](https://raw.githubusercontent.com/ltadpoles/web-document/master/images/mvvm.png)
 
-特点： 
+特点：
+
 1. 各部分之间的通信，都是双向的
 2. 采用双向绑定：`View` 的变动，自动反映在 `ViewModel`，反之亦然
 
@@ -94,7 +96,7 @@ new Router({
 
 <h5 id='k6'>6. vue生命周期的理解</h5>
 
-> vue实例有一个完整的生命周期，生命周期也就是指一个实例从开始创建到销毁的这个过程
+> vue 实例有一个完整的生命周期，生命周期也就是指一个实例从开始创建到销毁的这个过程
 
 - `beforeCreate()` 在实例创建之间执行，数据未加载状态
 - `created()` 在实例创建、数据加载后，能初始化数据，`dom`渲染之前执行
@@ -121,12 +123,12 @@ new Router({
 let event = new Vue();
 
 /*监听事件*/
-event.$on('eventName', (val) => {
-    //......do something
+event.$on("eventName", (val) => {
+  //......do something
 });
 
 /*触发事件*/
-event.$emit('eventName', 'this is a message.')
+event.$emit("eventName", "this is a message.");
 ```
 
 > Vuex 数据管理
@@ -157,7 +159,7 @@ event.$emit('eventName', 'this is a message.')
 
 <h5 id='k12'>12. Vue 组件 data 为什么必须是函数</h5>
 
-> 因为js本身的特性带来的，如果 `data` 是一个对象，那么由于对象本身属于引用类型，当我们修改其中的一个属性时，会影响到所有Vue实例的数据。如果将 `data` 作为一个函数返回一个对象，那么每一个实例的 `data` 属性都是独立的，不会相互影响了
+> 因为 js 本身的特性带来的，如果 `data` 是一个对象，那么由于对象本身属于引用类型，当我们修改其中的一个属性时，会影响到所有 Vue 实例的数据。如果将 `data` 作为一个函数返回一个对象，那么每一个实例的 `data` 属性都是独立的，不会相互影响了
 
 <h5 id='k13'>13. 计算属性computed 和事件 methods 有什么区别</h5>
 
@@ -181,13 +183,13 @@ event.$emit('eventName', 'this is a message.')
 
 ```js
 // 注册一个全局自定义指令 `v-focus`
-Vue.directive('focus', {
+Vue.directive("focus", {
   // 当被绑定的元素插入到 DOM 中时……
   inserted: function (el) {
     // 聚焦元素
-    el.focus()
-  }
-})
+    el.focus();
+  },
+});
 ```
 
 > 局部注册
@@ -210,9 +212,9 @@ directives: {
 > 可以用全局方法 `Vue.filter()` 注册一个自定义过滤器，它接收两个参数：过滤器 `ID` 和过滤器函数。过滤器函数以值为参数，返回转换后的值
 
 ```js
-Vue.filter('reverse', function (value) {
-  return value.split('').reverse().join('')
-})
+Vue.filter("reverse", function (value) {
+  return value.split("").reverse().join("");
+});
 ```
 
 ```html
@@ -234,9 +236,9 @@ Vue.filter('reverse', function (value) {
 </keep-alive>
 ```
 
-> 可以使用API提供的props，实现组件的动态缓存
+> 可以使用 API 提供的 props，实现组件的动态缓存
 
-具体参考 [官方API](https://cn.vuejs.org/v2/api/#keep-alive)
+具体参考 [官方 API](https://cn.vuejs.org/v2/api/#keep-alive)
 
 <h5 id='k18'>18. Vue 中 key 的作用</h5>
 
@@ -244,7 +246,7 @@ Vue.filter('reverse', function (value) {
 
 > 有相同父元素的子元素必须有独特的 `key`。重复的 `key` 会造成渲染错误
 
-具体参考 [官方API](https://cn.vuejs.org/v2/api/#key)
+具体参考 [官方 API](https://cn.vuejs.org/v2/api/#key)
 
 <h5 id='k19'>19. Vue 的核心是什么</h5>
 
@@ -254,15 +256,15 @@ Vue.filter('reverse', function (value) {
 
 > 优点：
 
-- 良好的交互体验 
+- 良好的交互体验
 - 良好的前后端工作分离模式
 - 减轻服务器压力
 
 > 缺点：
 
-- SEO难度较高
-- 前进、后退管理 
-- 初次加载耗时多 
+- SEO 难度较高
+- 前进、后退管理
+- 初次加载耗时多
 
 <h5 id='k21'>21. vue-router 使用params与query传参有什么区别</h5>
 
@@ -270,15 +272,20 @@ Vue.filter('reverse', function (value) {
 
 ```js
 // 传递
-this.$router.push({path: './xxx', params: {xx:xxx}})
-this.$router.push({path: './xxx', query: {xx:xxx}})
+this.$router.push({ path: "./xxx", params: { xx: xxx } });
+this.$router.push({ path: "./xxx", query: { xx: xxx } });
 
 // 接收
-this.$route.params
+this.$route.params;
 
-this.$route.query
+this.$route.query;
 ```
 
 - `params` 是路由的一部分,必须要有。`query` 是拼接在 `url` 后面的参数，没有也没关系
 - `params` 不设置的时候，刷新页面或者返回参数会丢，`query` 则不会有这个问题
 
+<h5 id='k21'>21. computed和watch的区别先详细解释下再用一句话总结？</h5>
+
+computed 名称不能与 data 里对象重复，只能用同步，必须有 return;是多个值变化引起一个值变化，多对一
+
+watch:名称必须和 data 里对象一样，可以用于异步，没有 return。是一对多，监听一个值，一个值变化引起多个值变化
