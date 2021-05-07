@@ -1,67 +1,65 @@
-
 <h1>目录</h1>
 
 <h4>HTTP相关</h4>
 
-&emsp;[1. HTTP有什么特点](#h1)
+&emsp;[1. HTTP 有什么特点](#h1)
 
-&emsp;[2. http和https协议有什么区别](#h2)
+&emsp;[2. http 和 https 协议有什么区别](#h2)
 
-&emsp;[3. http状态码有那些？分别代表是什么意思](#h3)
+&emsp;[3. http 状态码有那些？分别代表是什么意思](#h3)
 
-&emsp;[4. 什么是HTTP持久化和管线化](#h4)
+&emsp;[4. 什么是 HTTP 持久化和管线化](#h4)
 
-&emsp;[5. Http报文](#h5)
+&emsp;[5. Http 报文](#h5)
 
-&emsp;[6. 从输入URL到页面加载全过程](#h6)
+&emsp;[6. 从输入 URL 到页面加载全过程](#h6)
 
 &emsp;[7. 为什么利用多个域名来存储网站资源会更有效](#h7)
 
-&emsp;[8. ssh端口为什么是22](#h8)
+&emsp;[8. ssh 端口为什么是 22](#h8)
 
-&emsp;[9. 关于Http 2.0 ？](#h9)
+&emsp;[9. 关于 Http 2.0 ？](#h9)
 
-### HTTP相关
+### HTTP 相关
 
-|#|HTTP|
-|---|----|
-|1|[SSL/TLS协议运行机制](https://blog.csdn.net/MichelleZhai/article/details/82979467)|
-|2|[HTTPS详解](https://note.youdao.com/share/?id=d8999256f7d7e4cfc008587adbfa6f0f&type=note#/) |
-|3|[跨域CORS详解](http://www.ruanyifeng.com/blog/2016/04/cors.html)|
+| #   | HTTP                                                                                         |
+| --- | -------------------------------------------------------------------------------------------- |
+| 1   | [SSL/TLS 协议运行机制](https://blog.csdn.net/MichelleZhai/article/details/82979467)          |
+| 2   | [HTTPS 详解](https://note.youdao.com/share/?id=d8999256f7d7e4cfc008587adbfa6f0f&type=note#/) |
+| 3   | [跨域 CORS 详解](http://www.ruanyifeng.com/blog/2016/04/cors.html)                           |
 
 ### 网络安全
 
-* [网络安全学习资源](https://github.com/euphrat1ca/fuzzdb-collect)
-* [webhack](https://wizardforcel.gitbooks.io/web-hacking-101/content/3.html)
-
+- [网络安全学习资源](https://github.com/euphrat1ca/fuzzdb-collect)
+- [webhack](https://wizardforcel.gitbooks.io/web-hacking-101/content/3.html)
 
 <h5 id='h1'>1. HTTP有什么特点</h5>
 
 - 简单快速：客户向服务器请求服务时，只需传送请求方法和路径
-- 灵活：HTTP允许传输任意类型的数据对象。正在传输的类型由 `Content-Type` 加以标记
+- 灵活：HTTP 允许传输任意类型的数据对象。正在传输的类型由 `Content-Type` 加以标记
 - 无连接：无连接的含义是限制每次连接只处理一个请求。服务器处理完客户的请求，并收到客户的应答后，即断开连接 (深入-持久连接、管线化)
-- 无状态：HTTP协议是无状态协议( `Cookie` 的出现)
+- 无状态：HTTP 协议是无状态协议( `Cookie` 的出现)
 
 <h5 id='h2'>2. http和https协议有什么区别</h5>
 
 > http: 是互联网上应用最为广泛的一种网络协议，是一个客户端和服务器端请求和应答的标准（`TCP`），用于从`WWW`服务器传输超文本到本地浏览器的传输协议，它可以使浏览器更加高效，使网络传输减少
 
-> https: 是以安全为目标的HTTP通道，简单讲是 `HTTP` 的安全版，即 `HTTP` 下加入 `SSL` 层，`HTTPS` 的安全基础是 `SSL` ，因此加密的详细内容就需要 `SSL`
+> https: 是以安全为目标的 HTTP 通道，简单讲是 `HTTP` 的安全版，即 `HTTP` 下加入 `SSL` 层，`HTTPS` 的安全基础是 `SSL` ，因此加密的详细内容就需要 `SSL`
 
 - `http` 是超文本传输协议，信息是明文传输，`https` 则是具有安全性的 `ssl` 加密传输协议
 - `http` 和 `https` 使用的是完全不同的连接方式，用的端口也不一样，前者是 `80` ，后者是 `443`
 - `http` 的连接很简单，是无状态的；`HTTPS` 协议是由 `SSL+HTTP` 协议构建的可进行加密传输、身份认证的网络协议，比 `http` 协议安全
 
-参考 [http与https的区别](https://juejin.im/entry/58d7635e5c497d0057fae036)
+参考 [http 与 https 的区别](https://juejin.im/entry/58d7635e5c497d0057fae036)
 
 <h5 id='h3'>3. http状态码有那些？分别代表是什么意思</h5>
 
 常用 `http` 状态码：
 
 - `200` `OK` 服务器成功处理了请求
-- `301/302` `Moved Permanently`（重定向）请求的URL已移走
+- `301/302` `Moved Permanently`（重定向）请求的 URL 已移走
 - `404` `Not Found` (页面丢失)未找到资源
-- `403`  服务器拒绝请求
+- `403` 服务器拒绝请求
 - `408` （请求超时） 服务器等候请求时发生超时
 - `501` `Internal Server Error` 服务器遇到一个错误，使其无法对请求提供服务
 - `502` （错误网关） 服务器作为网关或代理，从上游服务器收到无效响应
@@ -83,10 +81,9 @@
 
 > `HTTP` 报文是面向文本的，报文中的每一个字段都是一些 `ASCII` 码串，各个字段的长度是不确定的。`HTTP` 有两类报文：**请求报文和响应报文**
 
-> HTTP的这两种报文都由三部分组成：开始行、首部行、实体主体
+> HTTP 的这两种报文都由三部分组成：开始行、首部行、实体主体
 
 参考 [这里](https://www.jianshu.com/p/a2c4ede32d11)
-
 
 <h5 id='h6'>6. 从输入URL到页面加载全过程</h5>
 
@@ -100,14 +97,79 @@
 - 节约主域名的连接数，优化页面响应速度
 - 防止不必要的安全问题
 
+<h5 id='h8'>8.ssh端口为什么是22？</h5>
 
-<h5 id='h8'>8.ssh端口为什么是22？</h5>  
+ssh 的作者回忆，ftp 端口是 21，telnet 的端口是 23 ,他就挑了中间剩下的 22
 
-ssh的作者回忆，ftp端口是21，telnet的端口是23 ,他就挑了中间剩下的22
+<h5 id='h9'>9.关于Http 2.0 ？</h5>
 
-<h5 id='h9'>9.关于Http 2.0 ？</h5>  
+> 1. HTTP2 引入了“服务端推（server push）”的概念，它允许服务端在客户端需要数据之前就主动地将数据发送到客户端缓存中，从而提高性能。
+> 2. HTTP2 提供更多的加密支持
+> 3. HTTP2 使用多路技术，允许多个消息在一个连接上同时交差。
+>    它增加了头压缩（header compression），因此即使非常小的请求，其请求和响应的 header 都只会占用很小比例的带宽。
 
-> 1. HTTP2引入了“服务端推（server push）”的概念，它允许服务端在客户端需要数据之前就主动地将数据发送到客户端缓存中，从而提高性能。
-> 2. HTTP2提供更多的加密支持
-> 3. HTTP2使用多路技术，允许多个消息在一个连接上同时交差。 
-> 它增加了头压缩（header compression），因此即使非常小的请求，其请求和响应的header都只会占用很小比例的带宽。
+<h5 id='h10'>10.关于Https中ssl/tcp交互通信之后，数据都传送完了，还不想断开连接怎么办？怎么维持？</h5>
+在HTTP中响应体的Connection字段指定为keep-alive
+<h5 id='h11'>11、你对TCP滑动窗口有了解嘛？</h5>
+在TCP链接中，对于发送端和接收端而言，TCP需要把发送的数据放到发送缓存区，将接收的数据放到接收缓存区。而经常会存在发送端发送过多，而接收端无法消化的情况，所以就需要流量控制，就是在通过接收缓存区的大小，控制发送端的发送。如果对方的接收缓存区满了，就不能再继续发送了。而这种流量控制的过程就需要在发送端维护一个发送窗口，在接收端维持一个接收窗口。
+TCP滑动窗口分为两种：发送窗口和接收窗口
+
+<h5 id='h12'>12、WebSocket与Ajax的区别本质不同</h5>
+Ajax即异步JavaScript和XML，是一种创建交互式网页的应用的网页开发技术
+
+websocket 是 HTML5 的一种新协议，实现了浏览器和服务器的实时通信
+
+生命周期不同：
+
+websocket 是长连接，会话一直保持
+
+ajax 发送接收之后就会断开
+
+适用范围：
+
+websocket 用于前后端实时交互数据
+
+ajax 非实时
+
+发起人：
+
+AJAX 客户端发起
+
+WebSocket 服务器端和客户端相互推送
+
+<h5 id='h13'>13、了解WebSocket嘛</h5>
+长轮询和短轮询，websocket是长轮询
+
+具体比如在一个电商场景，商品的库存可能会变化，所以需要及时反映给用户，所以客户端会不停的发请求，然后服务器端会不停的去查变化，不管变不变，都返回，这个是短轮询。
+
+而长轮询则表现为如果没有变，就不返回，而是等待变或者超时(一般是十几秒)才返回，如果没有返回，客户端也不需要一直发请求，所以减少了双方的压力。
+
+<h5 id="h14">14、OSI七层模型和TCP/IP四层模型</h5>
+
+1、应用层
+2、表示层
+3、会话层
+4、传输层
+5、网络层
+6、数据链路层
+7、物理层
+
+TCP/IP 四层概念：
+
+1、应用层：应用层、表示层、会话层：HTTP
+
+2、传输层：传输层：TCP/UDP
+
+3、网络层：网络层：IP
+
+4、数据链路层：数据链路层、物理层
+
+<h5 id="h15">15、HTTP2改进</h5>
+
+改进性能：
+
+1、头部压缩
+
+2、多路信道复用
+
+3、Server Push

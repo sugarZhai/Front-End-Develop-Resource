@@ -443,41 +443,49 @@ $ajax({
 <h5 id='j8'>8.手写一个promise.all函数</h5>
 
 ```js
-const promiseAll = (all) => {
-  return new Promise((resolve, reject) => {
-    let countNum = 0;
-    let res = new Array(all.length);
-    for (var i = 0; i < all.length; i++) {
-      (i) => {
-        Promise.resolve(all[i]).then(
-          (value) => {
-            countNum++;
-            res[i] = value;
-            if (countNum === all.length) {
-              return resolve(res);
-            }
-          },
-          (reason) => {
-            return reject(reason);
-          }
-        )(i);
-      };
+const promiseAll = (arr) => {
+  let returnRes = [];
+  return new Promise(function (resolve, reject) {
+    let i = 0;
+    next();
+    function next() {
+      arr[i].then(function (res) {
+        returnRes.push(res);
+        i++;
+        if (i === arr.length) {
+          resolve(returnRes);
+        } else {
+          next();
+        }
+      });
     }
   });
 };
 let p1 = Promise.resolve(1);
 let p2 = Promise.resolve("hello I am No2");
-let p3 = Promise.resolve(3);
+let p3 = Promise.resolve("hello I am No3");
+
 promiseAll([p1, p2, p3]).then((value) => {
   console.log(value);
-}); //[1,'hello I am No2',3]
+});
 ```
 
 [手写 promise.all 函数](https://blog.csdn.net/MichelleZhai/article/details/104475521)
 
 <h5 id='j9'>9.手写实现一个promise函数</h5>
+首先知道
+
+它是什么？
+Promise 是一个方案，用来解决多层回调嵌套的解决方案。它现在是 ES6 的原生对象。
+
+干嘛用的？可以把一个多层嵌套的同步、异步都有回调的方法，拉平为一串.then()组成的调用链
+
+解决啥问题？回调地狱，多层嵌套的回调方法中，如果同时存在同步、异步的方法，那么实际执行顺序会混乱。不好调试也不好维护
+
+思路：一般如何将异步函数同步执行的呢，正常情况下，我们只需要用函数嵌套就可以解决，但是现在我们要封装一个 promise,其实原理还是一样的，只要能在第一个函数执行完再调用下一个函数
 
 ```js
+//写法二
 function promise() {
   this.status = "pending";
   this.msg = ""; //存储value与reason
@@ -486,11 +494,11 @@ function promise() {
   process(
     function () {
       that.status = "resolve";
-      that.msg = argument[0];
+      that.msg = arguments[0];
     },
     function () {
       that.status = "reject";
-      that.msg = argument[0];
+      that.msg = arguments[0];
     }
   );
   return this;
@@ -543,4 +551,29 @@ function debounce(fn, wait) {
     }, dur);
   };
 }
+```
+
+<h5 id='j11'>11.实现destructuringArray方法</h5>
+
+// destructuringArray([1,[2,4],3],"[a,[b],c]")
+// result //{a:1,b:2,c:3}
+
+```js
+//调用es6结构后自己组装对象
+function test(arr, str) {
+  var o = new Function(
+    "",
+    `
+   const ${str}=${JSON.stringify(arr)};
+   const arr=${JSON.stringify(str)}.match(/[a-z]+/ig);
+   const obj={};
+   for(let iof arr){
+     obj[i]=eval(i);
+   }
+   console.log(obj);
+   `
+  );
+  o(arr, str);
+}
+test([1, [2, 4], 3], "[a,[b,d,e],c]");
 ```
