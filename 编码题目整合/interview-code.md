@@ -445,11 +445,11 @@ $ajax({
 ```js
 const promiseAll = (arr) => {
   let returnRes = [];
-  return new Promise(function (resolve, reject) {
+  return new Promise((resolve, reject) => {
     let i = 0;
     next();
     function next() {
-      arr[i].then(function (res) {
+      arr[i].then((res) => {
         returnRes.push(res);
         i++;
         if (i === arr.length) {
@@ -472,7 +472,7 @@ promiseAll([p1, p2, p3]).then((value) => {
 
 [手写 promise.all 函数](https://blog.csdn.net/MichelleZhai/article/details/104475521)
 
-<h5 id='j9'>9.手写实现一个promise函数</h5>
+<h5 id='j9'>9.手写实现一个promise函数(中高级必考)</h5>
 首先知道
 
 它是什么？
@@ -483,6 +483,93 @@ Promise 是一个方案，用来解决多层回调嵌套的解决方案。它现
 解决啥问题？回调地狱，多层嵌套的回调方法中，如果同时存在同步、异步的方法，那么实际执行顺序会混乱。不好调试也不好维护
 
 思路：一般如何将异步函数同步执行的呢，正常情况下，我们只需要用函数嵌套就可以解决，但是现在我们要封装一个 promise,其实原理还是一样的，只要能在第一个函数执行完再调用下一个函数
+
+```js
+//写法一
+class MyPromise {
+  constructor(fn) {
+    if (typeof fn !== "function") {
+      throw new TypeError(`${fn} is not a function`);
+    }
+    this.state = "pending";
+    this.value = undefined;
+    fn(this.resolve.bind(this), this.reject.bind(this));
+  }
+  resolve(value) {
+    if (this.state !== "pending") return;
+    this.state = "fulfilled";
+    this.value = value;
+  }
+  reject(reason) {
+    if (this.state !== "pending") return;
+    this.state = "rejected";
+    this.value = reason;
+  }
+  then(fulfilled, rejected) {
+    if (typeof fulfilled !== "function" && typeof rejected !== "function") {
+      return this;
+    }
+    if (
+      (typeof fulfilled !== "function" && this.state === "fulfilled") ||
+      (typeof rejected !== "function" && this.state === "rejected")
+    ) {
+      return this;
+    }
+    return new MyPromise((resolve, reject) => {
+      if (
+        fulfilled &&
+        typeof fulfilled === "function" &&
+        this.state === "fulfilled"
+      ) {
+        let result = fulfilled(this.value);
+        if (result && typeof result.then === "function") {
+          return result.then(resolve, reject);
+        } else {
+          resolve(result);
+        }
+      }
+      if (
+        rejected &&
+        typeof rejected === "function" &&
+        this.state === "rejected"
+      ) {
+        let result = rejected(this.value);
+        if (result && typeof result.then === "function") {
+          return result.then(resolve, reject);
+        } else {
+          resolve(result);
+        }
+      }
+    });
+  }
+  catch(rejected) {
+    return this.then(null, rejected);
+  }
+}
+new MyPromise((resolve, reject) => {
+  console.log(1);
+  //reject(2)
+  resolve(2);
+  console.log(3);
+  setTimeout(() => {
+    console.log(4);
+  }, 0);
+})
+  .then((res) => {
+    console.log(res);
+    return new MyPromise((resolve, reject) => {
+      resolve(5);
+    }).then((res) => {
+      return res;
+    });
+  })
+  .then((res) => {
+    console.log(res);
+  })
+  .catch((e) => {
+    console.log("e", e);
+  });
+```
 
 ```js
 //写法二
@@ -510,6 +597,16 @@ promise.prototype.then = function () {
     arguments[1](this.msg);
   }
 };
+//测试
+new promise((resolve, reject) => {
+  console.log(1);
+  //reject(2)
+  resolve(2);
+  console.log(3);
+  setTimeout(() => {
+    console.log(4);
+  }, 0);
+}).then((re) => console.log(re));
 ```
 
 <h5 id='j10'>10.函数节流与函数防抖</h5>
@@ -567,7 +664,7 @@ function test(arr, str) {
    const ${str}=${JSON.stringify(arr)};
    const arr=${JSON.stringify(str)}.match(/[a-z]+/ig);
    const obj={};
-   for(let iof arr){
+   for(let i of arr){
      obj[i]=eval(i);
    }
    console.log(obj);
@@ -575,5 +672,8 @@ function test(arr, str) {
   );
   o(arr, str);
 }
-test([1, [2, 4], 3], "[a,[b,d,e],c]");
+test([1, [2, 4], 3], "[a,[b,d],c]");
 ```
+
+手动实现函数合集
+https://juejin.cn/post/6844903809206976520
